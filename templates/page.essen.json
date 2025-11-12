@@ -39,7 +39,7 @@
           "type": "button",
           "settings": {
             "button_label": "JETZT BESTELLEN",
-            "button_link": "shopify://collections/tee-1",
+            "button_link": "shopify://collections/tee-2",
             "button_style_secondary": false
           }
         }

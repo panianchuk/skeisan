@@ -55,6 +55,9 @@
           {% endif %}
           class="product-variant-id"
         >
+        {% if request.path contains 'collections/tee-2' %}
+          <input type="hidden" name="properties[_from_landing_pages]" value="true">
+        {% endif %}
 
         {%- if gift_card_recipient_feature_active -%}
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
@@ -62,55 +65,26 @@
 
         <div class="product-form__buttons">
           {% if product.selected_or_first_available_variant.available %}
-          <div class="instock-message">
-            <p>Verfügbar – in 2–3 Tagen bei dir</p>
-          </div>
-        {% endif %}
+            <div class="instock-message">
+              <p>Verfügbar – in 2–3 Tagen bei dir</p>
+            </div>
+          {% endif %}
           <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
             <select id="Quantity-{{ section.id }}" name="quantity" class="quantity-select">
-                  {% for i in (1..10) %}
-                      <option value="{{ i }}" {% if forloop.first %} selected {% endif %}>
-                        {{ i }}
-                      </option>
-                  {% endfor %}
-              </select>
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              {% for i in (1..10) %}
+                <option
+                  value="{{ i }}"
+                  {% if forloop.first %}
+                    selected
+                  {% endif %}
+                >
+                  {{ i }}
+                </option>
+              {% endfor %}
+            </select>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M14.7142 6.46422L15.8925 7.64256L10.0009 13.5359L4.10754 7.64256L5.28588 6.46422L10 11.1784L14.7142 6.46422Z" fill="black"/>
-              </svg>
-
-          {% comment %}  <button class="quantity__button" name="minus" type="button">
-              <span class="visually-hidden">
-                {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
-              </span>
-              <span class="svg-wrapper">
-                {{- 'icon-minus.svg' | inline_asset_content -}}
-              </span>
-            </button>
-            <input
-              class="quantity__input"
-              type="number"
-              name="quantity"
-              id="Quantity-{{ section.id }}"
-              data-cart-quantity="{{ cart_qty }}"
-              data-min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-              min="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-              {% if product.selected_or_first_available_variant.quantity_rule.max != null %}
-                data-max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-                max="{{ product.selected_or_first_available_variant.quantity_rule.max }}"
-              {% endif %}
-              step="{{ product.selected_or_first_available_variant.quantity_rule.increment }}"
-              value="{{ product.selected_or_first_available_variant.quantity_rule.min }}"
-              form="{{ product_form_id }}"
-            >
-            <button class="quantity__button" name="plus" type="button">
-              <span class="visually-hidden">
-                {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
-              </span>
-              <span class="svg-wrapper">
-                {{- 'icon-plus.svg' | inline_asset_content -}}
-              </span>
-            </button>
-          {% endcomment %}
+            </svg>
           </quantity-input>
           {%- liquid
             assign check_against_inventory = true
@@ -148,10 +122,10 @@
             {{ form | payment_button }}
           {%- endif -%}
           <div class="payment-methods">
-        {%- for type in shop.enabled_payment_types -%}
-          {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-        {%- endfor -%}
-            </div>
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+            {%- endfor -%}
+          </div>
         </div>
       {%- endform -%}
     </product-form>
@@ -240,7 +214,7 @@
   {%- endif -%}
 </div>
 {% if pyment_icons != blank %}
-<div class="pdp__payments">
-  <img src="{{ pyment_icons | image_url }}" alt="{{ pyment_icons.alt }}" />
-</div>
+  <div class="pdp__payments">
+    <img src="{{ pyment_icons | image_url }}" alt="{{ pyment_icons.alt }}">
+  </div>
 {% endif %}

@@ -393,6 +393,11 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+        
+       window.free_gift_product = {
+        id: '{{ settings.free_gift_product.first_available_variant.id }}',
+        price: '{{ settings.free_gift_product.first_available_variant.price }}',
+      }
     </script>
 
     {%- if settings.predictive_search_enabled -%}
@@ -404,5 +409,6 @@
     {%- endif -%}
     
     {% render 'back-to-top' %}
+     <script src="{{ 'gift-product.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

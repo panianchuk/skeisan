@@ -4,7 +4,7 @@
   "license": "UNLICENSED",
   "description": "Skeisan Theme",
   "scripts": {
-    "dev": "shopify theme dev --store=$npm_package_config_dev",
+    "dev": "shopify theme dev --store=$npm_package_config_dev --theme-editor-sync",
     "pull": "shopify theme pull --store=$npm_package_config_dev",
     "push": "shopify theme push --store=$npm_package_config_dev"
   },
