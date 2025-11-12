@@ -6,13 +6,15 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
-    <!--install usercentrics from snippets/tracking.liquid -->
-    {% render 'tracking' %} 
+    <!-- install usercentrics from snippets/tracking.liquid -->
+    {% render 'tracking' %}
 
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    >
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32, height: 32 }}">
     {%- endif -%}
@@ -45,9 +47,7 @@
       <script src="{{ 'animations.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    
-
-{{ content_for_header }}
+    {{ content_for_header }}
 
     {%- liquid
       assign heading_font_bold = settings.type_header_font | font_modify: 'weight', '500'
@@ -65,7 +65,7 @@
       {{ settings.type_header_font | font_face: font_display: 'swap' }}
       {{ heading_font_bold | font_face: font_display: 'swap' }}
        {{ heading_font_semi | font_face: font_display: 'swap' }}
-      
+
 
       {% for scheme in settings.color_schemes -%}
         {% assign scheme_classes = scheme_classes | append: ', .color-' | append: scheme.id %}
@@ -307,17 +307,21 @@
 
     {% comment %} <!-- custom style --> {% endcomment %}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
-    
+
     <script>
       if (Shopify.designMode) {
         document.documentElement.classList.add('shopify-design-mode');
       }
     </script>
-    
+
     {% comment %} <!-- In theme.liquid before </head> --> {% endcomment %}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body class="gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %} template-{{ template | replace: '.', ' ' | truncatewords: 1, '' | handle }} template-{{ template | replace: '.', '-' | handle }}">
@@ -385,6 +389,13 @@
         recipientFormCollapsed: `{{ 'recipient.form.collapsed' | t }}`,
         countrySelectorSearchCount: `{{ 'localization.country_results_count' | t: count: '[count]' }}`,
       };
+
+      
+
+      window.free_gift_product = {
+        id: '{{ settings.free_gift_product.first_available_variant.id }}',
+        price: '{{ settings.free_gift_product.first_available_variant.price }}',
+      }
     </script>
 
     {%- if settings.predictive_search_enabled -%}
@@ -394,12 +405,13 @@
     {%- if settings.cart_type == 'drawer' -%}
       <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
-    
+
     {% render 'back-to-top' %}
     <style>
-      #uc-main-dialog{
-        font-size:16px !important;
-        }
-    </style> 
+      #uc-main-dialog {
+        font-size: 16px !important;
+      }
+    </style>
+    <script src="{{ 'gift-product.js' | asset_url }}" defer="defer"></script>
   </body>
 </html>

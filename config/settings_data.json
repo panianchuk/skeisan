@@ -130,6 +130,7 @@
     "cart_drawer_collection": "",
     "cart_color_scheme": "scheme-1a4a2e20-726f-4f72-b4b7-e3c328e26f50",
     "free_shipping_price": "100",
+    "free_gift_product": "t-tumbler",
     "sections": {
       "main-password-header": {
         "type": "main-password-header",
@@ -174,16 +175,6 @@
       },
       "13223602749629917723": {
         "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
-        "disabled": false,
-        "settings": {}
-      },
-      "12634813005945594690": {
-        "type": "shopify://apps/mable/blocks/inject-log-script/369b4fed-dc17-45bb-b0b6-5cf0837c7ccb",
-        "disabled": false,
-        "settings": {}
-      },
-      "16225679183443353566": {
-        "type": "shopify://apps/pixiehog/blocks/posthog_js_web/3bc10c13-7b55-491e-8df6-d5677acf3250",
         "disabled": false,
         "settings": {}
       }

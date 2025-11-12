@@ -1459,6 +1459,11 @@
         "type": "text",
         "id": "free_shipping_price",
         "label": "Free Shipping Price"
+      },
+      {
+        "type": "product",
+        "id": "free_gift_product",
+        "label": "Free gift product"
       }
     ]
   }
