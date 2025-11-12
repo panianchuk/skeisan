@@ -1,0 +1,577 @@
+<section class="video-section">
+  <div class="page-width">
+    {% if section.settings.section_title != blank or section.settings.section_subtitle != blank %}
+      <div class="section-header">
+        {% if section.settings.section_title != blank %}
+          <h2 class="section-title">{{ section.settings.section_title }}</h2>
+        {% endif %}
+        {% if section.settings.section_subtitle != blank %}
+          <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="swiper video-swiper">
+        <div class="swiper-wrapper">
+          {% for i in (1..3) %}
+            {% for block in section.blocks %}
+              {% case block.type %}
+                {% when 'video_slide' %}
+                  <div class="swiper-slide" {{ block.shopify_attributes }}>
+                    <div class="video-card">
+                      <div class="video-container" style="position:relative;">
+                        {% if block.settings.video != blank %}
+                          <span class="span_pause" onClick="controlfun(this)">
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="44" height="44" rx="6" fill="#2A2B2A" fill-opacity="0.6"/>
+                                <path d="M27 14.5H24.5C24.0397 14.5 23.6666 14.8731 23.6666 15.3333V28.6667C23.6666 29.1269 24.0397 29.5 24.5 29.5H27C27.4602 29.5 27.8333 29.1269 27.8333 28.6667V15.3333C27.8333 14.8731 27.4602 14.5 27 14.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M19.5 14.5H17C16.5397 14.5 16.1666 14.8731 16.1666 15.3333V28.6667C16.1666 29.1269 16.5397 29.5 17 29.5H19.5C19.9602 29.5 20.3333 29.1269 20.3333 28.6667V15.3333C20.3333 14.8731 19.9602 14.5 19.5 14.5Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <rect width="44" height="44" rx="6" fill="#2A2B2A" fill-opacity="0.6"/>
+                                <path d="M16.1666 16.1667C16.1665 15.8734 16.2438 15.5853 16.3907 15.3315C16.5376 15.0777 16.7488 14.8671 17.0031 14.721C17.2574 14.5749 17.5457 14.4985 17.839 14.4995C18.1322 14.5005 18.42 14.5789 18.6733 14.7267L28.6708 20.5583C28.9231 20.7047 29.1326 20.9148 29.2782 21.1675C29.4239 21.4202 29.5007 21.7068 29.501 21.9985C29.5012 22.2902 29.4249 22.5768 29.2797 22.8298C29.1344 23.0828 28.9253 23.2932 28.6733 23.44L18.6733 29.2733C18.42 29.4211 18.1322 29.4995 17.839 29.5005C17.5457 29.5015 17.2574 29.4251 17.0031 29.279C16.7488 29.1329 16.5376 28.9223 16.3907 28.6685C16.2438 28.4147 16.1665 28.1266 16.1666 27.8333V16.1667Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                                
+
+                          </span>
+                          <span class="span_muted" onClick="mutedfun(this)">
+                            <svg
+                              fill="#fff"
+                              width="24px"
+                              height="24px"
+                              viewBox="0 0 1024 1024"
+                              xmlns="http://www.w3.org/2000/svg"
+                              stroke="#fff"
+                            >
+                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M542.86 294.4L362.3 430a10.72 10.72 0 0 0-2.71 3.25H255.53v153.2h104.06a10.58 10.58 0 0 0 2.71 3.25l180.56 135.52a10.83 10.83 0 0 0 17.34-8.66v-413.5a10.83 10.83 0 0 0-17.34-8.66zM742.6 599.41L765 577l-67.2-67.2 67.2-67.2-22.4-22.4-67.2 67.2-67.2-67.2-22.4 22.4 67.2 67.2-67.2 67.2 22.4 22.4 67.2-67.2 67.2 67.2z"></path></g>
+                            </svg>
+                            <svg
+                              fill="#fff"
+                              width="24px"
+                              height="24px"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                              stroke="#fff"
+                            >
+                              <g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill-rule="evenodd" d="M11.553 3.064A.75.75 0 0112 3.75v16.5a.75.75 0 01-1.255.555L5.46 16H2.75A1.75 1.75 0 011 14.25v-4.5C1 8.784 1.784 8 2.75 8h2.71l5.285-4.805a.75.75 0 01.808-.13zM10.5 5.445l-4.245 3.86a.75.75 0 01-.505.195h-3a.25.25 0 00-.25.25v4.5c0 .138.112.25.25.25h3a.75.75 0 01.505.195l4.245 3.86V5.445z"></path><path d="M18.718 4.222a.75.75 0 011.06 0c4.296 4.296 4.296 11.26 0 15.556a.75.75 0 01-1.06-1.06 9.5 9.5 0 000-13.436.75.75 0 010-1.06z"></path><path d="M16.243 7.757a.75.75 0 10-1.061 1.061 4.5 4.5 0 010 6.364.75.75 0 001.06 1.06 6 6 0 000-8.485z"></path></g>
+                            </svg>
+                            {% comment %} <span class="unmute" style="display:none;"> Unmute </span> {% endcomment %}
+                          </span>
+
+                          <video
+                            alt="{{ block.settings.video.alt }}"
+                            preload="metadata"
+                            webkit-playsinline
+                            playsinline
+                            style="width:100%;"
+                            muted
+
+                            loop
+
+                            aria-label="{{ block.settings.video.alt }}"
+                            {% if block.settings.poster_image != blank %}
+                              poster="{{ block.settings.poster_image | img_url : 'master' }}"
+                            {% elsif block.settings.video.preview_image != blank %}
+                              poster="{{ block.settings.video.preview_image | image_url : width: '400x' }}"
+                            {% endif %}
+                          >
+                            {% for source in block.settings.video.sources %}
+                              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+                            {% endfor %}
+                          </video>
+                          {% if block.settings.product != blank %}
+                            <div class="video_product_card">
+                              <a href="{{ block.settings.product.url }}" class="product__card_url">
+                                {% if block.settings.product.featured_image != blank %}
+                                  <img
+                                    src="{{ block.settings.product.featured_image | img_url: 'master' }}"
+                                    width="64px"
+                                    height="64px"
+                                  >
+                                {% endif %}
+                                <div class="left_card_content">
+                                  <h5 class="video_card_title">
+                                    {{ block.settings.product.title }}
+                                  </h5>
+                                  <span class="video__card__price">
+                                    From
+                                    {{
+                                      block.settings.product.selected_or_first_available_variant.price
+                                      | money_without_currency
+                                    }}
+                                  </span>
+                                </div>
+                              </a>
+                            </div>
+                          {% endif %}
+
+                        {% else %}
+                          <div
+                            class="video-placeholder"
+                            style="background: linear-gradient(135deg, {{ block.settings.placeholder_color_start }} 0%, {{ block.settings.placeholder_color_end }} 100%);"
+                          >
+                            {{ block.settings.placeholder_text }}
+                          </div>
+                        {% endif %}
+
+                        {% if block.settings.badge_text != blank %}
+                          <div class="brand-badge" style="color: {{ block.settings.badge_color }};">
+                            {{ block.settings.badge_text }}
+                          </div>
+                        {% endif %}
+
+                        <div class="video-overlay"></div>
+                      </div>
+                    </div>
+                  </div>
+              {% endcase %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+
+        {% if section.settings.show_pagination %}
+          {% comment %} <div class="swiper-pagination"></div> {% endcomment %}
+        {% endif %}
+
+        {% if section.settings.show_navigation %}
+          {% comment %}
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          {% endcomment %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</section>
+<style>
+    .video-container video {
+          min-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      max-height: 350px;
+      transition: .3s all ease;
+      display: block;
+    }
+    .span_pause {
+       display: block;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    z-index: 4;
+    width: 44px;
+    display : none;
+    height: 44px;
+    }
+
+    .span_pause svg:nth-child(2){
+       position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0 ;
+    }
+    .span_pause.active svg:nth-child(2){
+    opacity: 1 ;
+    }
+    .span_pause.active svg:nth-child(1){
+    opacity: 0;
+    }
+
+    .video-section .swiper-slide.swiper-slide-active .span_pause {
+       display : block;
+    }
+    .video-container .video_product_card {
+    visibility: hidden;
+  }
+    .video-container video {
+          min-height: 350px;
+      object-fit: cover;
+      border-radius: 10px;
+      max-height: 350px;
+      transition: .3s all ease;
+    }
+    .video-section .swiper-slide-next video,
+    .video-section .swiper-slide-prev video{
+      min-height: 400px;
+      object-fit: cover;
+      max-height: 400px;
+
+  }
+    a.product__card_url {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      padding: 8px;
+      border: 1px solid #2A2B2A;
+      border-radius: 8px;
+  }
+  .video_card_title {
+      margin: 0;
+      font-size: 13px;
+  }
+  .left_card_content {
+        display: flex
+;
+    flex-direction: column;
+    gap: 4px;
+}
+span.video__card__price {
+    font-size: 12px;
+    color: #515151;
+    font-family: var(--heading-font-family);
+    font-style: var(--heading-font-style);
+    font-weight: var(--heading-font-weight);
+}
+    #shopify-section-{{ section.id }} .swiper-slide-active .video-container video {
+          min-height: 450px;
+          max-height: 450px;
+      object-fit: cover;
+      border-radius: 20px;
+      transition: unset !important;
+    }
+    #shopify-section-{{ section.id }} .section-header {
+      align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4px;
+    display: flex
+;
+    margin-bottom: 32px;
+    }
+    #shopify-section-{{ section.id }} .section-title {
+          max-width: 691px;
+    text-align: center;
+    margin: 0;
+    }
+    #shopify-section-{{ section.id }} .section-subtitle {
+        margin: 0 !important;
+    }
+   #shopify-section-{{ section.id }}  .video_product_card img{
+      min-width: 64px;
+      min-height: 64px;
+      object-fit: cover;
+  }
+     #shopify-section-{{ section.id }} .swiper-slide-active .video-container .video_product_card {
+         visibility: visible;
+    }
+   #shopify-section-{{ section.id }} .swiper-wrapper {
+      align-items : center;
+    }
+    #shopify-section-{{ section.id }} .unmute {
+          position: absolute;
+      background: #00000052;
+      right: calc(100% + 5px);
+      padding: 5px;
+      color: white;
+    }
+    #shopify-section-{{ section.id }} .video-section {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .span_muted {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      right: 10px;
+      background: #00000052;
+      border-radius: 5px;
+      top: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index:3;
+      cursor:pointer;
+    }
+    .span_muted svg:nth-child(2) {
+      position: absolute;
+      z-index: 3;
+      display:none;
+    }
+     .span_muted.active svg {
+      position: absolute;
+      display:none;
+    }
+      .span_muted.active svg:nth-child(2) {
+      position: absolute;
+      z-index: 3;
+      display:block;
+    }
+    @media (min-width: 769px) {
+      #shopify-section-{{ section.id }} .video-section {
+        padding-top: {{ section.settings.padding_top_desktop }}px;
+        padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+      }
+    }
+     @media (max-width: 768px) {
+     .video-container video {
+          {% comment %} min-height: 300px; {% endcomment %}
+      object-fit: cover;
+      border-radius: 10px;
+      {% comment %} max-height: 300px;
+      transition: .3s all  {% endcomment %}
+  ease;
+    }
+   .swiper-slide-active .video-container video {
+          {% comment %} min-height: 350px;
+          max-height: 350px; {% endcomment %}
+      object-fit: cover;
+
+    }
+    }
+</style>
+<script>
+  function controlfun(el) {
+    console.log('Play/Pause clicked');
+
+    const container = el.closest('.video-container');
+    if (!container) return;
+
+    const video = container.querySelector('video');
+    if (!video) return;
+
+    // Toggle play/pause
+    if (video.paused) {
+      video.play();
+      el.classList.remove('active'); // Hide "pause" icon when playing
+    } else {
+      video.pause();
+      el.classList.add('active'); // Show "play" icon when paused
+    }
+  }
+
+  function mutedfun(el) {
+    console.log('Mute/Unmute clicked');
+
+    const container = el.closest('.video-container');
+    if (!container) return;
+
+    const video = container.querySelector('video');
+    if (!video) return;
+
+    // Toggle mute/unmute
+    if (video.muted) {
+      video.muted = false;
+      el.classList.add('active'); // Show unmuted icon
+    } else {
+      video.muted = true;
+      el.classList.remove('active'); // Show muted icon
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    console.log('DOM ready');
+
+    var swiper = new Swiper('.video-swiper', {
+      slidesPerView: 1.3,
+      centeredSlides: true,
+      spaceBetween: 15,
+      loop: true,
+      pagination: {
+        el: '.video-section .swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 4.8,
+          spaceBetween: 15,
+        },
+      },
+      on: {
+        init: function () {
+          console.log('Swiper initialized');
+
+          // Play video in the active slide automatically
+          const activeSlide = this.slides[this.activeIndex];
+          const videoEl = activeSlide.querySelector('video');
+          const controlBtn = activeSlide.querySelector('.span_pause');
+
+          if (videoEl) {
+            videoEl.play();
+            if (controlBtn) controlBtn.classList.remove('active');
+          }
+
+          // Attach click to slides for navigation
+          this.slides.forEach((slide) => {
+            slide.addEventListener('click', (e) => {
+              // Ignore clicks on controls or links
+              if (e.target.closest('a, button, .span_muted, .span_pause')) return;
+
+              const realIdxAttr =
+                slide.getAttribute('data-swiper-slide-index') || slide.dataset.swiperSlideIndex;
+              const targetIndex =
+                realIdxAttr != null
+                  ? parseInt(realIdxAttr, 10)
+                  : Array.from(this.slides).indexOf(slide);
+
+              this.slideToLoop(targetIndex, 500);
+            });
+          });
+        },
+
+        slideChange: function () {
+          console.log('Slide changed to index:', this.activeIndex);
+
+          // Pause all videos first
+          this.slides.forEach((slide) => {
+            const vid = slide.querySelector('video');
+            const pauseBtn = slide.querySelector('.span_pause');
+            if (vid) vid.pause();
+            if (pauseBtn) pauseBtn.classList.add('active'); // Reset icons
+          });
+
+          // Play video on active slide
+          const activeSlide = this.slides[this.activeIndex];
+          const activeVideo = activeSlide.querySelector('video');
+          const controlBtn = activeSlide.querySelector('.span_pause');
+          const muteBtn = activeSlide.querySelector('.span_muted');
+
+          if (activeVideo) {
+            activeVideo.currentTime = 0;
+            activeVideo.play();
+            if (controlBtn) controlBtn.classList.remove('active');
+
+            // Optionally handle mute button visual
+            if (muteBtn && activeVideo.muted) {
+              const unmuteNotice = activeSlide.querySelector('.unmute');
+              if (unmuteNotice) {
+                unmuteNotice.style.display = 'block';
+                setTimeout(() => {
+                  unmuteNotice.style.display = 'none';
+                }, 2000);
+              }
+            }
+          }
+        },
+      },
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Video Slider Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "Experience Our Products"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "Discover the stories behind our amazing products"
+    },
+    {
+      "type": "color",
+      "id": "background_color_start",
+      "label": "Background Gradient Start",
+      "default": "#667eea"
+    },
+    {
+      "type": "color",
+      "id": "background_color_end",
+      "label": "Background Gradient End",
+      "default": "#764ba2"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_autoplay",
+      "label": "Enable Autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "label": "Autoplay Delay (seconds)",
+      "min": 2,
+      "max": 10,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "checkbox",
+      "id": "show_navigation",
+      "label": "Show Navigation Arrows",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pagination",
+      "label": "Show Pagination Dots",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 64
+    }
+  ],
+  "blocks": [
+    {
+      "type": "video_slide",
+      "name": "Video Slide",
+      "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
+        {
+          "type": "product",
+          "label": "Product",
+          "id": "product"
+        },
+        {
+          "type" : "image_picker",
+          "label" : "Poster",
+          "id" : "poster_image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Slider"
+    }
+  ]
+}
+{% endschema %}

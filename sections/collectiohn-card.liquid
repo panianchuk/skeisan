@@ -1,0 +1,554 @@
+{% comment %}
+  Tea Code Section - Swiper Slider Implementation
+{% endcomment %}
+
+<div class="tea-code-section">
+    <div class="page-width"> 
+  <div class="tea-code-header">
+    <div class="header-content">
+      <h2 class="section-title">{{ section.settings.section_title }}</h2>
+      <p class="section-subtitle">{{ section.settings.section_subtitle }}</p>
+    </div>
+
+    <div class="navigation-controls small-hide">
+      <button class="nav-btn tea-code-prev">
+        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 10.5L8.75 4.25L9.63125 5.13125L4.89375 9.875L17.5 9.875L17.5 11.125L4.89375 11.125L9.63125 15.8687L8.75 16.75L2.5 10.5Z" fill="#1D1D1B"/>
+</svg>
+
+      </button>
+      <div class="pagination-container deskpg ">
+        <span class="tea-code-pagination"></span>
+      </div>
+      <button class="nav-btn tea-code-next">
+        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 10.5L11.25 4.25L10.3688 5.13125L15.1062 9.875L2.5 9.875L2.5 11.125L15.1062 11.125L10.3687 15.8687L11.25 16.75L17.5 10.5Z" fill="#1D1D1B"/>
+</svg>
+
+      </button>
+    </div>
+  </div>
+
+  <div class="tea-code-container">
+    <div class="swiper tea-code-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            {% if block.settings.collecttion_url != blank %} <a href="{{ block.settings.collecttion_url }}" class="block_collecttion_url"> </a> {% endif %}
+            <div class="tea-card" data-index="{{ forloop.index }}">
+              <div class="tea-image-container">
+                {% if block.settings.tea_image %}
+                  <img
+                    src="{{ block.settings.tea_image | img_url: '600x600' }}"
+                    alt="{{ block.settings.tea_name }}"
+                    loading="lazy"
+                  >
+                {% else %}
+                  <div class="placeholder-image"></div>
+                {% endif %}
+              </div>
+
+              <div class="tea-info">
+                <div class="tea-code-label">
+                  <strong>{{ block.settings.tea_letter }}</strong> – {{ block.settings.tea_name }}
+                </div>
+                <div class="right__text">
+                  <p class="tea-description">{{ block.settings.tea_description }}</p>
+                  <p class="tea-details">{{ block.settings.tea_details }}</p>
+                </div>
+               
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+      <div class="navigation-controls large-up-hide medium-hide">
+         <div class="pagination-container mb_pag">
+        <span class="tea-code-pagination"></span>
+      </div>
+      <button class="nav-btn tea-code-prev">
+        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 10.5L8.75 4.25L9.63125 5.13125L4.89375 9.875L17.5 9.875L17.5 11.125L4.89375 11.125L9.63125 15.8687L8.75 16.75L2.5 10.5Z" fill="#1D1D1B"/>
+</svg>
+
+      </button>
+     
+      <button class="nav-btn tea-code-next">
+        <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 10.5L11.25 4.25L10.3688 5.13125L15.1062 9.875L2.5 9.875L2.5 11.125L15.1062 11.125L10.3687 15.8687L11.25 16.75L17.5 10.5Z" fill="#1D1D1B"/>
+</svg>
+
+      </button>
+    </div>
+  </div>
+  </div>
+</div>
+
+<style>
+  .tea-code-section {
+    padding: 64px 0;
+    {% comment %} background: #f8f9fa; {% endcomment %}
+    overflow: hidden;
+  }
+.section-title {
+  margin: 0;
+    line-height: 1;
+}
+  .tea-code-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+  }
+
+  .header-content {
+    flex: 1;
+  }
+
+  a.block_collecttion_url {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+}
+.section-title {
+     margin: 0;
+    line-height: 1;
+}
+  .section-subtitle {
+    font-size: 14px;
+    color: #686869;
+    margin: 0;
+    font-weight: 400;
+    margin-top: 8px;
+  }
+
+  .navigation-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  
+  }
+
+  .nav-btn {
+       width: 60px;
+    height: 40px;
+    border: 1px solid #1D1D1B;
+    /* background: white; */
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+     {% comment %} color: #636e72; {% endcomment %}
+      background: transparent;
+  }
+
+
+  .nav-btn.swiper-button-disabled:hover {
+    border-color: #ddd;
+    background: white;
+    color: #636e72;
+  }
+
+  .pagination-container {
+  
+    text-align: center;
+  }
+
+  .tea-code-pagination {
+   font-size: 14px;
+    color: #1D1D1B;
+    font-weight: 500;
+  }
+
+  .tea-code-pagination .current {
+   color: #1D1D1B;
+  }
+
+
+  .tea-code-swiper {
+    overflow: visible;
+  }
+
+
+
+  .tea-card {
+
+    border-radius: 20px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+
+  .tea-image-container {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+  border-radius: 16px;
+  }
+
+  .tea-image-container img,
+  .placeholder-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+
+  .placeholder-image {
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.3) 100%);
+  }
+
+  .tea-card:hover .tea-image-container img,
+  .tea-card:hover .placeholder-image {
+    {% comment %} transform: scale(1.08); {% endcomment %}
+  }
+
+  .tea-letter-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+
+  .tea-info {
+  flex: 1;
+      display: flex;
+      /* flex-direction: column; */
+      padding-top: 16px;
+      border-top: 1px solid;
+      margin-top: 24px;
+      gap: 32px;
+  }
+
+  .tea-code-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #1D1D1B;
+    {% comment %} margin-bottom: 15px; {% endcomment %}
+     white-space: nowrap;
+  }
+
+  .tea-description {
+    font-size: 14px;
+    color: #1D1D1B;
+    line-height: 1;
+    margin: 0 0 8px 0;
+    font-weight: 500;
+     font-weight: 400;
+  }
+
+  .tea-details {
+    margin: 0;
+    font-size: 14px;
+    color: #1D1D1B;
+    line-height: 1;
+    font-weight: 400;
+     {% comment %} margin: 0 0 15px 0; {% endcomment %}
+  }
+
+
+
+
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .tea-code-section {
+      padding: 60px 0;
+    }
+.navigation-controls {
+ margin-top : 64px !important;
+}
+    .tea-code-header {
+      flex-direction: column;
+     align-items: flex-start;
+    }
+
+    .navigation-controls {
+      margin-top: 0;
+      justify-content: center;
+    }
+.pagination-container {
+ flex : 1;
+ text-align: left;
+    flex: 1;
+ }
+   
+
+  
+
+    .tea-image-container {
+      {% comment %} height: auto; {% endcomment %}
+    }
+
+    .tea-letter {
+      font-size: 80px;
+    }
+
+   .tea-code-label {
+    font-size: 13px;
+}
+.tea-description {
+ font-size: 13px;
+ }
+ .tea-details {
+ font-size: 13px;
+}
+  }
+
+  @media (max-width: 480px) {
+   
+
+  
+  }
+
+  /* Swiper overrides */
+  .tea-code-swiper .swiper-wrapper {
+    align-items: stretch;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    let ele = window.innerWidth > 768 ? '.deskpg .tea-code-pagination' : '.mb_pag .tea-code-pagination'
+    const teaCodeSwiper = new Swiper('.tea-code-swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 30,
+      centeredSlides: false,
+      grabCursor: true,
+
+      // Navigation
+      navigation: {
+        nextEl: '.tea-code-next',
+        prevEl: '.tea-code-prev',
+      },
+
+      // Pagination
+      pagination: {
+        el: ele,
+        type: 'custom',
+        renderCustom: function (swiper, current, total) {
+          const currentFormatted = String(current).padStart(2, '0');
+          const totalFormatted = String(total).padStart(2, '0');
+          return `<span class="current">${currentFormatted}</span>/${totalFormatted}`;
+        },
+      },
+
+      // Breakpoints
+      breakpoints: {
+        320: {
+          spaceBetween: 10,
+          centeredSlides: true,
+          centeredSlidesBounds: true,
+          slidesPerView: 1.1,
+        },
+        768: {
+          spaceBetween: 25,
+          centeredSlides: false,
+          slidesPerView: 2.1,
+        },
+        1024: {
+          spaceBetween: 30,
+          centeredSlides: false,
+          slidesPerView: 3.1,
+        },
+      },
+
+      // Effects
+      speed: 800,
+      effect: 'slide',
+
+      // Auto height
+      autoHeight: false,
+
+      // Resistance
+      resistance: true,
+      resistanceRatio: 0.85,
+
+      // Prevent clicks
+      preventClicks: true,
+      preventClicksPropagation: true,
+
+      // Touch settings
+      touchRatio: 1,
+      touchAngle: 45,
+      simulateTouch: true,
+
+      // Mouse wheel
+      mousewheel: {
+        enabled: false,
+      },
+
+      // Keyboard
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+
+      // Accessibility
+      a11y: {
+        enabled: true,
+        prevSlideMessage: 'Previous tea',
+        nextSlideMessage: 'Next tea',
+      },
+
+      // Events
+      on: {
+        init: function () {
+          // Add smooth transitions
+          this.wrapperEl.style.transitionTimingFunction = 'cubic-bezier(0.25, 0.8, 0.25, 1)';
+        },
+
+        slideChange: function () {
+          // Add any custom slide change logic here
+          const activeSlide = this.slides[this.activeIndex];
+          if (activeSlide) {
+            // Optional: trigger animations or analytics
+          }
+        },
+
+        reachBeginning: function () {
+          // Optional: handle reaching the beginning
+        },
+
+        reachEnd: function () {
+          // Optional: handle reaching the end
+        },
+      },
+    });
+
+    // Handle window resize
+    let resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        if (teaCodeSwiper) {
+          teaCodeSwiper.update();
+        }
+      }, 150);
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Tea Code Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "section_title",
+      "label": "Section Title",
+      "default": "THE TEA CODE"
+    },
+    {
+      "type": "text",
+      "id": "section_subtitle",
+      "label": "Section Subtitle",
+      "default": "One letter. One experience. Meet your match."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tea_item",
+      "name": "Tea Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tea_letter",
+          "label": "Tea Letter",
+          "default": "R",
+          "info": "Single letter identifier for the tea"
+        },
+        {
+          "type": "text",
+          "id": "tea_name",
+          "label": "Tea Name",
+          "default": "Rooibos Tea"
+        },
+        {
+          "type": "image_picker",
+          "id": "tea_image",
+          "label": "Tea Image",
+          "info": "Recommended size: 600x600px"
+        },
+        {
+          "type": "textarea",
+          "id": "tea_description",
+          "label": "Tea Description",
+          "default": "Naturally caffeine-free blend with no bitterness.",
+          "info": "Brief description of the tea's characteristics"
+        },
+        {
+          "type": "textarea",
+          "id": "tea_details",
+          "label": "Tea Details",
+          "default": "South African red bush tea with deep flavor and gentle energy.",
+          "info": "More detailed information about the tea"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_fill_option",
+          "label": "Show Fill Option",
+          "default": false,
+          "info": "Display the fill size option below the description"
+        },
+        {
+          "type": "url",
+          "label": "Collection url",
+          "id": "collecttion_url"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tea Code Section",
+      "blocks": [
+        {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "R",
+            "tea_name": "Rooibos Tea",
+            "tea_description": "Naturally caffeine-free blend with no bitterness.",
+            "tea_details": "South African red bush tea with deep flavor and gentle energy."
+          }
+        },
+        {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "F",
+            "tea_name": "Fruit Tea",
+            "tea_description": "Juicy, vibrant, and full of natural sweetness.",
+            "tea_details": "Blends packed with fruit notes for a refreshing steep."
+          }
+        },
+        {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "G",
+            "tea_name": "Green Tea",
+            "tea_description": "Crisp, balanced, and naturally uplifting.",
+            "tea_details": "A classic redefined — clean taste with a refreshing finish."
+          }
+        },
+        {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "H",
+            "tea_name": "Herbal Tea",
+            "tea_description": "Soothing, aromatic, and naturally healing.",
+            "tea_details": "Carefully crafted blends for wellness and relaxation."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

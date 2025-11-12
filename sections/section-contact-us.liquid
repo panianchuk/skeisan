@@ -1,0 +1,101 @@
+{{ 'sec-contact-us.css' | asset_url | stylesheet_tag }}
+
+<section class="contact-us">
+  <div class="page-width">
+    <div class="contact-us__grid-wrapper grid grid--2-col">   
+      <!-- Left Column -->
+      <div class="grid__item">
+        {% if section.settings.heading != blank %}
+          <h2 class="h2">{{ section.settings.heading }}</h2>
+        {% endif %}
+
+        {% if section.settings.description_top != blank %}
+          <div class="rte top__desc contact_des">
+            {{ section.settings.description_top }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.email != blank %}
+          <p class="contact__icon">
+            <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill-rule="evenodd" clip-rule="evenodd" d="M3.75 5.25L3 6V18L3.75 18.75H20.25L21 18V6L20.25 5.25H3.75ZM4.5 7.6955V17.25H19.5V7.69525L11.9999 14.5136L4.5 7.6955ZM18.3099 6.75H5.68986L11.9999 12.4864L18.3099 6.75Z" fill="#000"></path> </g></svg>
+            <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+          </p>
+        {% endif %}
+
+        {% if section.settings.phone != blank %}
+          <p class="contact__icon">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 1C6.5 1 8.5 5.5 8.5 6C8.5 7 7 8 6.5 9C6 10 7 11 8 12C8.39 12.39 10 14 11 13.5C12 13 13 11.5 14 11.5C14.5 11.5 19 13.5 19 14C19 16 17.5 17.5 16 18C14.5 18.5 13.5 18.5 11.5 18C9.5 17.5 8 17 5.5 14.5C3 12 2.5 10.5 2 8.5C1.5 6.5 1.5 5.5 2 4C2.5 2.5 4 1 6 1Z" stroke="#291B3B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <a href="tel:{{ section.settings.phone }}">{{ section.settings.phone }}</a></p>
+        {% endif %}
+
+        {% if section.settings.description_bottom != blank %}
+          <div class="rte contact_des bottom__desc">
+            {{ section.settings.description_bottom }}
+          </div>
+        {% endif %}
+      </div>
+      <!-- Right Column -->
+      <div class="grid__item">
+        {%- form 'contact', id: 'ContactForm', class: contact_form_class -%}
+          <div class="contact_field">
+            <input type="text" id="ContactFormName" placeholder="Name" name="contact[name]" required>
+          </div>
+          <div class="contact_field">
+            <input type="email" id="ContactFormEmail" placeholder="E-Mail" name="contact[E-Mail]" required>
+          </div>
+          <div class="contact_field">
+              <input type="text" id="ContactFormPhone" placeholder="Telefonnummer" name="contact[Telefonnummer]">
+          </div>
+          <div class="contact_field">
+              <input type="text" id="ContactFormSubject" placeholder="Thema" name="contact[Thema]">
+          </div>
+          <div class="contact_field">
+            <textarea id="ContactFormMessage" placeholder="Tippe deine Nachricht ein..." name="contact[body]" required></textarea>
+          </div>
+          <button type="submit" class="btn__form-submit btn btn_custom btn_custom--blue">Submit</button>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Contact Us",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Get in Touch"
+    },
+    {
+      "type": "richtext",
+      "id": "description_top",
+      "label": "Top Description"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone"
+    },
+    {
+      "type": "richtext",
+      "id": "description_bottom",
+      "label": "Bottom Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Contact Us"
+    }
+  ]
+}
+{% endschema %}

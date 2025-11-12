@@ -1,0 +1,885 @@
+{{ 'gift-builder.css' | asset_url | stylesheet_tag }}
+<section class="bundle-builder">
+  <div class="page-width">
+    <div class="bundle-builder__grid">
+      <div class="bundle-builder__grid-item bundle-builder__grid-item--left">
+        {% if section.settings.heading != blank %}
+          <h2 class="bundle-builder__heading h1">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.desc != blank %}
+          <div class="bundle-builder__desc">
+            {{ section.settings.desc }}
+          </div>
+        {% endif %}
+      </div>
+      <div class="bundle-builder__grid-item bundle-builder__grid-item--right">
+        <div class="bundle-builder__btn-wrapper">
+          {% for block in section.blocks %}
+            <div
+              class="bundle-builder__btn bundle-builder__btn--{{ forloop.index }} {% if forloop.index == 2 %} bundle-builder__btn--active{% endif %}"
+              data-btn-id="#btn-{{ forloop.index }}"
+            >
+              <p class="bundle-builder__btn-heading">{{ block.settings.title }}</p>
+              <p class="bundle-builder__btn-subheading">{{ block.settings.subheading }}</p>
+              {% if block.settings.tag != blank %}
+                <span class="bundle-builder__btn-tag">{{ block.settings.tag }}</span>
+              {% endif %}
+            </div>
+          {% endfor %}
+        </div>
+        <div class="bundle-builder__cards-wrapper">
+          {% for block in section.blocks %}
+            <div
+              class="bundle-builder__cards {% if forloop.index == 1 %} bundle-builder__cards--active{% endif %} bundle-builder__cards--{{ forloop.index }}"
+              id="btn-{{ forloop.index }}"
+              data-product-numbers="{{ block.settings.product_numbers }}" data-saving="{{ block.settings.saving | default: 0 }}"
+            >
+              {% assign cardsNumber = block.settings.product_numbers %}
+              {% for i in (1..cardsNumber) %}
+                <div class="place_holder-card">
+                  <svg width="84" height="130" viewBox="0 0 84 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="1" y="1" width="82" height="128" rx="8" fill="white"/>
+                    <rect x="1" y="1" width="82" height="128" rx="8" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+                    <rect x="54" y="53" width="24" height="24" rx="12" transform="rotate(90 54 53)" fill="#000"/>
+                    <path d="M49 66H43V72H41V66H35V64H41V58H43V64H49V66Z" fill="white"/>
+                  </svg>
+                  <p>
+                    Select {% if i == 1 %}1st Rack{% else %}{{ i }}nd Rack{% endif %}
+                  </p>
+                </div>
+              {% endfor %}
+              <div class="place_holder-card place_holder-card--gift">
+                <svg width="84" height="130" viewBox="0 0 84 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="1" y="1" width="82" height="128" rx="8" fill="white"/>
+                  <rect x="1" y="1" width="82" height="128" rx="8" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="6 6"/>
+                  <rect x="54" y="53" width="24" height="24" rx="12" transform="rotate(90 54 53)" fill="#000"/>
+                  <path d="M49 66H43V72H41V66H35V64H41V58H43V64H49V66Z" fill="white"/>
+                </svg>
+                <p>Add racks to unlock a FREE Gift</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="bundle__totals">
+          <p id="total__cost">Total: <span class="total__Price">$0.00</span></p>
+          <p id="total__saving">You are saving <span class="total__save">20%</span></p>
+        </div>
+        <div class="main__cta-wrapper">
+          <button class="btn btn--blue btn--disabled" data-main-cta-to-cart>ADD 3 More & Gift</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bundle__products-popup">
+    <div class="page-width">
+      <div class="popup_page-header">
+        <button class="popup__close-btn">
+          <svg
+            fill="#000000"
+            width="20px"
+            height="20px"
+            viewBox="0 0 24 24"
+            id="cross"
+            data-name="Line Color"
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon line-color"
+          >
+            <line id="primary" x1="19" y1="19" x2="5" y2="5" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="primary-2" data-name="primary" x1="19" y1="5" x2="5" y2="19" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+          </svg>
+        </button>
+        <h3 class="h3 not__gift-heading" style="margin-bottom: 20px;">Add Products <span id="boards-count">(0 / 3)</span></h3>
+        <h3 class="h3 gift__heading" style="margin-bottom: 20px;">Add Gift</h3>
+        <div class="popup_page-btns">
+          <button class="popup_page-btn popup_page-btn--active btn btn--blue" data-show-simple-items>
+            Add Products <span data-racks-text>(0 / 3)</span>
+          </button>
+          <button class="popup_page-btn disabled__on-load btn btn--blue" data-show-gift-items>
+            Select Gift
+          </button>
+        </div>
+      </div>
+      {% assign collection = section.settings.collection %}
+      <div class="bundle__products-grid">
+        {% for product in collection.products %}
+          {% assign isGift = false %}
+          {% if product.tags contains 'bundle_gift' %}
+            {% assign isGift = true %}
+          {% endif %}
+          {% if product.variants.size > 1 %}
+            {% for variant in product.variants %}
+              <div class="bundle__product{% if isGift %} bundle__product--gift{% else %} bundle__product--not-gift{% endif %}" data-price="{{ variant.price | money_without_currency }}">
+                <div class="bundle__product-img">
+                  <img src="{{ variant.featured_image | image_url }}">
+                </div>
+                <div class="bundle__product-content">
+                  <h4>{{ product.title | remove: '(Free)' }}</h4>
+                  <p>For {{ variant.title }}</p>
+                  <p>                  
+                    {% if isGift %}
+                      FREE
+                    {% else %}
+                      {{ product.price | money }}
+                    {% endif %}
+                  </p>
+                </div>
+                <button
+                  data-id="{{ variant.id }}"
+                  class="btn btn--blue{% if isGift %} gift_btn{% else %} not-gift-btn{% endif %}"
+                >
+                  {% if isGift %}
+                    Unlock Gift
+                  {% else %}
+                    Add to cart
+                  {% endif %}
+                </button>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="bundle__product{% if isGift %} bundle__product--gift{% else %} bundle__product--not-gift{% endif %}" data-price="{{ product.price | money_without_currency }}">
+              <div class="bundle__product-img">
+                <img src="{{ product.featured_image | image_url }}">
+              </div>
+              <div class="bundle__product-content">
+                <h4>{{ product.title | remove: '(Free)' }}</h4>
+              
+                <p>
+                  {% if isGift %}
+                    FREE
+                  {% else %}
+                    {{ product.price | money }}
+                  {% endif %}
+                </p>
+              </div>
+              <button
+                data-id="{{ product.first_available_variant.id }}"
+                class="btn btn--blue{% if isGift %} gift_btn{% else %} not-gift-btn{% endif %}"
+              >
+                {% if isGift %}
+                  Unlock Gift
+                {% else %}
+                  Add to cart
+                {% endif %}
+              </button>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  {% comment %} script for buttons tabbing ===== {% endcomment %}
+  document.addEventListener("click", function (event) {
+    const btn = event.target.closest("[data-btn-id]");
+    if (!btn) return;
+
+    // Remove active class from all buttons
+    document.querySelectorAll("[data-btn-id]").forEach(b => {
+      b.classList.remove("bundle-builder__btn--active");
+    });
+
+    // Add active class to clicked button
+    btn.classList.add("bundle-builder__btn--active");
+
+    // Get target div selector from button attribute
+    const targetSelector = btn.getAttribute("data-btn-id");
+    const targetDiv = document.querySelector(targetSelector);
+
+    // Remove active class from all cards
+    document.querySelectorAll(".bundle-builder__cards").forEach(card => {
+      card.classList.remove("bundle-builder__cards--active");
+    });
+
+    // Add active class to matched div
+    if (targetDiv) {
+      targetDiv.classList.add("bundle-builder__cards--active");
+
+      // --- Get product numbers from target div ---
+      const productNumbers = targetDiv.getAttribute("data-product-numbers");
+      const mainCta = document.querySelector("[data-main-cta-to-cart]");
+      if (mainCta && productNumbers) {
+        mainCta.textContent = `ADD ${productNumbers} More & Gift`;
+      }
+    }
+  });
+</script>
+
+<script>
+    {% comment %} script to hide and show bundle produts popup  {% endcomment %}
+    document.addEventListener('click', function (e) {
+    const body = document.body;
+
+    // When clicking either .bundle-builder__btn or .place_holder-card
+    if (e.target.closest('.place_holder-card')) {
+      body.classList.add('show__bnundle-popup');
+    }
+
+    // When clicking .popup__close-btn
+    if (e.target.closest('.popup__close-btn')) {
+      body.classList.remove('show__bnundle-popup');
+    }
+  });
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    // When user clicks on simple items trigger
+    document.addEventListener("click", function (e) {
+      const simpleBtn = e.target.closest("[data-show-simple-items]");
+      if (simpleBtn) {
+        document.body.classList.remove("hide__simple-products");
+      }
+
+      const giftBtn = e.target.closest("[data-show-gift-items]");
+      if (giftBtn) {
+        document.body.classList.add("hide__simple-products");
+      }
+    });
+  });
+</script>
+
+
+<script>
+  /* ====== Complete Bundle Builder JS (full replacement) ====== */
+let bundleItems = []; // { id: Number, quantity: Number, isGift?: true }
+let isSwitchingStep = false;
+let placeholderTemplate = "";
+
+/* ---------- Constants ---------- */
+const IN_CART_CLASS = "ittem---incart";
+
+/* ---------- Init ---------- */
+document.addEventListener("DOMContentLoaded", function () {
+  const firstPlaceholder = document.querySelector(".place_holder-card");
+  if (firstPlaceholder) placeholderTemplate = firstPlaceholder.outerHTML;
+
+  // Optional: clear cart on load (was in original). Keep it if you want:
+  fetch("/cart/clear.js", { method: "POST" })
+    .then(res => res.json())
+    .then(data => console.log("Cart cleared on load (optional):", data))
+    .catch(err => console.warn("Clear cart on load failed (optional):", err));
+
+  initBundleBuilder();
+  updateMainCTA();
+  updateBoardsCount();
+  updateTotalAndSavings();
+
+  // Attach main CTA click
+  const mainBtn = document.querySelector("[data-main-cta-to-cart]");
+  if (mainBtn) {
+    mainBtn.addEventListener("click", function (evt) {
+      evt.preventDefault();
+      const activeBundle = getActiveBundle();
+      if (!activeBundle) return;
+      const maxItems = getMaxItems(activeBundle);
+      const filledCount = getFilledCount(activeBundle);
+
+      if (filledCount < maxItems) {
+        const nextBtn = document.querySelector(".bundle-builder__btn--active")?.nextElementSibling;
+        if (nextBtn && nextBtn.classList.contains("bundle-builder__btn")) {
+          isSwitchingStep = true;
+          nextBtn.click();
+          setTimeout(() => {
+            isSwitchingStep = false;
+            restoreBundleItemsToActiveTab();
+            updateGiftButtonsState();
+            updateMainCTA();
+            updateBoardsCount();
+            updateTotalAndSavings();
+          }, 200);
+          return;
+        }
+      }
+
+      if (this.classList.contains("btn--disabled")) return;
+      addBundleToCart();
+    });
+  }
+});
+
+/* ---------- Helpers ---------- */
+function getActiveBundle() {
+  return document.querySelector(".bundle-builder__cards--active");
+}
+function getMaxItems(bundleEl) {
+  const v = parseInt(bundleEl?.getAttribute("data-product-numbers"), 10);
+  return Number.isFinite(v) ? v : 0;
+}
+function getNonGiftPlaceholders(bundleEl) {
+  return bundleEl
+    ? bundleEl.querySelectorAll(".place_holder-card:not(.place_holder-card--gift)")
+    : [];
+}
+function getFilledCount(bundleEl) {
+  return bundleEl
+    ? bundleEl.querySelectorAll(".place_holder-card.bb-filled:not(.place_holder-card--gift)").length
+    : 0;
+}
+function getProductCardFromBtn(btn) {
+  return (
+    btn.closest("[data-product-card], .product-card, .bundle-product, .grid__item, .card, li, .item") ||
+    btn.parentElement
+  );
+}
+
+/* ---------- Update Total & Savings ---------- */
+function updateTotalAndSavings() {
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+
+  let total = 0;
+  bundleItems.forEach(item => {
+    if (!item.isGift) {
+      const btn = document.querySelector(`[data-id="${item.id}"]:not(.gift_btn):not([data-clone])`);
+      const priceAttr = btn?.closest("[data-price]")?.getAttribute("data-price");
+      const price = priceAttr ? parseFloat(String(priceAttr).replace(/[^0-9.\-]/g, "")) : 0;
+      if (!isNaN(price)) total += price * item.quantity;
+    }
+  });
+
+  let savingRaw = activeBundle.getAttribute("data-saving") || "0";
+  let savingPercent = parseFloat(savingRaw);
+  if (isNaN(savingPercent)) savingPercent = 0;
+  if (savingPercent > 0 && savingPercent <= 1) savingPercent = savingPercent * 100;
+  if (savingPercent < 0) savingPercent = 0;
+  if (savingPercent > 100) savingPercent = 100;
+
+  const totalCostEl = document.querySelector("#total__cost .total__Price");
+  const totalSaveEl = document.querySelector("#total__saving .total__save");
+  if (!totalCostEl) return;
+
+  if (savingPercent > 0) {
+    const discounted = Math.max(0, total * (1 - savingPercent / 100));
+    totalCostEl.innerHTML = `
+      <span style="text-decoration:line-through; opacity:0.7; margin-right:8px;">
+        $${total.toFixed(2)}
+      </span>
+      <span>$${discounted.toFixed(2)}</span>
+    `;
+    if (totalSaveEl) totalSaveEl.textContent = `${savingPercent.toFixed(0)}% OFF`;
+  } else {
+    totalCostEl.textContent = `$${total.toFixed(2)}`;
+    if (totalSaveEl) totalSaveEl.textContent = "";
+  }
+}
+
+/* ---------- Boards count & product card counts ---------- */
+function updateBoardsCount() {
+  const el = document.getElementById("boards-count");
+  const racksEls = document.querySelectorAll("[data-racks-text]");
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+  const maxItems = getMaxItems(activeBundle);
+  let currentCount = bundleItems.filter(it => !it.isGift).reduce((sum, it) => sum + it.quantity, 0);
+  if (currentCount > maxItems) currentCount = maxItems;
+  const countText = `${currentCount} / ${maxItems}`;
+  if (el) el.textContent = countText;
+  racksEls.forEach(r => (r.textContent = countText));
+
+  updateProductCardsCount();
+}
+
+function updateProductCardsCount() {
+  // For each original (non-clone) element with data-id, show selected__count if present in bundleItems
+  document.querySelectorAll('[data-id]:not(.gift_btn):not([data-clone])').forEach(el => {
+    const vid = el.getAttribute("data-id");
+    if (!vid) return;
+    const idNum = Number(vid);
+    const item = bundleItems.find(it => it.id === idNum && !it.isGift);
+    const productCard = getProductCardFromBtn(el);
+    if (!productCard) return;
+    let countSpan = productCard.querySelector(".selected__count");
+    if (item && item.quantity > 0) {
+      if (!countSpan) {
+        countSpan = document.createElement("span");
+        countSpan.className = "selected__count";
+        productCard.appendChild(countSpan);
+      }
+      countSpan.textContent = item.quantity;
+      productCard.classList.add(IN_CART_CLASS);
+    } else {
+      if (countSpan) countSpan.remove();
+      productCard.classList.remove(IN_CART_CLASS);
+    }
+  });
+}
+
+/* ---------- Restore items into active tab placeholders ---------- */
+function restoreBundleItemsToActiveTab() {
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+
+  // reset placeholders
+  activeBundle.querySelectorAll(".place_holder-card").forEach(ph => {
+    ph.innerHTML = placeholderTemplate;
+    ph.classList.remove("bb-filled");
+  });
+
+  const maxItems = getMaxItems(activeBundle);
+  // iterate items and insert into placeholders up to maxItems
+  let placedUnits = 0;
+  bundleItems.forEach(item => {
+    if (item.isGift) {
+      const giftPh = activeBundle.querySelector(".place_holder-card.place_holder-card--gift");
+      if (giftPh) {
+        const btn = document.querySelector(`.gift_btn[data-id="${item.id}"]`);
+        if (btn) insertGiftIntoPlaceholder(btn, giftPh);
+      }
+    } else {
+      for (let q = 0; q < item.quantity; q++) {
+        if (placedUnits >= maxItems) break;
+        const freePlaceholders = getNonGiftPlaceholders(activeBundle);
+        const targetPlaceholder = Array.from(freePlaceholders).find(ph => !ph.classList.contains("bb-filled"));
+        if (!targetPlaceholder) break;
+        const btn = document.querySelector(`[data-id="${item.id}"]:not(.gift_btn):not([data-clone])`);
+        if (btn) {
+          insertProductIntoPlaceholder(btn, targetPlaceholder);
+          // set count inside inserted
+          const insertedCard = targetPlaceholder.querySelector(".bb-inserted-card");
+          if (insertedCard) {
+            let countSpan = insertedCard.querySelector(".selected__count");
+            if (!countSpan) {
+              countSpan = document.createElement("span");
+              countSpan.className = "selected__count";
+              insertedCard.appendChild(countSpan);
+            }
+            countSpan.textContent = item.quantity;
+          }
+          targetPlaceholder.classList.add("bb-filled");
+          placedUnits++;
+        }
+      }
+    }
+  });
+
+  updateBoardsCount();
+  updateTotalAndSavings();
+  updateGiftButtonsState();
+}
+
+/* ---------- Insert product/gift into placeholder (pure insert, does not touch bundleItems) ---------- */
+function insertProductIntoPlaceholder(btn, targetPlaceholder) {
+  const productCard = getProductCardFromBtn(btn);
+  const wrap = document.createElement("div");
+  wrap.className = "bb-inserted-card";
+  wrap.innerHTML = productCard.outerHTML;
+  wrap.querySelectorAll("[data-id]").forEach(el => el.setAttribute("data-clone", "1"));
+
+  const removeBtn = document.createElement("button");
+  removeBtn.type = "button";
+  removeBtn.className = "bb-remove-btn";
+  removeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="24" width="24" height="24" rx="12" transform="rotate(90 24 0)" fill="#000"/><path d="M17.6567 7.75736L13.4141 12L17.6567 16.2426L16.2425 17.6569L11.9998 13.4142L7.7572 17.6569L6.34298 16.2426L10.5856 12L6.34298 7.75736L7.7572 6.34315L11.9998 10.5858L16.2425 6.34315L17.6567 7.75736Z" fill="white"/></svg>';
+  wrap.appendChild(removeBtn);
+
+  targetPlaceholder.innerHTML = "";
+  targetPlaceholder.appendChild(wrap);
+  targetPlaceholder.classList.add("bb-filled");
+
+  // add selected__count inside inserted
+  let countSpan = wrap.querySelector(".selected__count");
+  if (!countSpan) {
+    countSpan = document.createElement("span");
+    countSpan.className = "selected__count";
+    wrap.appendChild(countSpan);
+  }
+  const variantId = btn.getAttribute("data-id");
+  const qty = bundleItems.find(it => it.id === Number(variantId) && !it.isGift)?.quantity || 1;
+  countSpan.textContent = qty;
+
+  // ensure original product card shows count too
+  updateProductCardsCount();
+}
+
+function insertGiftIntoPlaceholder(btn, giftPh) {
+  const productCard = getProductCardFromBtn(btn);
+  const wrap = document.createElement("div");
+  wrap.className = "bb-inserted-card";
+  wrap.innerHTML = productCard.outerHTML;
+  wrap.querySelectorAll("[data-id]").forEach(el => el.setAttribute("data-clone", "1"));
+
+  const removeBtn = document.createElement("button");
+  removeBtn.type = "button";
+  removeBtn.className = "bb-remove-btn";
+  removeBtn.innerHTML = '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="24" width="24" height="24" rx="12" transform="rotate(90 24 0)" fill="#000"/><path d="M17.6567 7.75736L13.4141 12L17.6567 16.2426L16.2425 17.6569L11.9998 13.4142L7.7572 17.6569L6.34298 16.2426L10.5856 12L6.34298 7.75736L7.7572 6.34315L11.9998 10.5858L16.2425 6.34315L17.6567 7.75736Z" fill="white"/></svg>';
+  wrap.appendChild(removeBtn);
+
+  giftPh.innerHTML = "";
+  giftPh.appendChild(wrap);
+  giftPh.classList.add("bb-filled");
+}
+
+/* ---------- Gift Buttons State Update ---------- */
+function updateGiftButtonsState() {
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+  const maxItems = getMaxItems(activeBundle);
+  const filledCount = getFilledCount(activeBundle);
+  const giftBtns = document.querySelectorAll(".bundle__products-popup .gift_btn");
+  const giftPh = activeBundle.querySelector(".place_holder-card.place_holder-card--gift");
+  const giftSelected = giftPh && giftPh.classList.contains("bb-filled");
+  const gitBBtn = document.querySelector('[data-show-gift-items]');
+
+  giftBtns.forEach(btn => {
+    if (!btn.hasAttribute("data-original-text")) btn.setAttribute("data-original-text", btn.textContent);
+    if (giftSelected) {
+      btn.classList.remove("gift__btn--active");
+      btn.disabled = true;
+      btn.textContent = btn.getAttribute("data-original-text");
+      document.body.classList.remove("show__bnundle-popup");
+      document.body.classList.remove("hide__simple-products");
+    } else {
+      if (filledCount === maxItems) {
+        document.body.classList.add("hide__simple-products");
+        btn.classList.add("gift__btn--active");
+        btn.disabled = false;
+        btn.textContent = "Add Gift";
+        if (gitBBtn) gitBBtn.classList.remove("disabled__on-load");
+      } else {
+        document.body.classList.remove("hide__simple-products");
+        btn.classList.remove("gift__btn--active");
+        btn.disabled = true;
+        btn.textContent = btn.getAttribute("data-original-text");
+        if (gitBBtn) gitBBtn.classList.add("disabled__on-load");
+      }
+    }
+  });
+}
+
+/* ---------- Handle Product Click (adds to bundleItems and inserts into placeholder) ---------- */
+function handleProductClick(btn) {
+  if (isSwitchingStep) return;
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+  if (btn.hasAttribute("data-clone")) return;
+
+  const maxItems = getMaxItems(activeBundle);
+  const placeholders = getNonGiftPlaceholders(activeBundle);
+  let filledCount = getFilledCount(activeBundle);
+  if (filledCount >= maxItems) return;
+
+  const variantId = btn.getAttribute("data-id");
+  if (!variantId) return;
+
+  let existing = bundleItems.find(it => it.id === Number(variantId) && !it.isGift);
+  if (existing) existing.quantity += 1;
+  else bundleItems.push({ id: Number(variantId), quantity: 1 });
+
+  const targetPlaceholder = placeholders[filledCount];
+  if (targetPlaceholder && !targetPlaceholder.classList.contains("bb-filled")) {
+    insertProductIntoPlaceholder(btn, targetPlaceholder);
+  }
+
+  // mark original product card
+  const originalCard = getProductCardFromBtn(btn);
+  if (originalCard) originalCard.classList.add(IN_CART_CLASS);
+  updateProductCardsCount();
+
+  updateGiftButtonsState();
+  updateMainCTA();
+  updateBoardsCount();
+  updateTotalAndSavings();
+}
+
+/* ---------- Handle Remove Click (delegated) ---------- */
+function handleRemoveClick(removeBtn) {
+  const insertedCard = removeBtn.closest(".bb-inserted-card");
+  if (!insertedCard) return;
+  const placeholder = insertedCard.closest(".place_holder-card");
+  if (!placeholder) return;
+
+  const variantId = insertedCard.querySelector("[data-id]")?.getAttribute("data-id");
+  const isGift = placeholder.classList.contains("place_holder-card--gift");
+
+  if (variantId) {
+    if (isGift) {
+      // remove any gift item matching the id
+      bundleItems = bundleItems.filter(item => !(item.isGift === true && item.id === Number(variantId)));
+    } else {
+      let existing = bundleItems.find(it => it.id === Number(variantId) && !it.isGift);
+      if (existing) {
+        if (existing.quantity > 1) existing.quantity -= 1;
+        else bundleItems = bundleItems.filter(item => !(item.id === Number(variantId) && !item.isGift));
+      }
+      // update original product card(s) count & class
+      document.querySelectorAll(`[data-id="${variantId}"]:not(.gift_btn):not([data-clone])`).forEach(originalBtn => {
+        const originalCard = getProductCardFromBtn(originalBtn);
+        if (!originalCard) return;
+        const existingNow = bundleItems.find(it => it.id === Number(variantId) && !it.isGift);
+        const countSpan = originalCard.querySelector(".selected__count");
+        if (existingNow && existingNow.quantity > 0) {
+          if (countSpan) countSpan.textContent = existingNow.quantity;
+          else {
+            const sp = document.createElement("span");
+            sp.className = "selected__count";
+            sp.textContent = existingNow.quantity;
+            originalCard.appendChild(sp);
+          }
+        } else {
+          if (countSpan) countSpan.remove();
+          originalCard.classList.remove(IN_CART_CLASS);
+        }
+      });
+    }
+  }
+
+  // reset placeholder
+  placeholder.innerHTML = placeholderTemplate;
+  placeholder.classList.remove("bb-filled");
+
+  // if gift changed, clear gift active classes
+  if (isGift) {
+    document.querySelectorAll(".gift_btn").forEach(el => el.classList.remove("gift__btn--active"));
+  }
+
+  updateGiftButtonsState();
+  updateMainCTA();
+  updateBoardsCount();
+  updateTotalAndSavings();
+}
+
+/* ---------- Handle Gift Click (delegated) ---------- */
+function handleGiftClick(btn) {
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+  if (!btn.hasAttribute("data-original-text")) btn.setAttribute("data-original-text", btn.textContent);
+
+  document.querySelectorAll(".gift_btn").forEach(el => el.classList.remove("gift__btn--active"));
+  btn.classList.add("gift__btn--active");
+
+  const giftPh = activeBundle.querySelector(".place_holder-card.place_holder-card--gift");
+  if (!giftPh) return;
+
+  insertGiftIntoPlaceholder(btn, giftPh);
+
+  // replace any existing gift in bundleItems
+  bundleItems = bundleItems.filter(item => item.isGift !== true);
+  const giftVariantId = btn.getAttribute("data-id");
+  if (giftVariantId) bundleItems.push({ id: Number(giftVariantId), quantity: 1, isGift: true });
+
+  updateGiftButtonsState();
+  updateMainCTA();
+  updateBoardsCount();
+  updateTotalAndSavings();
+}
+
+/* ---------- Delegated click handler (single place) ---------- */
+function initBundleBuilder() {
+  document.addEventListener("click", function (evt) {
+    const removeBtn = evt.target.closest(".bb-remove-btn");
+    const btn = evt.target.closest("[data-id]");
+    const tabBtn = evt.target.closest(".bundle-builder__btn");
+
+    if (removeBtn) {
+      evt.preventDefault();
+      handleRemoveClick(removeBtn);
+      return;
+    }
+
+    // prevent interactions with clones
+    if (btn && btn.hasAttribute("data-clone")) {
+      evt.preventDefault();
+      return;
+    }
+
+    if (btn?.classList.contains("gift_btn")) {
+      evt.preventDefault();
+      handleGiftClick(btn);
+      return;
+    }
+
+    // If it's a product add (non gift)
+    if (btn) {
+      // careful: many elements can carry data-id (like quantity selectors),
+      // ensure it's product-add-like. We rely on original behavior: any non-gift [data-id] is treated as add.
+      evt.preventDefault();
+      handleProductClick(btn);
+      return;
+    }
+
+    if (tabBtn) {
+      // switching tabs: restore bundle items into this new active tab
+      // slight timeout to allow DOM updates
+      setTimeout(() => {
+        restoreBundleItemsToActiveTab();
+        updateGiftButtonsState();
+        updateMainCTA();
+        updateBoardsCount();
+        updateTotalAndSavings();
+      }, 150);
+    }
+  });
+
+  // initial sync
+  updateGiftButtonsState();
+  updateBoardsCount();
+  updateTotalAndSavings();
+}
+
+/* ---------- Update Main CTA text/state ---------- */
+function updateMainCTA() {
+  const mainBtn = document.querySelector("[data-main-cta-to-cart]");
+  if (!mainBtn) return;
+  const activeBundle = getActiveBundle();
+  if (!activeBundle) return;
+  const maxItems = getMaxItems(activeBundle);
+  const filledCount = getFilledCount(activeBundle);
+  const giftPh = activeBundle.querySelector(".place_holder-card.place_holder-card--gift");
+  const giftSelected = giftPh && giftPh.classList.contains("bb-filled");
+  const remainingItems = Math.max(0, maxItems - filledCount);
+
+  mainBtn.classList.add("btn--disabled"); // default disabled
+
+  if (!giftSelected && remainingItems > 0) {
+    mainBtn.textContent = `ADD ${remainingItems} MORE & GIFT`;
+    mainBtn.classList.add("btn--disabled");
+  } else if (!giftSelected && remainingItems === 0) {
+    mainBtn.textContent = "ADD GIFT";
+    mainBtn.classList.add("btn--disabled");
+  } else if (giftSelected && remainingItems > 0) {
+    mainBtn.textContent = `ADD ${remainingItems} MORE`;
+    mainBtn.classList.add("btn--disabled");
+  } else if (giftSelected && remainingItems === 0) {
+    mainBtn.textContent = "PROCEED TO CHECKOUT";
+    mainBtn.classList.remove("btn--disabled");
+  }
+}
+
+/* ---------- Final Add to Cart ---------- */
+function addBundleToCart() {
+  // Clear cart first (like original)
+  fetch('/cart/clear.js', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' }
+  }).catch(() => { /* ignore */ });
+
+  if (!bundleItems.length) {
+    alert("Please add items to your bundle before proceeding.");
+    return;
+  }
+
+  const currentItems = document.querySelector('.bundle-builder__cards--active');
+  if (!currentItems) return;
+
+  const activeProducts = parseInt(currentItems.getAttribute('data-product-numbers'), 10) || 0;
+
+  // Separate normal (non-gift) and gift items, preserving order from bundleItems
+  const normalProducts = bundleItems.filter(item => !item.isGift);
+  const giftProducts = bundleItems.filter(item => item.isGift);
+
+  // Build trimmed normal products so total units <= activeProducts
+  let remainingUnits = activeProducts;
+  const trimmedNormalUnits = [];
+
+  for (const item of normalProducts) {
+    if (remainingUnits <= 0) break;
+    const take = Math.min(Number(item.quantity || 0), remainingUnits);
+    if (take > 0) {
+      trimmedNormalUnits.push({ id: Number(item.id), quantity: take });
+      remainingUnits -= take;
+    }
+  }
+
+  // Map gift products as-is
+  const mappedGifts = giftProducts.map(g => ({
+    id: Number(g.id),
+    quantity: Number(g.quantity || 1)
+  }));
+
+  const finalItems = [...trimmedNormalUnits, ...mappedGifts];
+
+  if (!finalItems.length) {
+    console.warn("No items to add to cart (nothing within activeProducts limit).");
+    alert("Please add items to your bundle before proceeding.");
+    return;
+  }
+
+  // discount code mapping by activeProducts
+  let discountCode = "";
+  if (activeProducts === 2) discountCode = "2_Racks_Discount";
+  else if (activeProducts === 3) discountCode = "3_Racks_Discount";
+  else if (activeProducts === 4) discountCode = "4_Racks_Discount";
+
+  fetch("/cart/add.js", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ items: finalItems })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Bundle added to cart:", data);
+      if (discountCode) {
+        window.location.href = `/checkout?discount=${discountCode}`;
+      } else {
+        window.location.href = "/checkout";
+      }
+    })
+    .catch(err => {
+      console.error("Error adding bundle:", err);
+      alert("There was an error adding the bundle to the cart. Please try again.");
+    });
+}
+
+</script>
+
+
+{% schema %}
+{
+  "name": "Gift Box Builder",
+  "settings": [
+    {
+      "type": "text",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "richtext",
+      "label": "Description",
+      "id": "desc"
+    },
+    {
+      "type": "collection",
+      "label": "Select Collection",
+      "id": "collection"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tires",
+      "name": "Tires",
+      "settings": [
+        {
+          "type": "text",
+          "label": "Heading",
+          "id": "title"
+        },
+        {
+          "type": "textarea",
+          "label": "Subheading",
+          "id": "subheading"
+        },
+        {
+          "type": "text",
+          "label": "Tag",
+          "id": "tag"
+        },
+        {
+          "type": "number",
+          "label": "Number of Products",
+          "id": "product_numbers"
+        },
+        {
+          "type": "number",
+          "label": "Saving Value (in %)",
+          "id": "saving"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Gift box builder"
+    }
+  ]
+}
+{% endschema %}

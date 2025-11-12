@@ -1,0 +1,103 @@
+{{ 'faq.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-section" id="faq__sec">
+  <div class="page-width">
+    <div class="flex--wrapper">
+      <h2 class="faq-heading">{{ section.settings.faq_heading }}</h2>
+      <div class="faq_right_part">
+        {% for block in section.blocks %}
+          <div class="faq-item" data-faq-item>
+            <div class="faq-question">
+              <span index="{{ forloop.index }}.">{{ block.settings.question }}</span>
+              <span class="faq-toggle">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 17.5L3.75 11.25L4.63125 10.3688L9.375 15.1063L9.375 2.5H10.625L10.625 15.1063L15.3687 10.3688L16.25 11.25L10 17.5Z" fill="#1D1D1B"/>
+                </svg>
+              </span>
+            </div>
+            <div class="faq-answer">
+              {{ block.settings.answer }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+    $('.faq-question').on('click', function () {
+      var $question = $(this);
+      var $answer = $question.next('.faq-answer');
+      var $toggleIcon = $question.find('.faq-toggle');
+
+      // Close all open answers except the current one
+      $('.faq-answer').not($answer).slideUp(200);
+      $('.faq-toggle')
+        .not($toggleIcon)
+        .html(
+          `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 17.5L3.75 11.25L4.63125 10.3688L9.375 15.1063L9.375 2.5H10.625L10.625 15.1063L15.3687 10.3688L16.25 11.25L10 17.5Z" fill="#1D1D1B"/>
+            </svg>`
+        );
+
+      // Toggle the clicked one
+      if ($answer.is(':visible')) {
+        $answer.slideUp(200);
+        $toggleIcon.html(
+          `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 17.5L3.75 11.25L4.63125 10.3688L9.375 15.1063L9.375 2.5H10.625L10.625 15.1063L15.3687 10.3688L16.25 11.25L10 17.5Z" fill="#1D1D1B"/>
+            </svg>`
+        );
+      } else {
+        $answer.slideDown(200);
+        $toggleIcon.html(
+          `<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10 2.5L3.75 8.75L4.63125 9.63125L9.375 4.89375L9.375 17.5H10.625L10.625 4.89375L15.3687 9.63125L16.25 8.75L10 2.5Z" fill="#1D1D1B"/>
+</svg>`
+        );
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "faq_heading",
+      "label": "Heading",
+      "default": "Frequently asked\nquestions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "question_block",
+      "name": "Question Block",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "FAQ",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

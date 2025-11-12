@@ -1,0 +1,734 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "offer_hero_FetCRU": {
+      "type": "offer-hero",
+      "name": "Offer Hero",
+      "settings": {
+        "enable_video_looping": true,
+        "offer_video": "shopify://files/videos/SKS_Reel Website.mp4",
+        "offer_image": "shopify://shop_images/SKEISAN_TEE_1.png",
+        "offer_image_mobile": "shopify://shop_images/Mobil_skeisan_tee.png",
+        "offer_link": "shopify://collections/tee-1"
+      }
+    },
+    "image_banner_bCnybK": {
+      "type": "image-banner",
+      "disabled": true,
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/welcome-offer-desktop-banner.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "adapt",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": true,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "tea_hero_banner_iWNNtt": {
+      "type": "tea-hero-banner",
+      "disabled": true,
+      "name": "Tea Hero Section",
+      "settings": {
+        "rating": "4.9/5",
+        "review_count": "50K+",
+        "heading_line_1": "NO RITUALS. NO RULES.",
+        "heading_line_2": "JUST TEA.",
+        "description": "Tee, der zu deinem Lifestyle passt – modern gemischt, stilvoll verpackt, unvergleichlich im Geschmack.",
+        "button_text": "Shop Starter kit",
+        "button_url": "shopify://pages/starter-kit",
+        "product_image_1": "shopify://shop_images/Without_BG_d9245d14-16c1-415e-84a3-4455812a7932.png"
+      }
+    },
+    "logo_auto_scroll_Rfrm9c": {
+      "type": "logo-auto-scroll",
+      "blocks": {
+        "logo_E7aeV9": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_26_1.png"
+          }
+        },
+        "logo_rUUjBB": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_27_1.png"
+          }
+        },
+        "logo_prCMKf": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_28_1.png"
+          }
+        },
+        "logo_4mfRzd": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_29_1.png"
+          }
+        },
+        "logo_4nGARP": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_30_1.png"
+          }
+        },
+        "logo_4gQTC4": {
+          "type": "logo",
+          "settings": {
+            "logo_image": "shopify://shop_images/image_31.png"
+          }
+        }
+      },
+      "block_order": [
+        "logo_E7aeV9",
+        "logo_rUUjBB",
+        "logo_prCMKf",
+        "logo_4mfRzd",
+        "logo_4nGARP",
+        "logo_4gQTC4"
+      ],
+      "name": "Logo Auto Scroll",
+      "settings": {
+        "bg_color": "rgba(0,0,0,0)",
+        "logo_height": 50,
+        "scroll_speed": 5000
+      }
+    },
+    "featured_collection_jKeent": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "border": true,
+        "collection": "bestseller",
+        "products_to_show": 3,
+        "title": "Am meisten getrunken.",
+        "heading_size": "h2",
+        "description": "<p>Tees, die alle haben wollen.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "enable_tags": true,
+        "enable_avialable_options": true,
+        "short_description": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "button_text": "Bestseller entdecken",
+        "url": "/collections/all-products",
+        "button_position": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "how_it_work_CmKik8": {
+      "type": "how-it-work",
+      "blocks": {
+        "skeisan_benefit_6pkqaK": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/non-gmo.svg",
+            "skeisan_benefit_title": "Ohne Mikroplastik",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_BQrdpK": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/vegan-free.svg",
+            "skeisan_benefit_title": "Vegan & glutenfrei",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_CFanx6": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/designed-for-clean.svg",
+            "skeisan_benefit_title": "Nachhaltige Verpackung",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_zKPJ33": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/third-party.svg",
+            "skeisan_benefit_title": "Zehnstufige Qualitätskontrolle",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_hp6me6": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/no-artificial.svg",
+            "skeisan_benefit_title": "Ohne künstliche Aromen",
+            "skeisan_benefit_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "skeisan_benefit_6pkqaK",
+        "skeisan_benefit_BQrdpK",
+        "skeisan_benefit_CFanx6",
+        "skeisan_benefit_zKPJ33",
+        "skeisan_benefit_hp6me6"
+      ],
+      "name": "SKEISAN - Why It Works",
+      "settings": {
+        "skeisan_heading": "WARUM SKEISAN?",
+        "skeisan_product_image": "shopify://shop_images/why-skeisan.png",
+        "skeisan_background_color": "rgba(0,0,0,0)"
+      }
+    },
+    "collectiohn_card_e9WmVH": {
+      "type": "collectiohn-card",
+      "blocks": {
+        "tea_item_NdVV7Y": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "B",
+            "tea_name": "Black Tea",
+            "tea_image": "shopify://shop_images/SKS_Kategorie-03.png",
+            "tea_description": "Kräftig, charaktervoll und vollmundig – der zeitlose Klassiker.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/black-tea"
+          }
+        },
+        "tea_item_DUPrjY": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "F",
+            "tea_name": "Fruit Tea",
+            "tea_image": "shopify://shop_images/image_32_1_1_4.png",
+            "tea_description": "Fruchtig, frisch und voller Aroma – wie ein sommerlicher Genuss im Glas.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/fruit-tea"
+          }
+        },
+        "tea_item_YnXW7F": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "G",
+            "tea_name": "Green Tea",
+            "tea_image": "shopify://shop_images/image_32_1_1_5.png",
+            "tea_description": "Belebend, klar und reich an feinen Nuancen – der Klassiker für neue Energie.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/green-tea"
+          }
+        },
+        "tea_item_mBMjyK": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "H",
+            "tea_name": "Herbal Tea",
+            "tea_image": "shopify://shop_images/212c9002993d7d2f0706203490c499453e0d072f.png",
+            "tea_description": "Wohltuend, aromatisch und vielseitig – Kräuter in ihrer reinsten Form.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/herbal-tea"
+          }
+        },
+        "tea_item_Y8Xe3P": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "R",
+            "tea_name": "Rooibos Tea",
+            "tea_image": "shopify://shop_images/image_32_1_1.png",
+            "tea_description": "Sanft, vollmundig und natürlich süß – die koffeinfreie Alternative für jeden Moment.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/rooibos-tea"
+          }
+        },
+        "tea_item_qd6zKg": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "W",
+            "tea_name": "White tea",
+            "tea_image": "shopify://shop_images/w.webp",
+            "tea_description": "Zart, elegant und leicht – die edelste Art, Tee zu genießen.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/white-tea"
+          }
+        },
+        "tea_item_9F8Tj3": {
+          "type": "tea_item",
+          "settings": {
+            "tea_letter": "X",
+            "tea_name": "Exquisite Tea",
+            "tea_image": "shopify://shop_images/SKS_R_A-05_1_1.webp",
+            "tea_description": "Rar, besonders und handverlesen – Tees für echte Kenner.",
+            "tea_details": "",
+            "show_fill_option": false,
+            "collecttion_url": "shopify://collections/exquisite-tea"
+          }
+        }
+      },
+      "block_order": [
+        "tea_item_NdVV7Y",
+        "tea_item_DUPrjY",
+        "tea_item_YnXW7F",
+        "tea_item_mBMjyK",
+        "tea_item_Y8Xe3P",
+        "tea_item_qd6zKg",
+        "tea_item_9F8Tj3"
+      ],
+      "name": "Tea Code Section",
+      "settings": {
+        "section_title": "ENTDECKE TEE NEU.",
+        "section_subtitle": "Außergewöhnliche und zeitlose Teesorten, pur und unverfälscht. Für dein neues Tee-Erlebnis."
+      }
+    },
+    "reviews_slider_XP6LAa": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_BqNdDt": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff2.gif"
+          }
+        },
+        "review_xQYwxN": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff3.gif"
+          }
+        },
+        "review_hwTLfA": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff1.gif"
+          }
+        },
+        "review_9CU7pg": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff2.gif"
+          }
+        },
+        "review_4Brc7e": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff3.gif"
+          }
+        }
+      },
+      "block_order": [
+        "review_BqNdDt",
+        "review_xQYwxN",
+        "review_hwTLfA",
+        "review_9CU7pg",
+        "review_4Brc7e"
+      ],
+      "custom_css": [
+        ".swiper-slide__content {display: none;}",
+        ".swiper-sliders__arrows {margin-top: 30px;}"
+      ],
+      "name": "Reviews Slider",
+      "settings": {
+        "rating_text": "",
+        "heading": "Tee, der in dein leben passt",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "featured_collection_tHMBij": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "border": false,
+        "collection": "geschenke",
+        "products_to_show": 3,
+        "title": "Geschenkboxen",
+        "heading_size": "h1",
+        "description": "<p>Ob für dich selbst oder als Geschenk – immer die perfekte Wahl.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": false,
+        "view_all_style": "outline",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "enable_tags": false,
+        "enable_avialable_options": false,
+        "short_description": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": true,
+        "button_text": "Shop All Accessories",
+        "url": "",
+        "button_position": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "17567660317bc43e6c": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_fb4f29a_BYMCf3": {
+          "type": "ai_gen_block_fb4f29a",
+          "settings": {
+            "heading": "RISK FREE GUARANTEE",
+            "image": "shopify://shop_images/30_Days.svg",
+            "show_placeholder": false,
+            "paragraph": "<p>Enjoy peace of mind with our <strong>Risk-Free 30-Day Guarantee</strong>. Try the product at home and see if it’s right for you. If you’re not completely satisfied, simply return it within 30 days. No hassle, no questions asked, and a full refund assured. Your satisfaction is our promise—shop with total confidence today.</p>",
+            "max_width": 800,
+            "padding": 40,
+            "element_spacing": 24,
+            "text_alignment": "center",
+            "image_alignment": "center",
+            "heading_font": "montserrat_n6",
+            "heading_size": 40,
+            "heading_color": "#1d1d1b",
+            "text_font": "inter_n5",
+            "text_size": 16,
+            "line_height": 1.5,
+            "text_color": "#1d1d1b",
+            "link_color": "#334fb4",
+            "link_hover_color": "#1d1d1b",
+            "image_border_radius": 8,
+            "image_shadow_opacity": 0,
+            "image_shadow_vertical": 4,
+            "image_shadow_blur": 8,
+            "placeholder_width": 400,
+            "placeholder_height": 250,
+            "background_color": "rgba(0,0,0,0)",
+            "border_radius": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_fb4f29a_BYMCf3"
+      ],
+      "disabled": true,
+      "settings": {}
+    },
+    "image_with_text_MV87tM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_mDx3h4": {
+          "type": "heading",
+          "settings": {
+            "heading": "Geschmacksgarantie",
+            "heading_size": "h1"
+          }
+        },
+        "text_q6qCry": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Wir wissen, dass Tee eine sehr persönliche Geschmacksentscheidung ist. Deshalb gehst du bei uns kein Risiko ein: Sollte dir eine Sorte nicht gefallen, kannst du sie innerhalb von 30 Tagen problemlos zurückschicken. Ganz ohne Diskussionen, ganz ohne versteckte Bedingungen – du erhältst den vollen Kaufpreis zurück. So kannst du unsere Tees entspannt entdecken und dich selbst von der Qualität überzeugen.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mDx3h4",
+        "text_q6qCry"
+      ],
+      "custom_css": [
+        ".image-with-text .grid {display: flex; flex-wrap: nowrap; align-items: center; gap: 50px;}",
+        ".image-with-text__media-item {height: max-content; max-width: 340px; margin: auto;}",
+        ".image-with-text__text-item {width: calc(100% - 340px);}",
+        ".image-with-text__heading {text-transform: uppercase;}",
+        ".image-with-text__text ul {padding: 0;}",
+        ".image-with-text__text.rte.body li {font-size: 18px; color: black; margin-bottom: 10px;}",
+        "@media (max-width: 768px) {.image-with-text .grid {flex-wrap: wrap; gap: 1px; } .image-with-text__heading {font-size: 20px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "lander_v3": false,
+        "image": "shopify://shop_images/Money-Back_Guarantee_Website_Graphic_2_1.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_nWatte": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_PfaQqK": {
+          "type": "heading",
+          "settings": {
+            "heading": "RISK FREE GUARANTEE",
+            "heading_size": "h1"
+          }
+        },
+        "text_8QBfD7": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<ul><li>30-day trial, no pressure</li><li>Try any product — no commitment</li><li>Not satisfied? Return it, no questions asked</li><li>Full refund within 30 days</li><li>Designed to give you confidence, not risk<br/><br/></li></ul>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_PfaQqK",
+        "text_8QBfD7"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "lander_v3": false,
+        "image": "shopify://shop_images/risk-free.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_YAnEtf": {
+      "type": "featured-collection",
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "border": true,
+        "collection": "accessoires",
+        "products_to_show": 3,
+        "title": "Tee Zubehör",
+        "heading_size": "h1",
+        "description": "<p>Alles, was du für perfekten Teegenuss brauchst – von stilvollen Tumblern bis zu feinen Sieben und Kannen.</p>",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "enable_tags": false,
+        "enable_avialable_options": false,
+        "short_description": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "button_text": "Zubehör shoppen",
+        "url": "",
+        "button_position": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_pqUAWk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_YYcThj": {
+          "type": "heading",
+          "settings": {
+            "heading": "LET'S CHANGE THE WAY WE TEA!",
+            "heading_size": "h1"
+          }
+        },
+        "text_UaXpkY": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<h3>Wir wollen das Bild von Tee verändern.</h3>",
+            "text_style": "body"
+          }
+        },
+        "text_YqEK3k": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Tee braucht auch keine 1.000 Sorten und kein Expertenwissen. Wir machen Tee. Aufs Wesentliche reduziert. Und dieses Wesentliche, machen wir so gut wir können. Hochwertig und kompromisslos. Stilvoll und urban. Alltagstauglich und unisex.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_VXkGht": {
+          "type": "button",
+          "settings": {
+            "button_label": "ERFAHRE MEHR",
+            "button_link": "shopify://pages/about",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_YYcThj",
+        "text_UaXpkY",
+        "text_YqEK3k",
+        "button_VXkGht"
+      ],
+      "custom_css": [
+        "@media (min-width: 768px) {.image-with-text__text-item.grid__item {padding-left: 50px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "lander_v3": false,
+        "image": "shopify://shop_images/Footer_SKEISAN_MIKEMEYER_4N8A0752_1.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "how_to_started_fkmB3r": {
+      "type": "how-to-started",
+      "disabled": true,
+      "name": "SKEISAN - Why We Started",
+      "settings": {
+        "skeisan_story_heading": "WHY WE STARTED.",
+        "skeisan_story_subheading": "BORN IN BERLIN. BUILT ON CLARITY. WE WANTED TEA THAT WASN'T STUCK IN TRADITION.",
+        "skeisan_story_description": "Something minimal, modern, and meaningful. We created blends that reflect how we live now — with design, purity, and a refusal to compromise.",
+        "skeisan_story_image_1": "shopify://shop_images/Frame_1000001695_ae87c841-95e3-4152-a713-9974c0457207.png",
+        "skeisan_story_image_2": "shopify://shop_images/Frame_1000001695_ae87c841-95e3-4152-a713-9974c0457207.png",
+        "skeisan_story_button_text": "LEARN MORE ABOUT US",
+        "skeisan_story_button_url": "shopify://pages/about",
+        "skeisan_story_button_target": false
+      }
+    },
+    "faq_kFgr6B": {
+      "type": "faq",
+      "blocks": {
+        "question_block_CzNbjJ": {
+          "type": "question_block",
+          "settings": {
+            "question": "Ist SKEISAN-Tee Bio bzw. wie wird die Qualität geprüft?",
+            "answer": "<p>Unsere Tees durchlaufen ein 10-stufiges Qualitätssystem – von der Auswahl der Anbaugebiete über die Verarbeitung bis hin zur Abfüllung ins Aromaglas. Viele Sorten sind bio-zertifiziert. Bei manchen Mischungen können wir aufgrund der höheren Dosierung von natürlichen Bio-Ölen kein Bio-Siegel ausweisen – dennoch stammen alle Zutaten aus kontrolliert biologischem Anbau. So garantieren wir höchste Reinheit und unverfälschten Geschmack.</p>"
+          }
+        },
+        "question_block_mwMzkw": {
+          "type": "question_block",
+          "settings": {
+            "question": "Kann ich den Tee zurückgeben, wenn er mir nicht schmeckt?",
+            "answer": "<p>Ja – mit unserer 30-Tage-Geschmacksgarantie gehst du kein Risiko ein. Sollte dir eine Sorte nicht gefallen, kannst du sie problemlos zurückschicken und erhältst den vollen Kaufpreis zurück.</p>"
+          }
+        },
+        "question_block_makJzK": {
+          "type": "question_block",
+          "settings": {
+            "question": "Versendet ihr auch international und wie lange dauert der Versand?",
+            "answer": "<p>Ja, wir versenden weltweit. Die Versandkosten und Lieferzeiten hängen von deinem Standort ab und werden dir transparent im Checkout angezeigt. So kannst du SKEISAN-Genuss überall erleben.</p>"
+          }
+        },
+        "question_block_AtGzU8": {
+          "type": "question_block",
+          "settings": {
+            "question": "Wie unterscheiden sich die Buchstaben-Kategorien (X, W, B, etc.)?",
+            "answer": "<p>Die Buchstaben sind eine klare, moderne Systematik, die unsere Teesorten voneinander unterscheidet. Jeder Buchstabe steht für eine Kategorie: Zum Beispiel „W“ für White Tea, „B“ für Black Tea oder „X“ für unsere Exquisite-Linie. So findest du dich schnell zurecht und erkennst auf einen Blick, zu welcher Familie dein Tee gehört.</p>"
+          }
+        },
+        "question_block_3hGCCg": {
+          "type": "question_block",
+          "settings": {
+            "question": "Was macht SKEISAN anders als andere Teemarken?",
+            "answer": "<p>SKEISAN steht für Premium-Tee neu gedacht: Höchste Qualität, moderne Mischungen und ein klares Design. Unsere Tees sind nicht in Traditionen verhaftet, sondern passen zu deinem Lifestyle – vom aromaversiegelten UV-Glas bis hin zu außergewöhnlichen Sorten, die ohne künstliche Zusätze auskommen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_block_CzNbjJ",
+        "question_block_mwMzkw",
+        "question_block_makJzK",
+        "question_block_AtGzU8",
+        "question_block_3hGCCg"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "faq_heading": "Häufige Fragen"
+      }
+    }
+  },
+  "order": [
+    "offer_hero_FetCRU",
+    "image_banner_bCnybK",
+    "tea_hero_banner_iWNNtt",
+    "logo_auto_scroll_Rfrm9c",
+    "featured_collection_jKeent",
+    "how_it_work_CmKik8",
+    "collectiohn_card_e9WmVH",
+    "reviews_slider_XP6LAa",
+    "featured_collection_tHMBij",
+    "17567660317bc43e6c",
+    "image_with_text_MV87tM",
+    "image_with_text_nWatte",
+    "featured_collection_YAnEtf",
+    "image_with_text_pqUAWk",
+    "how_to_started_fkmB3r",
+    "faq_kFgr6B"
+  ]
+}

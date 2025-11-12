@@ -1,0 +1,122 @@
+{{ 'faq.css' | asset_url | stylesheet_tag }}
+
+<div class="faq-section pdp-summary">
+  <div class="page-width">
+    <h2 class="faq-heading">{{ section.settings.faq_heading }}</h2>
+
+    <div class="faq-item-wrapper two-col-layout">
+      <!-- Left Column -->
+      <div class="faq-column faq-column-left">
+        {% for block in section.blocks %}
+          {% if block.type == 'left_question_block' %}
+            <div class="faq-item" data-faq-item>
+              <div class="faq-question">
+                <span>{{ block.settings.question }}</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <!-- Right Column -->
+      <div class="faq-column faq-column-right">
+        {% for block in section.blocks %}
+          {% if block.type == 'right_question_block' %}
+            <div class="faq-item" data-faq-item>
+              <div class="faq-question">
+                <span>{{ block.settings.question }}</span>
+                <span class="faq-toggle">+</span>
+              </div>
+              <div class="faq-answer">
+                {{ block.settings.answer }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('.faq-question').on('click', function() {
+      var $question = $(this);
+      var $answer = $question.next('.faq-answer');
+      var $toggleIcon = $question.find('.faq-toggle');
+
+      // Close all others
+      $('.faq-answer').not($answer).slideUp(200);
+      $('.faq-toggle').not($toggleIcon).html('+');
+
+      if ($answer.is(':visible')) {
+        $answer.slideUp(200);
+        $toggleIcon.html('+');
+      } else {
+        $answer.slideDown(200);
+        $toggleIcon.html('-');
+      }
+    });
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "FAQ Summary",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "faq_heading",
+      "label": "Heading",
+      "default": "Frequently asked\nquestions"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "left_question_block",
+      "name": "Left Question",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    },
+    {
+      "type": "right_question_block",
+      "name": "Right Question",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "question",
+          "label": "Question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 20,
+  "presets": [
+    {
+      "name": "FAQ Summary",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

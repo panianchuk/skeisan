@@ -1,0 +1,201 @@
+{% comment %}
+  Pure & Simple Tea Hero Section
+  Add this file to your theme's sections folder as 'tea-hero.liquid'
+{% endcomment %}
+
+<section class="tea-hero-section">
+  <div class="page-width">
+    <div class="tea-hero-content">
+      
+      <!-- Header -->
+      <div class="tea-hero-header">
+        <h1 class="tea-hero-title">{{ section.settings.main_title | default: 'PURE & SIMPLE TEA.' }}</h1>
+
+        <div class="tea-hero-description">
+          <p>{{ section.settings.description | default: "You might think tea is terribly complicated. But tea is simple. Tea doesn't need a tea service or special moments. It doesn't need rituals or rules. It doesn't need myths or mantras." }}</p>
+        </div>
+      </div>
+
+      <!-- Hero Image -->
+      <div class="tea-hero-image">
+        {% if section.settings.hero_image %}
+          {{ section.settings.hero_image | image_url: width: 800 | image_tag:
+             loading: 'lazy',
+             alt: section.settings.hero_image_alt | default: 'Tea essentials setup',
+             class: 'tea-hero-img' }}
+        {% else %}
+          <!-- Placeholder when no image is selected -->
+          <div class="tea-hero-placeholder">
+            <svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect width="100" height="100" fill="#f3f4f6"/>
+              <path d="M30 40h40v20H30z" fill="#d1d5db"/>
+              <circle cx="50" cy="30" r="5" fill="#d1d5db"/>
+            </svg>
+            <p>Add your tea hero image</p>
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Bottom Description -->
+      <div class="tea-hero-bottom">
+        <p>{{ section.settings.bottom_description }}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<style>
+.tea-hero-section {
+
+  padding: 64px 0px;
+
+}
+
+
+.tea-hero-content {
+  padding: 40px 30px;
+}
+
+.tea-hero-header {
+  text-align: left;
+  margin-bottom: 30px;
+}
+
+.tea-hero-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0 0 20px 0;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+.tea-hero-description {
+  color: #6b7280;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.tea-hero-description p {
+  margin: 0;
+}
+
+.tea-hero-image {
+  margin: 30px 0;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #f9fafb;
+}
+
+.tea-hero-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+
+.tea-hero-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.tea-hero-placeholder p {
+  margin: 15px 0 0 0;
+  font-size: 0.9rem;
+}
+
+.tea-hero-bottom {
+  color: #6b7280;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.tea-hero-bottom p {
+  margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tea-hero-section {
+    padding: 40px 15px;
+  }
+  
+  .tea-hero-content {
+    padding: 30px 25px;
+  }
+  
+  .tea-hero-title {
+    font-size: 1.8rem;
+  }
+  
+  .tea-hero-description,
+  .tea-hero-bottom {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .tea-hero-container {
+    border-radius: 15px;
+  }
+  
+  .tea-hero-content {
+    padding: 25px 20px;
+  }
+  
+  .tea-hero-title {
+    font-size: 1.6rem;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "img text",
+  "tag": "section",
+  "class": "tea-hero-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "PURE & SIMPLE TEA."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description Text",
+      "default": "You might think tea is terribly complicated. But tea is simple. Tea doesn't need a tea service or special moments. It doesn't need rituals or rules. It doesn't need myths or mantras."
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "text",
+      "id": "hero_image_alt",
+      "label": "Hero Image Alt Text",
+      "default": "Tea essentials setup"
+    },
+    {
+      "type": "textarea",
+      "id": "bottom_description",
+      "label": "Bottom Description",
+      "default": "Tea doesn't need 1,000 varieties or expert knowledge. We make tea. Reduced to the essentials. And we do this essentials as best we can. High-quality and uncompromising. Stylish and urban. Suitable for everyday use and unisex."
+    }
+  ],
+  "presets": [
+    {
+      "name": "img text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,44 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "bundles_builder_6NRFhE": {
+      "type": "bundles-builder",
+      "name": "Bundle Builder",
+      "settings": {
+        "banner_type": "image",
+        "image": "shopify://shop_images/Frame_1000001649_2.png",
+        "imageMobile": "shopify://shop_images/Frame_1000001649_3.png",
+        "videoLoop": false,
+        "videoMute": true,
+        "videoAutoplay": false,
+        "clickToPlay": true,
+        "playPause": true,
+        "banner_heading": "Bundle Builder",
+        "bundle_collection": "bestseller",
+        "bundle_heading": "YOUR BUNDLE",
+        "bundle_description": "The more you get, the more you save. It’s just that easy."
+      }
+    }
+  },
+  "order": [
+    "main",
+    "bundles_builder_6NRFhE"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "name": "skeisan",
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "description": "Skeisan Theme",
+  "scripts": {
+    "dev": "shopify theme dev --store=$npm_package_config_dev",
+    "pull": "shopify theme pull --store=$npm_package_config_dev",
+    "push": "shopify theme push --store=$npm_package_config_dev"
+  },
+ "config": {
+    "dev": "skeisan-dev"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}

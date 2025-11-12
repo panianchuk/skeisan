@@ -1,0 +1,442 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_GUT6qk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RTXFVg": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Premium-Tee neu erleben. Tumbler geschenkt.</strong>",
+            "heading_size": "h2"
+          }
+        },
+        "text_eJ6hFE": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Kompromisslos im Geschmack, klar im Design. Entdecke Tee neu und erhalte einen Tumbler und Versand <em><strong>gratis </strong></em>dazu,<em><strong> </strong></em>ab 50 €.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_MzNMwq": {
+          "type": "button",
+          "settings": {
+            "button_label": "JETZT BESTELLEN",
+            "button_link": "shopify://collections/tee-1",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RTXFVg",
+        "text_eJ6hFE",
+        "button_MzNMwq"
+      ],
+      "custom_css": [
+        ".image-with-text__heading {text-transform: uppercase; letter-spacing: 0px; font-weight: 700;}",
+        ".image-with-text__heading strong {font-weight: inherit; font-size: 45px;}",
+        ".image-with-text__text p {line-height: 1.2; color: #686869;}",
+        "@media (max-width: 749px) {.image-with-text__heading strong {font-weight: inherit; font-size: 32px; display: block; } .image-with-text__heading {font-size: 24px; } .image-with-text__grid {flex-direction: column-reverse; gap: 50px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "lander_v3": false,
+        "image": "shopify://shop_images/Teeparty_Skeisan_1.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured_collection_eiVqTC": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".title.inline-richtext {text-align: center;}",
+        ".card--card .quick-add {margin-inline: 0; margin-top: 6px;}",
+        ".card--card .quick-add button {background: black; color: white; font-size: 12px;}",
+        ".flex-card-product {display: block !important;}",
+        "@media (max-width: 749px) {.card-tag-wrapper {display: block; } .search_tags {position: static; align-items: flex-start; margin-bottom: 7px; } .card__heading {margin-top: 0; margin-bottom: 0; font-weight: 700; font-size: 15px; }}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "border": false,
+        "collection": "bestseller",
+        "products_to_show": 6,
+        "title": "Am meisten Getrunken",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 3,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "enable_tags": true,
+        "enable_avialable_options": false,
+        "short_description": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "button_text": "Alle Tees entdecken",
+        "url": "shopify://collections/tee-1",
+        "button_position": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "how_it_work_8P79zX": {
+      "type": "how-it-work",
+      "custom_css": [
+        ".skeisan-product-image {display: block; border-radius: unset; margin-inline: auto; width: 100%;}",
+        ".skeisan-product-image img {display: block; border-radius: unset; width: 100%; max-width: 100%;}",
+        ".skeisan-main-heading {text-align: center;}",
+        "@media (max-width: 768px) {.skeisan-benefit-item {width: 100%; max-width: 100%; } .skeisan-product-image {width: calc(100% + 32px); margin-inline: -16px; }}"
+      ],
+      "name": "SKEISAN - Why It Works",
+      "settings": {
+        "skeisan_heading": "Kompromisslos im Geschmack. Klar im Erlebnis.",
+        "skeisan_product_image": "shopify://shop_images/Skeisan_benefits_1.png",
+        "skeisan_product_image_mb": "shopify://shop_images/Skeisan_benefits_mobil_1.png",
+        "skeisan_background_color": "#f8f8f8"
+      }
+    },
+    "video_slider_YRnKRE": {
+      "type": "video-slider",
+      "blocks": {
+        "video_slide_pa3ya4": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/SKS_Reel Website.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_xCNCEc": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/Red_flat_white_.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_gJUmxk": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/18070440187550393.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_Cqt4Ww": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/Fancy_Drrink.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_z4LUQN": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/18105075487423809.mp4",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_slide_pa3ya4",
+        "video_slide_xCNCEc",
+        "video_slide_gJUmxk",
+        "video_slide_Cqt4Ww",
+        "video_slide_z4LUQN"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "section_title": "WIR MACHEN PREMIUM-TEE NEU ERLEBBAR.",
+        "section_subtitle": "",
+        "background_color_start": "#667eea",
+        "background_color_end": "#764ba2",
+        "enable_autoplay": true,
+        "autoplay_delay": 4,
+        "show_navigation": true,
+        "show_pagination": true,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
+      }
+    },
+    "reviews_slider_tAkUaR": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_PMtbg6": {
+          "type": "review",
+          "settings": {
+            "review_title": "Mein absoluter Lieblingstee",
+            "review_description": "Seitdem ich Skeisan entdeckt habe, trinke ich keinen anderen Tee mehr. Absolute Empfehlung!",
+            "reviewer_name": "Felix",
+            "designation": "Frankfurt"
+          }
+        },
+        "review_HGLtmq": {
+          "type": "review",
+          "settings": {
+            "review_title": "Gute Preis-Leistung",
+            "review_description": "Für den Preis ist der Tee unschlagbar. Die Qualität ist top, die Teeblätter werden 10 Mal so groß, wenn man sie aufgießt. Hammer!",
+            "reviewer_name": "Laura",
+            "designation": "Hamburg"
+          }
+        },
+        "review_639Xqj": {
+          "type": "review",
+          "settings": {
+            "review_title": "Lecker",
+            "review_description": "Der Geruch überzeugt schon beim öffnen. Und der Geschmack ist super.",
+            "reviewer_name": "Martin",
+            "designation": "Bonn"
+          }
+        },
+        "review_dBwdAQ": {
+          "type": "review",
+          "settings": {
+            "review_title": "Mal was anderes",
+            "review_description": "Ich habe den Tee eigentlich nur bestellt, weil ich die Verpackung so cool fand. Aber der Geschmack hat mich zum überzeugten Tee-Trinker gemacht.",
+            "reviewer_name": "Lea",
+            "designation": "Berlin"
+          }
+        },
+        "review_db34HH": {
+          "type": "review",
+          "settings": {
+            "review_title": "Bester Tee",
+            "review_description": "Lecker und qualitativ hochwertig. Danke!",
+            "reviewer_name": "Georg",
+            "designation": "Düsseldorf"
+          }
+        },
+        "review_bzaFmY": {
+          "type": "review",
+          "settings": {
+            "review_title": "Top Qualität",
+            "review_description": "Noch nie so einen intensiven Geruch und Geschmack bei Tee erlebt. Ich werde auf jeden Fall nochmal bestellen.",
+            "reviewer_name": "Thomas",
+            "designation": "München"
+          }
+        }
+      },
+      "block_order": [
+        "review_PMtbg6",
+        "review_HGLtmq",
+        "review_639Xqj",
+        "review_dBwdAQ",
+        "review_db34HH",
+        "review_bzaFmY"
+      ],
+      "custom_css": [
+        ".swiper-slide__content {background: white;}"
+      ],
+      "name": "Reviews Slider",
+      "settings": {
+        "rating_text": "",
+        "heading": "WAS ANDERE SAGEN",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "featured_collection_AaAEQE": {
+      "type": "featured-collection",
+      "custom_css": [
+        ".title.inline-richtext {text-align: center;}",
+        ".card--card .quick-add {margin-inline: 0; margin-top: 6px;}",
+        ".card--card .quick-add button {background: black; color: white; font-size: 12px;}"
+      ],
+      "name": "t:sections.featured-collection.presets.name",
+      "settings": {
+        "border": false,
+        "collection": "accessoires",
+        "products_to_show": 4,
+        "title": "Zubehör",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "enable_tags": false,
+        "enable_avialable_options": false,
+        "short_description": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "button_text": "",
+        "url": "",
+        "button_position": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_NM6WaM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_CJWVYn": {
+          "type": "heading",
+          "settings": {
+            "heading": "Geschmacksgarantie",
+            "heading_size": "h1"
+          }
+        },
+        "text_bmqNgW": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Wir wissen, dass Tee eine sehr persönliche Geschmacksentscheidung ist. Deshalb gehst du bei uns kein Risiko ein: Sollte dir eine Sorte nicht gefallen, kannst du sie innerhalb von 30 Tagen problemlos zurückschicken. Ganz ohne Diskussionen, ganz ohne versteckte Bedingungen – du erhältst den vollen Kaufpreis zurück. So kannst du unsere Tees entspannt entdecken und dich selbst von der Qualität überzeugen.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_CJWVYn",
+        "text_bmqNgW"
+      ],
+      "custom_css": [
+        ".image-with-text .grid {display: flex; flex-wrap: nowrap; align-items: center; gap: 50px;}",
+        ".image-with-text__media-item {height: max-content; max-width: 340px; margin: auto;}",
+        ".image-with-text__text-item {width: calc(100% - 340px);}",
+        ".image-with-text__heading {text-transform: uppercase;}",
+        ".image-with-text__text.rte.body li {font-size: 18px; color: black; margin-bottom: 10px;}",
+        "@media (max-width: 768px) {.image-with-text .grid {flex-wrap: wrap; gap: 1px; } .image-with-text__heading {font-size: 20px; }}"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "lander_v3": false,
+        "image": "shopify://shop_images/Money-Back_Guarantee_Website_Graphic_2_1.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "center",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "how_to_started_xUCE7x": {
+      "type": "how-to-started",
+      "name": "SKEISAN - Why We Started",
+      "settings": {
+        "skeisan_story_heading": "LET'S CHANGE THE WAY WE TEA.",
+        "skeisan_story_subheading": "Kompromisslos in der Qualität. Klar im Design. Unisex. Urban. Alltagstauglich.",
+        "skeisan_story_description": "Wir glauben, dass Tee keine Zeremonie braucht. Keinen Anlass. Keinen Beutel. Wir machen Tee, der aufs Wesentliche reduziert ist. Und dieses Wesentliche machen wir so gut wir können. SKEISAN macht Premium-Tee neu erlebbar.",
+        "skeisan_story_image_1": "shopify://shop_images/skeisan_ueber_1.png",
+        "skeisan_story_image_2": "shopify://shop_images/skeisan_ueber_1.png",
+        "skeisan_story_button_text": "MEHR ÜBER UNS",
+        "skeisan_story_button_url": "shopify://pages/about",
+        "skeisan_story_button_target": false
+      }
+    },
+    "faq_EkB3JM": {
+      "type": "faq",
+      "blocks": {
+        "question_block_T4pHkY": {
+          "type": "question_block",
+          "settings": {
+            "question": "Ist SKEISAN-Tee Bio bzw. wie wird die Qualität geprüft?",
+            "answer": "<p>Unsere Tees durchlaufen ein 10-stufiges Qualitätssystem – von der Auswahl der Anbaugebiete über die Verarbeitung bis hin zur Abfüllung ins Aromaglas. Viele Sorten sind bio-zertifiziert. Bei manchen Mischungen können wir aufgrund der höheren Dosierung von natürlichen Bio-Ölen kein Bio-Siegel ausweisen – dennoch stammen alle Zutaten aus kontrolliert biologischem Anbau. So garantieren wir höchste Reinheit und unverfälschten Geschmack.</p>"
+          }
+        },
+        "question_block_tKhcMx": {
+          "type": "question_block",
+          "settings": {
+            "question": "Kann ich den Tee zurückgeben, wenn er mir nicht schmeckt?",
+            "answer": "<p>Ja – mit unserer 30-Tage-Geschmacksgarantie gehst du kein Risiko ein. Sollte dir eine Sorte nicht gefallen, kannst du sie problemlos zurückschicken und erhältst den vollen Kaufpreis zurück.</p>"
+          }
+        },
+        "question_block_LzkgXr": {
+          "type": "question_block",
+          "settings": {
+            "question": "Versendet ihr auch international und wie lange dauert der Versand?",
+            "answer": "<p>Ja, wir versenden weltweit. Die Versandkosten und Lieferzeiten hängen von deinem Standort ab und werden dir transparent im Checkout angezeigt. So kannst du SKEISAN-Genuss überall erleben.</p>"
+          }
+        },
+        "question_block_A4xWK6": {
+          "type": "question_block",
+          "settings": {
+            "question": "Wie unterscheiden sich die Buchstaben-Kategorien (X, W, B, etc.)?",
+            "answer": "<p>Die Buchstaben sind eine klare, moderne Systematik, die unsere Teesorten voneinander unterscheidet. Jeder Buchstabe steht für eine Kategorie: Zum Beispiel „W“ für White Tea, „B“ für Black Tea oder „X“ für unsere Exquisite-Linie. So findest du dich schnell zurecht und erkennst auf einen Blick, zu welcher Familie dein Tee gehört.</p>"
+          }
+        },
+        "question_block_riNRz4": {
+          "type": "question_block",
+          "settings": {
+            "question": "Was macht SKEISAN anders als andere Teemarken?",
+            "answer": "<p>SKEISAN steht für Premium-Tee neu gedacht: Höchste Qualität, moderne Mischungen und ein klares Design. Unsere Tees sind nicht in Traditionen verhaftet, sondern passen zu deinem Lifestyle – vom aromaversiegelten UV-Glas bis hin zu außergewöhnlichen Sorten, die ohne künstliche Zusätze auskommen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_block_T4pHkY",
+        "question_block_tKhcMx",
+        "question_block_LzkgXr",
+        "question_block_A4xWK6",
+        "question_block_riNRz4"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "faq_heading": "Häufige Fragen"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_GUT6qk",
+    "featured_collection_eiVqTC",
+    "how_it_work_8P79zX",
+    "video_slider_YRnKRE",
+    "reviews_slider_tAkUaR",
+    "featured_collection_AaAEQE",
+    "image_with_text_NM6WaM",
+    "how_to_started_xUCE7x",
+    "faq_EkB3JM"
+  ]
+}

@@ -1,0 +1,121 @@
+<section class="specifications-section color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="specifications-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+    {% if section.settings.subheading != blank %}
+      <p class="specifications-subheading">{{ section.settings.subheading }}</p>
+    {% endif %}
+
+    <div class="specifications-container">
+      {% if section.settings.image != blank %}
+        <div class="specifications-image-wrapper">
+          <img
+            src="{{ section.settings.image | img_url: 'master' }}"
+            alt="Knife Specs"
+            class="specifications-image"
+            loading="lazy"
+            width="600"
+          />
+
+          
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+<style>
+.specifications-section {
+  padding: 60px 0;
+
+}
+.specifications-heading {
+ margin-bottom: 10px;
+    text-transform: uppercase;
+    font-family: BebasNeueBook;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 100%;
+    letter-spacing: 0px;
+    margin-top: 0;
+    color: var(--color-foreground);
+    line-height: 1;
+}
+.specifications-subheading {
+      font-size: 16px;
+    margin-bottom: 20px;
+    color: #333;
+    margin: 0;
+    font-family: 'Inter';
+    color: var(--color-foreground);
+}
+.specifications-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.specifications-image-wrapper {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+}
+.specifications-image {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.specification-label {
+  position: absolute;
+  font-size: 14px;
+  max-width: 150px;
+  background: rgba(255,255,255,0.95);
+  border-left: 2px solid #ccc;
+  padding-left: 8px;
+  text-align: left;
+  transform: translate(-50%, -50%);
+}
+@media (max-width:749px) {
+ .specifications-section {
+    padding: 40px 0;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Knife Specifications",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "SPECIFICATIONS"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Introducing the sleek Titan Blade, featuring a stainless steel design."
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Specification Image"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "info": "t:sections.all.colors.has_cards_info",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Knife Specifications",
+      "category": "Image"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,89 @@
+{{ 'img-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="img-banner-section">
+  <div class="img-banner-container">
+    {% if section.settings.image != blank or section.settings.video != blank  %}
+      <div class="img-banner-image-wrapper">
+        {% if section.settings.video != blank %}
+          <video class="img-banner-image" loop autoplay muted playinline>
+            {% for source in section.settings.video.sources %}
+              <source src="{{ source.url }}" type="video/mp4">
+            {% endfor %}
+          </video>
+        {% endif %}
+        {% if section.settings.image != blank and section.settings.video == blank %}
+          <picture>
+            {% if section.settings.mobile_img != blank %}
+              <source media="(max-width:767px)" srcset="{{ section.settings.mobile_img | image_url }}">
+            {% endif %}
+            <img
+              src="{{ section.settings.image | image_url }}"
+              alt="{{ section.settings.heading }}"
+              loading="lazy"
+              class="img-banner-image"
+            >
+          </picture>
+        {% endif %}
+      </div>
+    {% endif %}
+    <div class="img-banner__content">
+      {% if section.settings.heading != blank %}
+        <h2 class="img-banner-heading">
+          {{ section.settings.heading }}
+        </h2>
+      {% endif %}
+  
+      {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+        <a href="{{ section.settings.button_url }}" class="img-banner-button btn btn_custom btn_custom--white">
+          {{ section.settings.button_label }}
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image Banner",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_img",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "If video is Uploaded Video will be visible intead of image"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Banner",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

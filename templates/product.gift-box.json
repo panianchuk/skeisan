@@ -1,0 +1,609 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "rating_DDBiWG": {
+          "type": "rating",
+          "disabled": true,
+          "settings": {}
+        },
+        "klaviyo_reviews_average_rating_CRXd9K": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        },
+        "custom_liquid_HUjjc4": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "{% if product.metafields.custom.card_tag != blank %}\n  <p class=\"card-tag\">{{ product.metafields.custom.card_tag }}</p>\n{% elsif product.metafields.custom.short_description != blank %}\n  <div class=\"product__description rte quick-add-hidden\">\n    {{ product.metafields.custom.short_description | metafield_tag }}\n  </div>\n{% endif %}"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "text_7ntViM": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.metafields.product.short_description.value }}",
+            "text_style": "subtitle"
+          }
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "description": {
+          "type": "description",
+          "disabled": true,
+          "settings": {}
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "recharge_subscriptions_subscription_widget_v2_NNrmhR": {
+          "type": "shopify://apps/recharge-subscriptions/blocks/subscription-widget-v2/371eed76-0b44-4869-9813-730372ea378e",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "text_gE7qbw": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        },
+        "custom_liquid_mQbJ9W": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div class=\"guarantee-message\">\n\n<svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"512\" height=\"512\" x=\"0\" y=\"0\" viewBox=\"0 0 512.002 512.002\" style=\"enable-background:new 0 0 512 512\" xml:space=\"preserve\"><g><path d=\"M300.997 99.217h201.004v402.785h-492V99.217h200.996\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"none\" stroke=\"#000000\" stroke-width=\"20\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"2.6131\" data-original=\"#000000\"></path><circle cx=\"256.745\" cy=\"34.5\" r=\"24.5\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"none\" stroke=\"#000000\" stroke-width=\"20\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"2.6131\" data-original=\"#000000\"></circle><path d=\"M408.505 99.028 282.238 35.004m-50.987 0-125.824 63.8M255.994 99.217h.007\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2.6131;\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"none\" stroke=\"#000000\" stroke-width=\"20\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"2.6131\" data-original=\"#000000\"></path><path d=\"M86.001 340.61v-80l25 29.999 25-29.999v80M191.001 260.61h0c11 0 20 9 20 19.999v40.001c0 11-9 20-20 20h0c-11 0-20-9-20-20v-40.001c0-10.999 9-19.999 20-19.999zM246.001 340.61v-80l40 80v-80M356.001 340.61h-34.999v-80h34.999M326.502 300.61h19.124M426.001 260.61v29.999c0 10.999-9 20-20 20s-20-9-20-20V260.61M406.002 311.862v28.748M131.001 380.61h20c11 0 20 9 20 20h0c0 11-8.999 20-20 20 11 0 20 9 20 20h0c0 11-8.999 20-20 20h-20v-80zM135.751 420.609h15.25M239.126 430.608h-36.5m-1.625 30.001v-60c0-11 9-20 20-20h0c11 0 20 9 20 20v60M316.001 440.61c0 11-9 20-20 20h0c-11 0-20-9-20-20v-40c0-11 9-20 20-20h0c11 0 20 9 20 20M346.001 380.61v79.999M381.001 380.61l-35 60M381.001 460.609l-17.647-47.06M53.156 160.122c0-10.776 8.736-19.512 19.512-19.512s19.512 8.736 19.512 19.512c0 8.062-4.889 14.981-11.864 17.956 8.352 3.105 14.303 11.148 14.303 20.581 0 12.123-9.828 21.951-21.951 21.951s-21.951-9.828-21.951-21.951M147.181 140.61h0c11 0 20 9 20 20v40c0 11-9 20-20 20h0c-11 0-20-9-20-20v-40c0-11.001 8.999-20 20-20zM458.885 144.3l-5.317-2.202c-9.986-4.135-21.539.649-25.674 10.635-4.136 9.985.649 21.538 10.634 25.674l5.318 2.202 5.318 2.202c9.984 4.136 14.77 15.689 10.634 25.674-4.135 9.987-15.689 14.771-25.674 10.635l-5.317-2.202M397.181 140.609v29.999c0 10.999-9 20-20 20s-20-9-20-20v-29.999M377.181 191.861v28.748-28.748zM325.306 190.608h-36.5 36.5zm-38.125 30.001v-60c0-11 9-20 20-20h0c11 0 20 9 20 20v60M212.181 140.61h20c11 0 20 9 20 20v40.001c0 11-8.999 20-20 20h-20V140.61z\" style=\"fill-rule:evenodd;clip-rule:evenodd;stroke-width:20;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:22.9256;\" fill-rule=\"evenodd\" clip-rule=\"evenodd\" fill=\"none\" stroke=\"#000000\" stroke-width=\"20\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-miterlimit=\"22.9256\" data-original=\"#000000\"></path></g></svg>\n<p>\n30 Days Money Back Guarantee\n</p>\n</div>"
+          }
+        },
+        "icon_with_text_x9DneU": {
+          "type": "icon-with-text",
+          "settings": {
+            "layout": "horizontal",
+            "icon_1": "heart",
+            "image_1": "{{ product.metafields.custom.icon_with_image_1.value }}",
+            "heading_1": "{{ product.metafields.custom.icon_with_text_1.value }}",
+            "icon_2": "return",
+            "image_2": "{{ product.metafields.custom.icon_with_image_2.value }}",
+            "heading_2": "{{ product.metafields.custom.icon_with_text_2.value }}",
+            "icon_3": "truck",
+            "image_3": "{{ product.metafields.custom.icon_with_image_3.value }}",
+            "heading_3": "{{ product.metafields.custom.icon_with_text_3.value }}",
+            "icon_4": "truck",
+            "image_4": "{{ product.metafields.custom.icon_with_image_4.value }}",
+            "heading_4": "{{ product.metafields.custom.icon_with_text_4.value }}"
+          }
+        },
+        "collapsible_tab_include_QfiaRQ": {
+          "type": "collapsible_tab_include",
+          "settings": {
+            "open_default": true,
+            "heading": "Was ist in der Box?",
+            "image_1": "{{ product.metafields.custom.whats_inside_box_1.value }}",
+            "text_1": "{{ product.metafields.custom.whats_inside_box_title_1.value }}",
+            "image_2": "{{ product.metafields.custom.whats_inside_box_2.value }}",
+            "text_2": "{{ product.metafields.custom.whats_inside_box_title_2.value }}",
+            "image_3": "{{ product.metafields.custom.whats_inside_box_3.value }}",
+            "text_3": "{{ product.metafields.custom.whats_inside_box_title_3.value }}"
+          }
+        },
+        "custom_liquid_kNNTGQ": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<style>\n.custom-btns{\nmargin: 0px 0;\ndisplay:flex;\nflex-direction: column;\ngap: 16px;\n align-items: flex-start !important;\n}\n\n.btn.btn--blue{\ntext-transform: capitalize;\n}\n\n.custom-btns a {\n    width: 100% !important;\n    justify-content: space-between !important;\n    text-transform: uppercase;\n    display: flex;\n    padding: 10px 0;\n    font-family: Montserrat !important;\n    font-weight: 600 !important;\n    font-size: 16px !important;\n    line-height: 100% !important;\n    letter-spacing: 0 !important;\n    text-transform: uppercase !important;\ncolor: black;\n}\n\n  \n</style>\n<div class=\"custom-btns\">\n\n<a href=\"#faq__sec\" class=\"btn\">\n  FAQ\n <svg class=\"icon icon-caret\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                      <path d=\"M10 17.5L3.75 11.25L4.63125 10.3688L9.375 15.1063L9.375 2.5H10.625L10.625 15.1063L15.3687 10.3688L16.25 11.25L10 17.5Z\" fill=\"#1D1D1B\"/>\n                      </svg>\n</a>\n</div>"
+          }
+        }
+      },
+      "block_order": [
+        "rating_DDBiWG",
+        "klaviyo_reviews_average_rating_CRXd9K",
+        "custom_liquid_HUjjc4",
+        "title",
+        "text_7ntViM",
+        "price",
+        "variant_picker",
+        "description",
+        "quantity_selector",
+        "recharge_subscriptions_subscription_widget_v2_NNrmhR",
+        "buy_buttons",
+        "text_gE7qbw",
+        "custom_liquid_mQbJ9W",
+        "icon_with_text_x9DneU",
+        "collapsible_tab_include_QfiaRQ",
+        "custom_liquid_kNNTGQ"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "scheme-1",
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "cover",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "show",
+        "media_position": "left",
+        "image_zoom": "hover",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 64
+      }
+    },
+    "1756503015d6b4dfa9": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_JgGLpN": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_JgGLpN"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "related_search_v3_3JxCTf": {
+      "type": "related-search-v3",
+      "name": "Related product v3",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h1",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "reviews_slider_NUUXUC": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_YEYNiM": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff2.gif"
+          }
+        },
+        "review_wjy7dh": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff3.gif"
+          }
+        },
+        "review_c4QaLA": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff1.gif"
+          }
+        },
+        "review_gqB6fp": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff2.gif"
+          }
+        },
+        "review_Dmch7C": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/Giff3.gif"
+          }
+        }
+      },
+      "block_order": [
+        "review_YEYNiM",
+        "review_wjy7dh",
+        "review_c4QaLA",
+        "review_gqB6fp",
+        "review_Dmch7C"
+      ],
+      "custom_css": [
+        ".swiper-slide__content {display: none;}",
+        ".swiper-sliders__arrows {margin-top: 30px;}"
+      ],
+      "name": "Reviews Slider",
+      "settings": {
+        "rating_text": "",
+        "heading": "FROM THE LOVE OF TEAS",
+        "button_label": "",
+        "button_link": ""
+      }
+    },
+    "related_search_v2_hkX9BL": {
+      "type": "related-search-v2",
+      "disabled": true,
+      "name": "Related product v2",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h1",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 16
+      }
+    },
+    "reviews_slider_kbQ3RM": {
+      "type": "reviews-slider",
+      "blocks": {
+        "review_7qPpFU": {
+          "type": "review",
+          "settings": {
+            "review_title": "A dream of a tea!",
+            "review_description": "A truly special taste experience, great for gifting or enjoying yourself. :-)",
+            "reviewer_name": "Martin",
+            "designation": "Cologne, Germany"
+          }
+        },
+        "review_pJNDMc": {
+          "type": "review",
+          "settings": {
+            "review_title": "A dream of a tea!",
+            "review_description": "A truly special taste experience, great for gifting or enjoying yourself. :-)",
+            "reviewer_name": "Martin",
+            "designation": "Cologne, Germany"
+          }
+        },
+        "review_aGEM4E": {
+          "type": "review",
+          "settings": {
+            "review_title": "A dream of a tea!",
+            "review_description": "A truly special taste experience, great for gifting or enjoying yourself. :-)",
+            "reviewer_name": "Martin",
+            "designation": "Cologne, Germany"
+          }
+        },
+        "review_h33nAY": {
+          "type": "review",
+          "settings": {
+            "review_title": "A dream of a tea!",
+            "review_description": "A truly special taste experience, great for gifting or enjoying yourself. :-)",
+            "reviewer_name": "Martin",
+            "designation": "Cologne, Germany"
+          }
+        },
+        "review_VXzh6e": {
+          "type": "review",
+          "settings": {
+            "review_title": "A dream of a tea!",
+            "review_description": "A truly special taste experience, great for gifting or enjoying yourself. :-)",
+            "reviewer_name": "Martin",
+            "designation": "Cologne, Germany"
+          }
+        }
+      },
+      "block_order": [
+        "review_7qPpFU",
+        "review_pJNDMc",
+        "review_aGEM4E",
+        "review_h33nAY",
+        "review_VXzh6e"
+      ],
+      "disabled": true,
+      "name": "Reviews Slider",
+      "settings": {
+        "rating_text": "",
+        "heading": "Reviews",
+        "button_label": "",
+        "button_link": "shopify://pages/reviews"
+      }
+    },
+    "how_it_work_jGqWVE": {
+      "type": "how-it-work",
+      "blocks": {
+        "skeisan_benefit_6pkqaK": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/non-gmo.svg",
+            "skeisan_benefit_title": "Ohne Mikroplastik",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_BQrdpK": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/vegan-free.svg",
+            "skeisan_benefit_title": "Vegan & glutenfrei",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_CFanx6": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/designed-for-clean.svg",
+            "skeisan_benefit_title": "Nachhaltige Verpackung",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_zKPJ33": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/third-party.svg",
+            "skeisan_benefit_title": "Zehnstufige Qualitätskontrolle",
+            "skeisan_benefit_description": ""
+          }
+        },
+        "skeisan_benefit_hp6me6": {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_icon": "shopify://shop_images/no-artificial.svg",
+            "skeisan_benefit_title": "Ohne künstliche Aromen",
+            "skeisan_benefit_description": ""
+          }
+        }
+      },
+      "block_order": [
+        "skeisan_benefit_6pkqaK",
+        "skeisan_benefit_BQrdpK",
+        "skeisan_benefit_CFanx6",
+        "skeisan_benefit_zKPJ33",
+        "skeisan_benefit_hp6me6"
+      ],
+      "name": "SKEISAN - Why It Works",
+      "settings": {
+        "skeisan_heading": "WARUM SKEISAN?",
+        "skeisan_product_image": "shopify://shop_images/why-skeisan.png",
+        "skeisan_background_color": "rgba(0,0,0,0)"
+      }
+    },
+    "image_with_text_EwEW4G": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_97F8iN": {
+          "type": "heading",
+          "settings": {
+            "heading": "ACCESSOIRES",
+            "heading_size": "h1"
+          }
+        },
+        "text_DGKqAD": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Matching accessories of the highest quality.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_kWmX8h": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/accessories",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_97F8iN",
+        "text_DGKqAD",
+        "button_kWmX8h"
+      ],
+      "disabled": true,
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "scheme-91717838-99c2-4d49-a843-65c2f55d606c",
+        "color_scheme": "scheme-91717838-99c2-4d49-a843-65c2f55d606c",
+        "padding_top": 100,
+        "padding_bottom": 0
+      }
+    },
+    "faq_summary_pdp_GJFaCz": {
+      "type": "faq-summary-pdp",
+      "blocks": {
+        "left_question_block_AJwQ8K": {
+          "type": "left_question_block",
+          "settings": {
+            "question": "Technical data",
+            "answer": "<p><strong>Blade:</strong>260 mm, niobium steel, 60 HRC, wedge grinded<br/><strong>Ferrules:</strong>stainless steel matt brushed<br/><strong>Included:</strong>high quality matte black box, certificate of authenticity</p>"
+          }
+        },
+        "left_question_block_iWAXVc": {
+          "type": "left_question_block",
+          "settings": {
+            "question": "Care instructions",
+            "answer": "<p>Avoid sliding the blade scabbard sideways over the base. Do not jam the blade in the cutting surface or in hard material to be cut. Avoid hard contacts on bones or similar as well as unnecessary pressure when cutting. These types of use will cause blades to dull more quickly. <br/><br/>The patented blade steel with the rare element niobium makes Kazan knives particularly sharp and gives them greater resistance and therefore a longer service life. Due to its special composition, however, this steel is not completely corrosion resistant and tends to tarnish. This is completely harmless to health and can be partially removed by polishing. We recommend not to leave your SOUL in acidic or salty liquids and to rinse and dry it after use.<br/><br/>The Kazan Steak and Table Knife SOUL and the Kazan Folder SOUL are suitable for use on harder surfaces due to their special purpose as cutlery knives. Due to the adapted design, only the tip of the knife makes contact when used correctly, and the cutting edge therefore remains sharp for a very long time. Again, hard contact of the cutting edge should be avoided.</p>"
+          }
+        },
+        "left_question_block_gJPX8q": {
+          "type": "left_question_block",
+          "settings": {
+            "question": "Customer service",
+            "answer": "<p>If you have any questions or suggestions, please feel free to contact us:</p><p><strong>Phone number</strong><br/>+49 (0) 212 235 732 0<br/>Monday to Friday: 8:00 a.m. - 4:00 p.m.</p><p><strong>E-mail</strong><br/>office@Kazan.com</p>"
+          }
+        },
+        "right_question_block_hC4C7a": {
+          "type": "right_question_block",
+          "settings": {
+            "question": "Shipping",
+            "answer": "<p>We ship depending on the place of delivery with UPS, DHL or especially for shipments to countries outside the EU with different forwarding and transport companies. As soon as your package leaves our manufactory, a shipping confirmation will be sent to you automatically.The delivery time depends on the product and the chosen country of delivery. For each item, the time to delivery is indicated directly in the product display. If, contrary to expectations, the ordered product is not available in time, we will inform you immediately. Errors are always reserved.</p>"
+          }
+        },
+        "right_question_block_wTbi6Q": {
+          "type": "right_question_block",
+          "settings": {
+            "question": "Handle materials",
+            "answer": "<p>Ergonomic and solid handles for fatigue-free work: The design of the Kazan handle is as aesthetic as it is practical. For the wooden handles, Kazan uses only the best, often hand-picked pieces of exquisite quality and certified origin. In addition, Kazan offers two high-tech plastics, Juma and Micarta.</p>"
+          }
+        },
+        "right_question_block_qPaBUm": {
+          "type": "right_question_block",
+          "settings": {
+            "question": "Story",
+            "answer": "<p>We should always be aware of what ecologically sustainable and ethically correct agriculture and the food industry look like, and politicians and civil society must act accordingly. Together with the Respect Ambassadors in our campaign, Kazan would like to make a contribution in this direction by showing examples of sufficiency-based farming and the respectful treatment of plants and animals.<br/><br/>Find out more here:<a href=\"/pages/our-story\" target=\"_blank\" title=\"Our Story\"><span style=\"text-decoration:underline\"><strong>Kazan Story</strong></span></a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "left_question_block_AJwQ8K",
+        "left_question_block_iWAXVc",
+        "left_question_block_gJPX8q",
+        "right_question_block_hC4C7a",
+        "right_question_block_wTbi6Q",
+        "right_question_block_qPaBUm"
+      ],
+      "disabled": true,
+      "name": "FAQ Summary",
+      "settings": {
+        "faq_heading": "Summary"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "disabled": true,
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 10,
+        "columns_desktop": 4,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-91717838-99c2-4d49-a843-65c2f55d606c",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 32,
+        "padding_bottom": 64
+      }
+    },
+    "1755110795dde28641": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "faq_3cWXGQ": {
+      "type": "faq",
+      "blocks": {
+        "question_block_CzNbjJ": {
+          "type": "question_block",
+          "settings": {
+            "question": "Ist SKEISAN-Tee Bio bzw. wie wird die Qualität geprüft?",
+            "answer": "<p>Unsere Tees durchlaufen ein 10-stufiges Qualitätssystem – von der Auswahl der Anbaugebiete über die Verarbeitung bis hin zur Abfüllung ins Aromaglas. Viele Sorten sind bio-zertifiziert. Bei manchen Mischungen können wir aufgrund der höheren Dosierung von natürlichen Bio-Ölen kein Bio-Siegel ausweisen – dennoch stammen alle Zutaten aus kontrolliert biologischem Anbau. So garantieren wir höchste Reinheit und unverfälschten Geschmack.</p>"
+          }
+        },
+        "question_block_mwMzkw": {
+          "type": "question_block",
+          "settings": {
+            "question": "Kann ich den Tee zurückgeben, wenn er mir nicht schmeckt?",
+            "answer": "<p>Ja – mit unserer 30-Tage-Geschmacksgarantie gehst du kein Risiko ein. Sollte dir eine Sorte nicht gefallen, kannst du sie problemlos zurückschicken und erhältst den vollen Kaufpreis zurück.</p>"
+          }
+        },
+        "question_block_makJzK": {
+          "type": "question_block",
+          "settings": {
+            "question": "Versendet ihr auch international und wie lange dauert der Versand?",
+            "answer": "<p>Ja, wir versenden weltweit. Die Versandkosten und Lieferzeiten hängen von deinem Standort ab und werden dir transparent im Checkout angezeigt. So kannst du SKEISAN-Genuss überall erleben.</p>"
+          }
+        },
+        "question_block_AtGzU8": {
+          "type": "question_block",
+          "settings": {
+            "question": "Wie unterscheiden sich die Buchstaben-Kategorien (X, W, B, etc.)?",
+            "answer": "<p>Die Buchstaben sind eine klare, moderne Systematik, die unsere Teesorten voneinander unterscheidet. Jeder Buchstabe steht für eine Kategorie: Zum Beispiel „W“ für White Tea, „B“ für Black Tea oder „X“ für unsere Exquisite-Linie. So findest du dich schnell zurecht und erkennst auf einen Blick, zu welcher Familie dein Tee gehört.</p>"
+          }
+        },
+        "question_block_3hGCCg": {
+          "type": "question_block",
+          "settings": {
+            "question": "Was macht SKEISAN anders als andere Teemarken?",
+            "answer": "<p>SKEISAN steht für Premium-Tee neu gedacht: Höchste Qualität, moderne Mischungen und ein klares Design. Unsere Tees sind nicht in Traditionen verhaftet, sondern passen zu deinem Lifestyle – vom aromaversiegelten UV-Glas bis hin zu außergewöhnlichen Sorten, die ohne künstliche Zusätze auskommen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_block_CzNbjJ",
+        "question_block_mwMzkw",
+        "question_block_makJzK",
+        "question_block_AtGzU8",
+        "question_block_3hGCCg"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "faq_heading": "FAQ"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "1756503015d6b4dfa9",
+    "related_search_v3_3JxCTf",
+    "reviews_slider_NUUXUC",
+    "related_search_v2_hkX9BL",
+    "reviews_slider_kbQ3RM",
+    "how_it_work_jGqWVE",
+    "image_with_text_EwEW4G",
+    "faq_summary_pdp_GJFaCz",
+    "related-products",
+    "1755110795dde28641",
+    "faq_3cWXGQ"
+  ]
+}

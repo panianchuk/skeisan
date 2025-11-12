@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "main_footer_LPP4qQ": {
+      "type": "main-footer",
+      "blocks": {
+        "footer_menu_nXr9gb": {
+          "type": "footer_menu",
+          "settings": {
+            "menu_title": "Shop",
+            "menu_links": "footer-menu"
+          }
+        },
+        "footer_menu_Eh9tKt": {
+          "type": "footer_menu",
+          "settings": {
+            "menu_title": "SKEISAN",
+            "menu_links": "company"
+          }
+        },
+        "footer_menu_6nRjA6": {
+          "type": "footer_menu",
+          "settings": {
+            "menu_title": "Rechtliches",
+            "menu_links": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "footer_menu_nXr9gb",
+        "footer_menu_Eh9tKt",
+        "footer_menu_6nRjA6"
+      ],
+      "name": "Main Footer",
+      "settings": {
+        "newsletter_heading": "Melde dich zum Newsletter an",
+        "newsletter_subheading": "Keine Serienmails. Kein Spam. Dafür neuer Tee oder ein spezielles Angebot. Lass dich überraschen! \n<br>\nInformationen dazu, wie SKEISAN mit deinen Daten umgeht, findest du in unserer Datenschutzerklärung.",
+        "footer_logo": "shopify://shop_images/SKS_2025_Logo_Claim_Black.png",
+        "copyright_text": "© 2025 SKEISAN. All rights reserved."
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "settings": {
+        "color_scheme": "scheme-1",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe to our emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": true,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main_footer_LPP4qQ",
+    "footer"
+  ]
+}

@@ -1,0 +1,122 @@
+{{ 'products-slider.css' | asset_url | stylesheet_tag }}
+
+<section class="collection-slider" id="pdp__slider">
+  <div class="page-width">
+    {% if section.settings.heading != blank %}
+      <h2 class="collection-slider-heading">{{ section.settings.heading }}</h2>
+    {% endif %}
+
+    {% if section.settings.collection %}
+      {% assign collection = collections[section.settings.collection] %}
+      {% if collection.products.size > 0 %}
+        <div class="swiper collection-slider-swiper">
+          <div class="swiper-wrapper">
+            {% for product in collection.products %}
+              <div class="swiper-slide">
+                {% render 'card-product', 
+                  card_product: product, 
+                  show_secondary_image: section.settings.show_secondary_image,
+                  img_ratio: '143.4%',
+                %}
+              </div>
+            {% endfor %}
+          </div>
+          <div class="collection-slider--pagination swiper-pagination"></div>
+        </div>
+      {% endif %}
+    {% endif %}
+    {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+      <div class="collection-slider__cta">
+        <a href="{{ section.settings.button_url }}" class="collection-slider-button btn btn_custom btn_custom--blue">
+          {{ section.settings.button_label }}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.collection-slider-swiper', {
+      slidesPerView: 1.2,
+      spaceBetween: 16,
+      loop: true,
+      pagination: {
+        el: '.collection-slider--pagination',
+        clickable: true
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: 2
+        },
+        1024: {
+          slidesPerView: 3
+        },
+        1200: {
+          slidesPerView: 4
+        }
+      }
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Products Slider",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "View All"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__1.label"
+        },
+        {
+          "value": "portrait",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__2.label"
+        },
+        {
+          "value": "square",
+          "label": "t:sections.featured-collection.settings.image_ratio.options__3.label"
+        }
+      ],
+      "default": "adapt",
+      "label": "t:sections.featured-collection.settings.image_ratio.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_secondary_image",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.show_secondary_image.label"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Products Slider",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

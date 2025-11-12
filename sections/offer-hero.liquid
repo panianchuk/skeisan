@@ -1,0 +1,149 @@
+<style>
+  .offer-hero-wrapper {
+    display: flex;
+  }
+
+  .offer-hero-video {
+    width: 30%;
+  }
+
+  .offer-hero-image {
+    width: 70%;
+  }
+
+  .offer-hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #f3f1ef;
+  }
+
+  .offer-hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .offer-hero-wrapper {
+    display: flex;
+    margin-bottom: 40px;
+    height: calc(100vh - 100px);
+  }
+
+  .mobile-image{
+    display: none;
+  }
+
+  .offer-hero-image .btn {
+    position: absolute;
+    right: 15%;
+    bottom: 12%;
+    background: #E92E74;
+  }
+
+  .offer-hero-image{
+    position: relative;
+  }
+
+  .offer-hero-image .btn:before,
+  .offer-hero-image .btn:after {
+    content: none;
+  }
+
+  {% comment %} mobile responsive {% endcomment %}
+  @media(max-width: 768px){
+    .offer-hero-image .btn {
+      position: relative;
+      right: unset;
+      bottom: 20px;
+    }
+
+    .offer-hero-video,
+    .desktop-image{
+      display: none;
+    }
+
+    .offer-hero-image {
+      width: 100%;
+      background: #f3f1ef;
+      text-align: center;
+    }
+
+   .mobile-image{
+      display: block;
+    }
+
+    .offer-hero-image img{
+      object-fit: contain;
+      height: auto;
+    }
+
+    .offer-hero-wrapper {
+      height: auto;
+    }
+  }
+</style>
+<a class="offer-hero-link" href="{{ section.settings.offer_link }}">
+<div class="offer-hero-wrapper">
+  <div class="offer-hero-video">
+    <video
+      autoplay
+      muted
+      {% if section.settings.enable_video_looping %}
+        loop
+      {% endif %}
+    >
+      <source src="{{ section.settings.offer_video.sources[1].url }}" type="video/mp4">
+      <source src="{{ section.settings.offer_video.sources[1].url }}" type="video/webm">
+      Your browser does not support the video tag.
+    </video>
+  </div>
+  <div class="offer-hero-image">
+      <img src="{{ section.settings.offer_image | img_url: "master" }}" class="desktop-image" alt="hero-image">
+      <img src="{{ section.settings.offer_image_mobile | img_url: "master" }}" class="mobile-image" alt="hero-image">
+    <button class="btn button">
+        Jetzt Kaufen
+    </button>
+  </div>
+</div>
+</a>
+
+{% schema %}
+{
+  "name": "Offer Hero",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "label": "t:sections.video.settings.enable_video_looping.label",
+      "default": false
+    },
+    {
+      "type": "video",
+      "id": "offer_video",
+      "label": "Offer Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "offer_image",
+      "label": "Offer Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "offer_image_mobile",
+      "label": "Offer Image Mobile"
+    },
+    {
+      "type": "url",
+      "id": "offer_link",
+      "label": "Offer Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Offer Hero"
+    }
+  ]
+}
+{% endschema %}

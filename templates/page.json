@@ -1,0 +1,74 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "image_with_text_GUT6qk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_RTXFVg": {
+          "type": "heading",
+          "settings": {
+            "heading": "Premium-Tee neu erleben.",
+            "heading_size": "h1"
+          }
+        },
+        "text_eJ6hFE": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Du willst Tee auf eine neue Art entdecken? Ohne tropfenden Beutel, ohne Erkältung oder Kuscheldecke? Tee kann aufregend sein. Lecker und gesellig. Tee ist das, was du draus machst. Erlebe ihn neu.</p>",
+            "text_style": "body"
+          }
+        },
+        "button_MzNMwq": {
+          "type": "button",
+          "settings": {
+            "button_label": "ANGEBOT FÜR GEO LESER",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_RTXFVg",
+        "text_eJ6hFE",
+        "button_MzNMwq"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/SKEISAN_MIKEMEYER_4N8A1268.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_GUT6qk"
+  ]
+}

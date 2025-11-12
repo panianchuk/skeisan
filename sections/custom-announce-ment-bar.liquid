@@ -1,0 +1,258 @@
+<style>
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0px 0;
+  text-align: center;
+}
+
+.marquee {
+  display: inline-block;
+  animation: marquee linear infinite;
+}
+
+.marquee-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  white-space: nowrap;
+  justify-content: center;
+}
+.marquee-item p{
+  margin:5px 0;
+  
+}
+.marquee-item img {
+  margin-right: 10px;
+}
+
+.marquee-item a {
+    font-family: "Inter", sans-serif;
+    text-decoration: none !important;
+    color: inherit;
+    font-size: 12px;
+    font-weight: 400;
+    letter-spacing: 0.96px;
+    text-transform: capitalize;
+    display: flex
+;
+    align-items: center;
+    gap: 10px;
+}
+.announcement-item {
+    display: flex
+;
+    align-items: center;
+}
+.announcement-item img {
+    height: 20px;
+}
+
+.announcement-bar-wrapper .splide__slide {
+    text-align: center;
+}
+.announcement-bar-wrapper .rating-section {
+    margin-bottom: 16px;
+    display: flex
+;
+    gap: 15px;
+}
+.announcement-bar-wrapper .rating-section{
+margin: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.announcement-bar-wrapper .rating-section .stars {
+    margin: 0;
+}
+/* Rating Section */
+.rating-section {
+  margin-bottom: 16px;
+ 
+}
+
+.stars {
+  margin-bottom: 8px;
+}
+
+.star {
+  color: #ff6b35;
+  font-size: 20px;
+  margin: 0 2px;
+  display: inline-block;
+  animation: starGlow 2s ease-in-out infinite alternate;
+  line-height: 1;
+    display: block;
+}
+
+
+.rating-text {
+ font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 1;
+    margin: 0;
+    display: block !important;
+}
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.splide__list{
+  align-items:center;
+}
+  @media screen and (max-width:500px){
+    .marquee-item h2{
+      font-size:16px;
+      letter-spacing:1px;
+    }
+    .marquee-item p{
+  margin:8px 0;
+      font-size:12px;
+  
+    .marquee-item  img{
+      width:24px;
+      height:24px;
+    }
+  }
+  
+
+</style>
+
+
+
+
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.section_color_scheme }}">
+  
+
+
+      <div id="sliderClients-{{ section.id }}" class="splide announcement-bar-wrapper page-width">
+        <div class="splide__track">
+          <ul role="list" class="splide__list">
+            
+              {% for block in section.blocks %}
+            {% if block.type == 'logo_with_heading' %}
+              <li class="splide__slide">
+              <div class="marquee-item">
+                <!-- <img src="{{ block.settings.logo_image | img_url: '32x32' }}" alt="Logo"> -->
+                <p><a href="{{ block.settings.link }}">{{ block.settings.heading }}</a></p>
+              </div>
+              </li>
+              <li class="splide__slide">
+             <span>&bull;</span> 
+              </li>
+            {% endif %}
+                 {% if block.type == 'custom_liquid' %}
+              <li class="splide__slide">
+              <div class="marquee-item">
+                <div>{{ block.settings.liquid }}</div>
+              </div>
+              </li>
+              <li class="splide__slide">
+             <span>&bull;</span> 
+              </li>
+            {% endif %}
+          {% endfor %}
+          </ul>
+        </div>
+      </div>
+   
+  </div>
+{% schema %}
+{
+  "name": "Sliding Logo Marquee",
+  "settings": [
+    
+        {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "logo_with_heading",
+      "name": "Logo with Heading",
+      "settings": [
+       
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading Text",
+          "default": "Welcome to Our Store"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    },
+     {
+      "type": "custom_liquid",
+      "name": "Custom Liquid",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "liquid",
+          "label": "Liquid code"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sliding Logo Marquee",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+
+
+
+
+
+
+
+<script
+  src="https://cdn.jsdelivr.net/npm/@splidejs/splide-extension-auto-scroll@0.5.3/dist/js/splide-extension-auto-scroll.min.js"
+  integrity="sha256-A+2opyqhvbBV8tbd9mIM8w9zvvMYHOawY03BQRtq7Kw="
+  crossorigin="anonymous"
+></script>
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+
+<script>
+const isMobile = window.innerWidth <= 767;
+  new Splide("#sliderClients-{{ section.id }}", {
+ type   : 'loop',
+    pagination: false,
+    gap: '40px',
+    perPage: 5,
+    drag: false,
+    arrows: false,
+        autoScroll: {
+       speed: isMobile ? .7 : 1.2,
+       pauseOnHover: false,  // Disable pause on hover
+      pauseOnFocus: false, 
+    },
+    breakpoints: {
+      767: {
+        gap: '40px',
+        perPage: 3,
+        autoWidth: true
+      },
+    },
+  }).mount(isMobile ? window.splide.Extensions : '');
+</script>

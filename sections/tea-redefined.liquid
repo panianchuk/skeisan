@@ -1,0 +1,193 @@
+{% comment %}
+  Tea Redefined Section
+  Add this file to your theme's sections folder as 'tea-redefined.liquid'
+{% endcomment %}
+
+<section class="tea-redefined-section">
+  <div class="page-width">
+    
+    <!-- Main Title -->
+    <div class="tea-redefined-header">
+      <h2 class="tea-redefined-title">{{ section.settings.main_title | default: 'TEA REDEFINED.' }}</h2>
+    </div>
+
+    <!-- Features List -->
+    <div class="tea-redefined-features">
+      
+      {% for block in section.blocks %}
+        <div class="tea-feature-item" {{ block.shopify_attributes }}>
+          <div class="tea-feature-content">
+            <h3 class="tea-feature-title">{{ block.settings.feature_title }}</h3>
+            <p class="tea-feature-description">{{ block.settings.feature_description }}</p>
+          </div>
+        </div>
+      {% endfor %}
+
+    </div>
+
+  </div>
+</section>
+
+<style>
+.tea-redefined-section {
+  padding: 64px 0px;
+
+}
+
+.tea-redefined-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.tea-redefined-header {
+  margin-bottom: 40px;
+}
+
+.tea-redefined-title {
+
+
+  color: #1D1D1B;
+  margin: 0;
+  line-height: 1.1;
+
+  text-align: left;
+}
+
+.tea-redefined-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tea-feature-item {
+  padding: 40px 0;
+    border-bottom: 2px solid #2d2d2d;
+    position: relative;
+    padding-top: 12px;
+}
+
+.tea-feature-item:first-child {
+  padding-top: 0;
+}
+
+.tea-feature-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.tea-feature-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.tea-feature-title {
+ font-size: 2rem;
+    /* font-weight: 700; */
+    color: #1D1D1B;
+    margin: 0;
+    line-height: 1.2;
+ 
+}
+
+.tea-feature-description {
+  font-size: 1.3rem;
+    color: #686869;
+    margin: 0;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tea-redefined-section {
+    padding: 64px 0px;
+  }
+}
+
+
+
+
+@media (min-width: 990px) {
+.tea-feature-item {
+  padding : 0 !important;
+  border : none !important;
+}
+.tea-redefined-features {
+    display: grid;
+    flex-direction: column;
+    gap: 0;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 20px;
+}
+}
+</style>
+
+{% schema %}
+{
+  "name": "Tea Redefined",
+  "tag": "section",
+  "class": "tea-redefined-wrapper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "main_title",
+      "label": "Main Title",
+      "default": "TEA REDEFINED."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_title",
+          "label": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "feature_description",
+          "label": "Feature Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tea Redefined",
+      "blocks": [
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "BEYOND ORGANIC.",
+            "feature_description": "Organic is good. But not good enough. Because our taste standards are more important to us than a certificate."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "FEW INGREDIENTS. LOTS OF CHARACTER.",
+            "feature_description": "What doesn't belong in doesn't come in."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "RADICALLY CURATED.",
+            "feature_description": "We make tea blends based on taste, not standards."
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "feature_title": "PACKED WITH TASTE.",
+            "feature_description": "The best tea deserves the best packaging. Reduced. Reusable. Aroma- and light-tight."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

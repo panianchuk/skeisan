@@ -1,0 +1,70 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "image": "shopify://shop_images/Frame_1000001649.png",
+        "show_collection_description": true,
+        "show_collection_description_text": "Tee braucht keine Regeln, keine Rituale, keine 1.000 Sorten. Braucht keine Mythen und keine Mantras. Tee kann einfach sein. Deshalb findest du bei uns nicht alles. Aber alles, was zählt. Wir machen Tee aufs Wesentliche reduziert. Unisex im Look. Kompromisslos im Geschmack. Für den Alltag. Für die Nacht. Für dich.",
+        "show_collection_image": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "collection_banner_d7qyWy": {
+      "type": "collection-banner",
+      "name": "Collection Categories",
+      "settings": {
+        "quick_navigation_menu": "kollektionen",
+        "collection_list": [
+          "black-tea",
+          "exquisite-tea",
+          "fruit-tea",
+          "green-tea",
+          "herbal-tea",
+          "rooibos-tea",
+          "white-tea"
+        ]
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "custom_css": [
+        ".card-information .caption {display: none;}"
+      ],
+      "settings": {
+        "products_per_page": 36,
+        "columns_desktop": 4,
+        "columns_mobile": "1",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_tags": true,
+        "enable_avialable_options": true,
+        "short_description": false,
+        "enable_filtering": false,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "padding_top": 0,
+        "padding_bottom": 64
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collection_banner_d7qyWy",
+    "product-grid"
+  ]
+}

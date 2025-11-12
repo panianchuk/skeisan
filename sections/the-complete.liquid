@@ -1,0 +1,97 @@
+{{ 'the-complete.css' | asset_url | stylesheet_tag }}
+
+<section class="the-complete-section">
+  <div class="page-width the-complete-wrapper">
+    <div class="the-complete-content">
+      {% if section.settings.heading != blank %}
+        <h2 class="the-complete-heading">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.description != blank %}
+        <div class="the-complete-description">{{ section.settings.description }}</div>
+      {% endif %}
+      {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+        <div class="the-complete-cta">
+          <a href="{{ section.settings.button_url }}" class="the-complete-button btn btn_custom btn_custom--blue">{{ section.settings.button_label }}</a>
+        </div>        
+      {% endif %}
+      {% if section.settings.main_image != blank %}
+        <div class="the-complete-image">
+          <img src="{{ section.settings.main_image | image_url: width: 700 }}" alt="Main Image" loading="lazy">
+        </div>
+      {% endif %}
+      <div class="the-complete-icons">
+        {% for block in section.blocks %}
+          {% if block.type == 'icon_text' %}
+            <div class="icon-text-block">
+              {% if block.settings.icon != blank %}
+                <img src="{{ block.settings.icon | image_url: width: 60 }}" alt="icon" class="icon-text-image" loading="lazy">
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <div class="icon-text-title">{{ block.settings.title }}</div>
+              {% endif %}
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "The Complete",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Learn More"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main Image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icon_text",
+      "name": "Icon Text",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [
+    {
+      "name": "The Complete",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

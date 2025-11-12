@@ -1,0 +1,97 @@
+{%- liquid
+  assign image = section.settings.image | default: collection.image
+  assign color_scheme = section.settings.color_scheme
+
+  if image == blank
+    assign layout = 'plain'
+  else
+    assign layout = section.settings.layout
+
+    if layout == 'background'
+      assign color_scheme = section.settings.background_color_scheme
+    endif
+  endif
+-%}
+{% assign collection_list = section.settings.collection_list %}
+<div
+  {% if section.settings.allow_transparent_header and layout != 'plain' %}
+    allow-transparent-header
+  {% endif %}
+  class="color-scheme color-scheme--{{ color_scheme.id }}"
+>
+  {%- capture quick_navigation -%}
+      {% assign alignment = section.settings.content_position | split: 'place-self-' | last | split: '-' | last %}
+
+      <ul class="collection-quick-navigation {% if layout == 'plain' %}justify-{{ alignment }}{% else %}collection-quick-navigation--padded{% endif %} unstyled-list scroll-area bleed">
+        {%- for collection in collection_list -%}
+          <li>
+            <a href="{{ collection.url }}" class="collection-quick-navigation__item {% if link.active %}is-selected{% endif %} group">
+             
+              
+              {%- if collection.image != blank -%}
+                <div class="collection-quick-image">
+                   {% if collection.metafields.custom.soft_pack_images != blank and  title == "soft packs"  %}
+           <img
+            src="{{ collection.metafields.custom.soft_pack_images | img_url : 'master' }}"
+            width="100%"
+            class="collection_header__image"
+          >
+          {% elsif collection.metafields.custom.collection_mega_menu_image != blank %}
+          <img
+            src="{{ collection.metafields.custom.collection_mega_menu_image | img_url : 'master' }}"
+            width="100%"
+            class="collection_header__image"
+          >
+        {% elsif collection.image != blank %}
+          <img src="{{ collection.image | img_url : 'master' }}" width="100%" class="collection_header__image">
+        {% endif %}
+                </div>
+              {%- endif -%}
+
+              <span class="subheading">{{- collection.title -}}</span>
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+  {%- endcapture -%}
+
+
+  <div class="section-spacing section-spacing--tight">
+    <div class="page-width">
+      <div class="v-stack gap-8 sm:gap-12">
+        {% assign text_alignment = section.settings.content_position
+          | split: 'place-self-'
+          | last
+          | split: '-'
+          | last
+        %}
+        {{- quick_navigation -}}
+      </div>
+    </div>
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Collection Categories",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Quick navigation"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_navigation_menu",
+      "label": "Menu",
+      "info": "Menu"
+    },
+     {
+          "type": "collection_list",
+          "label": "Collection list",
+          "id": "collection_list"
+        }
+  ],
+  "presets": [{ "name": "Collection Categories" }]
+}
+{% endschema %}

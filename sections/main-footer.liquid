@@ -1,0 +1,200 @@
+{{ 'main-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="main-footer">
+  {% if section.settings.footer_logo %}
+    <div class="footer-logo">
+      <div class="page-width">
+        <img src="{{ section.settings.footer_logo | image_url }}" alt="Footer Logo">
+      </div>
+    </div>
+  {% endif %}
+  <div class="newsletter_wrapper_border">
+    <div class="page-width">
+      <div class="main-footer__newsletter-wrapper">
+        <div class="newsletter_wrapper-content">
+        <h2 class="main-footer__newsletter-heading">{{ section.settings.newsletter_heading }}</h2>
+            <p>{{ section.settings.newsletter_subheading }}</p>
+        </div>
+        {% form 'customer', id: 'FooterNewsletterForm' %}
+          <div class="main-footer__newsletter-inputs">
+            <input type="email" name="contact[email]" placeholder="example@gmail.com" required>
+            <button type="submit">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="12" viewBox="0 0 18 12" fill="none">
+                <path d="M11.3333 12C11.3333 11.364 11.9442 10.4143 12.5625 9.61714C13.3575 8.58857 14.3075 7.69114 15.3967 7.00628C16.2133 6.49286 17.2033 6 18 6M18 6C17.2033 6 16.2125 5.50714 15.3967 4.99371C14.3075 4.308 13.3575 3.41057 12.5625 2.38371C11.9442 1.58571 11.3333 0.634284 11.3333 -1.90735e-06M18 6L0.5 6" stroke="#121212"/>
+              </svg>
+            </button>
+          </div>
+        {% endform %}
+      </div>
+    </div>
+  </div>
+  <div class="page-width">
+    <div class="main-footer__blocks-wrapper">
+      {% for block in section.blocks %}
+        {% assign linklist = linklists[block.settings.menu_links] %}
+        <div class="footer-block" data-footer-block>
+          <div class="footer-menu-title">
+            <span>{{ block.settings.menu_title }}</span>
+            <span class="footer-toggle">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none">
+                <path d="M12 6.66667C11.364 6.66667 10.4143 6.05583 9.61714 5.4375C8.58857 4.6425 7.69114 3.6925 7.00628 2.60333C6.49286 1.78667 6 0.796667 6 5.24537e-07M6 5.24537e-07C6 0.796667 5.50714 1.7875 4.99371 2.60333C4.308 3.6925 3.41057 4.6425 2.38371 5.4375C1.58571 6.05583 0.634284 6.66667 -1.32453e-06 6.66667M6 5.24537e-07L6 17.5" stroke="#121212"/>
+              </svg>
+            </span>
+          </div>
+          <ul class="main-footer__linkslist">
+            {% for link in linklist.links %}
+              <li class="main-footer__linklist-item">
+                <a href="{{ link.url }}" class="main-footer__linklist-link">{{ link.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+      <div class="footer-block footer-block--social" data-footer-block>
+        <div class="footer-menu-title footer-menu-title--social">
+          <span>Socials</span>
+        </div>
+        <ul class="main-footer__linkslist">
+          {% render 'social-icons' %} 
+          {% comment %} {% if settings.social_facebook_link != blank %}
+            <li class="main-footer__linklist-item">
+              <a href="{{ settings.social_facebook_link }}" class="main-footer__linklist-link">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="40" rx="20" fill="#291B3B"/>
+                  <path d="M30 20C30 14.48 25.52 10 20 10C14.48 10 10 14.48 10 20C10 24.84 13.44 28.87 18 29.8V23H16V20H18V17.5C18 15.57 19.57 14 21.5 14H24V17H22C21.45 17 21 17.45 21 18V20H24V23H21V29.95C26.05 29.45 30 25.19 30 20Z" fill="#121212"/>
+                </svg>
+              </a>
+            </li>
+          {% endif %} {% endcomment %}
+          {% comment %} {% if settings.social_instagram_link != blank %}
+            <li class="main-footer__linklist-item">
+              <a href="{{ settings.social_instagram_link }}" class="main-footer__linklist-link">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="40" rx="20" fill="#291B3B"/>
+                  <path d="M15.8 10H24.2C27.4 10 30 12.6 30 15.8V24.2C30 25.7383 29.3889 27.2135 28.3012 28.3012C27.2135 29.3889 25.7383 30 24.2 30H15.8C12.6 30 10 27.4 10 24.2V15.8C10 14.2617 10.6111 12.7865 11.6988 11.6988C12.7865 10.6111 14.2617 10 15.8 10ZM15.6 12C14.6452 12 13.7295 12.3793 13.0544 13.0544C12.3793 13.7295 12 14.6452 12 15.6V24.4C12 26.39 13.61 28 15.6 28H24.4C25.3548 28 26.2705 27.6207 26.9456 26.9456C27.6207 26.2705 28 25.3548 28 24.4V15.6C28 13.61 26.39 12 24.4 12H15.6ZM25.25 13.5C25.5815 13.5 25.8995 13.6317 26.1339 13.8661C26.3683 14.1005 26.5 14.4185 26.5 14.75C26.5 15.0815 26.3683 15.3995 26.1339 15.6339C25.8995 15.8683 25.5815 16 25.25 16C24.9185 16 24.6005 15.8683 24.3661 15.6339C24.1317 15.3995 24 15.0815 24 14.75C24 14.4185 24.1317 14.1005 24.3661 13.8661C24.6005 13.6317 24.9185 13.5 25.25 13.5ZM20 15C21.3261 15 22.5979 15.5268 23.5355 16.4645C24.4732 17.4021 25 18.6739 25 20C25 21.3261 24.4732 22.5979 23.5355 23.5355C22.5979 24.4732 21.3261 25 20 25C18.6739 25 17.4021 24.4732 16.4645 23.5355C15.5268 22.5979 15 21.3261 15 20C15 18.6739 15.5268 17.4021 16.4645 16.4645C17.4021 15.5268 18.6739 15 20 15ZM20 17C19.2044 17 18.4413 17.3161 17.8787 17.8787C17.3161 18.4413 17 19.2044 17 20C17 20.7956 17.3161 21.5587 17.8787 22.1213C18.4413 22.6839 19.2044 23 20 23C20.7956 23 21.5587 22.6839 22.1213 22.1213C22.6839 21.5587 23 20.7956 23 20C23 19.2044 22.6839 18.4413 22.1213 17.8787C21.5587 17.3161 20.7956 17 20 17Z" fill="#121212"/>
+                </svg>
+              </a>
+            </li>
+          {% endif %}
+          {% if settings.social_twitter_link != blank %}
+            <li class="main-footer__linklist-item">
+              <a href="{{ settings.social_twitter_link }}" class="main-footer__linklist-link">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="40" rx="20" fill="#291B3B"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M29.5859 29.375L22.0885 18.4471L22.1013 18.4574L28.8613 10.625H26.6023L21.0954 17L16.7223 10.625H10.7977L17.7972 20.8276L17.7964 20.8267L10.4141 29.375H12.6731L18.7955 22.2824L23.6613 29.375H29.5859ZM15.8272 12.3295L26.3466 27.6705H24.5564L14.0285 12.3295H15.8272Z" fill="#121212"/>
+                </svg>
+              </a>
+            </li>
+          {% endif %}
+          {% if settings.social_youtube_link != blank %}
+            <li class="main-footer__linklist-item">
+              <a href="{{ settings.social_youtube_link }}" class="main-footer__linklist-link">
+                <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="40" height="40" rx="20" fill="#291B3B"/>
+                  <path d="M18 23L23.19 20L18 17V23ZM29.56 15.17C29.69 15.64 29.78 16.27 29.84 17.07C29.91 17.87 29.94 18.56 29.94 19.16L30 20C30 22.19 29.84 23.8 29.56 24.83C29.31 25.73 28.73 26.31 27.83 26.56C27.36 26.69 26.5 26.78 25.18 26.84C23.88 26.91 22.69 26.94 21.59 26.94L20 27C15.81 27 13.2 26.84 12.17 26.56C11.27 26.31 10.69 25.73 10.44 24.83C10.31 24.36 10.22 23.73 10.16 22.93C10.09 22.13 10.06 21.44 10.06 20.84L10 20C10 17.81 10.16 16.2 10.44 15.17C10.69 14.27 11.27 13.69 12.17 13.44C12.64 13.31 13.5 13.22 14.82 13.16C16.12 13.09 17.31 13.06 18.41 13.06L20 13C24.19 13 26.8 13.16 27.83 13.44C28.73 13.69 29.31 14.27 29.56 15.17Z" fill="#121212"/>
+                </svg>
+              </a>
+            </li>
+          {% endif %} {% endcomment %}
+        </ul>
+      </div>
+    </div>
+
+       <div class="footer__column footer__column--info">
+          <div class="footer__payment">
+            <span class="visually-hidden">{{ 'sections.footer.payment' | t }}</span>
+            <ul class="list list-payment" role="list">
+              {%- for type in shop.enabled_payment_types -%}
+                <li class="list-payment__item">
+                  {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
+                </li>
+              {%- endfor -%}
+            </ul>
+          </div>
+      </div>
+    <div class="main-footer__copyright">
+      {{ section.settings.copyright_text }}
+    </div>
+  </div>
+</footer>
+
+{% javascript %}
+  $(document).ready(function () {
+    $('.footer-menu-title:not(.footer-menu-title--social)').on('click', function () {
+      const $block = $(this).closest('[data-footer-block]');
+      const $list = $block.find('.main-footer__linkslist');
+      const $toggle = $(this).find('.footer-toggle');
+
+      if ($list.is(':visible')) {
+        $list.slideUp(200);
+        $toggle.html(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none"><path d="M12 11.3314C11.364 11.3314 10.4143 11.9422 9.61714 12.5605C8.58857 13.3555 7.69114 14.3055 7.00628 15.3947C6.49286 16.2114 6 17.2014 6 17.998M6 17.998C6 17.2014 5.50714 16.2105 4.99371 15.3947C4.308 14.3055 3.41057 13.3555 2.38371 12.5605C1.58571 11.9422 0.634284 11.3314 -1.32453e-06 11.3314M6 17.998L6 0.498046" stroke="#121212"></path></svg>'
+        );
+      } else {
+        $('.main-footer__linkslist').slideUp(200);
+        $('.footer-toggle').html(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none"><path d="M12 11.3314C11.364 11.3314 10.4143 11.9422 9.61714 12.5605C8.58857 13.3555 7.69114 14.3055 7.00628 15.3947C6.49286 16.2114 6 17.2014 6 17.998M6 17.998C6 17.2014 5.50714 16.2105 4.99371 15.3947C4.308 14.3055 3.41057 13.3555 2.38371 12.5605C1.58571 11.9422 0.634284 11.3314 -1.32453e-06 11.3314M6 17.998L6 0.498046" stroke="#121212"></path></svg>'
+        );
+        $list.slideDown(200);
+        $toggle.html(
+          '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="18" viewBox="0 0 12 18" fill="none"><path d="M12 6.66667C11.364 6.66667 10.4143 6.05583 9.61714 5.4375C8.58857 4.6425 7.69114 3.6925 7.00628 2.60333C6.49286 1.78667 6 0.796667 6 5.24537e-07M6 5.24537e-07C6 0.796667 5.50714 1.7875 4.99371 2.60333C4.308 3.6925 3.41057 4.6425 2.38371 5.4375C1.58571 6.05583 0.634284 6.66667 -1.32453e-06 6.66667M6 5.24537e-07L6 17.5" stroke="#121212"/></svg>'
+        );
+      }
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Main Footer",
+  "tag": "footer",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "newsletter_heading",
+      "label": "Newsletter Heading",
+      "default": "Join our\nmailing list"
+    },
+     {
+      "type": "textarea",
+      "id": "newsletter_subheading",
+      "label": "Newsletter Subheading"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_logo",
+      "label": "Footer Logo"
+    },
+    {
+      "type": "textarea",
+      "id": "copyright_text",
+      "label": "Copyright Text",
+      "default": "© 2025 Dent-xx. All rights reserved."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "footer_menu",
+      "name": "Footer Menu",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Menu Title"
+        },
+        {
+          "type": "link_list",
+          "id": "menu_links",
+          "label": "Menu"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Main Footer",
+      "category": "Footer"
+    }
+  ]
+}
+{% endschema %}

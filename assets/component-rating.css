@@ -1,0 +1,90 @@
+.product--no-media .rating-wrapper {
+  text-align: center;
+}
+
+.rating {
+  display: inline-block;
+  margin: 0;
+}
+
+.product .rating-star {
+  --letter-spacing: 0.8;
+  --font-size: 1.7;
+}
+
+.card-wrapper .rating-star {
+  --letter-spacing: 0.7;
+  --font-size: 1.4;
+}
+
+.rating-star {
+  --color-rating-star: rgb(var(--color-foreground));
+  --percent: calc(
+    (
+        var(--rating) / var(--rating-max) + var(--rating-decimal) * var(--font-size) /
+          (var(--rating-max) * (var(--letter-spacing) + var(--font-size)))
+      ) * 100%
+  );
+  letter-spacing: calc(var(--letter-spacing) * 1rem);
+  font-size: calc(var(--font-size) * 1rem);
+  line-height: 1;
+  display: inline-block;
+  font-family: Times;
+  margin: 0;
+}
+
+.rating-star::before {
+  content: '★★★★★';
+  background: linear-gradient(
+    90deg,
+    var(--color-rating-star) var(--percent),
+    rgba(var(--color-foreground), 0.15) var(--percent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.rating-count {
+  display: inline-block;
+  margin: 0;
+}
+
+/* Rating Section */
+.rating-section {
+  margin-bottom: 16px;
+ 
+}
+
+.stars {
+  margin-bottom: 8px;
+}
+
+.star {
+  color: #ff6b35;
+  font-size: 20px;
+  margin: 0 2px;
+  display: inline-block;
+  animation: starGlow 2s ease-in-out infinite alternate;
+  line-height: 1;
+    display: block;
+}
+
+
+.rating-text {
+ font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 1;
+    margin: 0;
+    display: block !important;
+}
+
+@media (forced-colors: active) {
+  .rating {
+    display: none;
+  }
+
+  .rating-text {
+    display: block;
+  }
+}

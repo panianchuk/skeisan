@@ -1,0 +1,241 @@
+.reviews-slider {
+  padding: 64px 0;
+}
+
+.reviews-slider {
+  overflow : hidden;
+}
+
+.rating_text {
+    display: flex;
+    gap: 2px;
+    font-weight: 500;
+    font-family: 'Inter';
+    align-items: center;
+    font-size: 14px;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+.rating_text span {
+  text-decoration: underline;
+    text-underline-offset: 4px;
+}
+.swiper-slide__wrapper {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+  background: #fff;
+}
+
+.swiper-slide__wrapper img {
+  max-width: 100%;
+  width: 100%;
+  display: block;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  min-height: 241px;
+  object-fit: cover;
+}
+
+.swiper-slide__content {
+  padding: 16px;
+}
+
+.swiper-slide__title {
+     color: #1D1D1B;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 100%;
+    letter-spacing: 0;
+    margin: 0;
+}
+.swiper-slide__desc {
+      color: #686869;
+    line-height: 1.2;
+    margin-top: 4px;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+.block_stars {
+      display: block;
+    margin-bottom: 12px;
+    line-height: 1;
+}
+}
+.swiper-slide__desc {
+  color: #121212;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+  margin: 16px 0;
+  min-height: 120px;
+}
+
+.swiper-slide__name {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 0 0;
+  margin: 0;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.swiper-slide__name span:first-child {
+  color: #1D1D1B;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 1;
+    letter-spacing: 0;
+    margin: 0;
+    font-family: 'Inter';
+}
+.swiper-sliders__arrows {
+  display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+.designation {
+  display: flex
+;
+    width: 100%;
+    font-size: 15px;
+    line-height: 1;
+    color: #686869;
+}
+
+.reviews-slider__heading {
+  text-align: center;
+}
+
+.reviews-swiper {
+  margin-top: 32px;
+  padding-bottom: 20px;
+}
+
+.swiper-slide__name span {
+  display: inline-flex;
+}
+
+.reviews-slider__cta {
+  text-align: left;
+  margin-top: 32px;
+}
+
+.reviews-slider > .page-width {
+  position: relative;
+}
+
+.swiper-button-next.custom-next {
+  right: 0 !important;
+}
+
+.swiper-button-prev.custom-prev {
+  left: 0 !important;
+}
+
+.reviews-slider__heading h2 {
+  margin: 0 0;
+  line-height: 100%;
+  letter-spacing: 0px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.reviews-slider__heading svg {
+  display: none;
+}
+
+.swiper-slide__name span svg path {
+  /* fill: #121212;
+  stroke: #121212; */
+}
+
+.reviews-slider__btn.btn.btn--primary {
+  color: #121212;
+  border: 1.5px solid #121212;
+  font-weight: 600;
+}
+
+.reviews-slider .swiper-button-next svg, 
+.reviews-slider .swiper-button-prev svg {
+  /* width: auto; */
+}
+
+.reviews-slider .swiper-button-next:after, 
+.reviews-slider .swiper-button-prev:after {
+  content: none;
+}
+
+.reviews-slider .swiper-button-next, 
+.reviews-slider .swiper-button-prev {
+  display: flex !important;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+      width: 60px;
+    height: 40px;
+    position: static;
+    border: 1px solid #212721;
+    margin: 0;
+        display: flex
+;
+    align-items: center;
+    justify-content: center;
+}
+.reviews-slider .swiper-button-next svg, 
+.reviews-slider .swiper-button-prev svg {
+  width : 20px;
+  height : 20px;
+}
+  
+.reviews-slider .swiper-slide {
+border-radius: 8px;
+    overflow: hidden;
+}
+
+@media (min-width: 767px) {
+  .reviews-slider__cta {
+    text-align: center;
+  }
+
+  .reviews-slider .reviews-swiper {
+    /* padding-bottom: 40px; */
+    padding-bottom: 12px;
+  }
+
+  .reviews-slider .swiper-button-prev.custom-prev {
+    left: 25px !important;
+  }
+
+  .reviews-slider .swiper-button-next.custom-next {
+    right: 35px !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .reviews-swiper {
+    padding-bottom: 56px;
+    overflow: visible;
+        padding-bottom: 12px;
+  }
+
+  .swiper-slide__desc {
+    font-size: 13px;
+  }
+ .swiper-slide__name span:first-child {
+   font-size: 13px;
+ }
+ 
+}
+
+
+
+
+
+
+
+
+

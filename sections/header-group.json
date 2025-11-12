@@ -1,0 +1,144 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "disabled": true,
+      "settings": {
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "color_scheme": "scheme-2065a8e7-ceee-41ef-8734-e6c10c925507",
+        "show_line_separator": false,
+        "show_social": false,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "custom_announce_ment_bar_DwX3wX": {
+      "type": "custom-announce-ment-bar",
+      "blocks": {
+        "logo_with_heading_Tjteet": {
+          "type": "logo_with_heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Bio Qualität",
+            "link": ""
+          }
+        },
+        "custom_liquid_wCdx8f": {
+          "type": "custom_liquid",
+          "settings": {
+            "liquid": "<div class=\"announcement-item\">\n<img src=\"https://cdn.shopify.com/s/files/1/0788/0595/8976/files/EU-organic_Logo-2000.png?v=1758047312\" alt=\"Bio Qualität\"/>\n<a href=\"#\">\nBio Qualität</a>\n</div>"
+          }
+        },
+        "custom_liquid_Tg4gDB": {
+          "type": "custom_liquid",
+          "settings": {
+            "liquid": "<div class=\"rating-section\">\n<a href=\"/pages/reviews\">\n\n      <div class=\"stars\">\n          <span class=\"star\">\n            <svg width=\"80\" height=\"16\" viewBox=\"0 0 80 16\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n<path d=\"M3.8835 14L4.96683 9.31666L1.3335 6.16666L6.1335 5.75L8.00016 1.33333L9.86683 5.75L14.6668 6.16666L11.0335 9.31666L12.1168 14L8.00016 11.5167L3.8835 14Z\" fill=\"#F68D2A\"></path>\n<path d=\"M19.8835 14L20.9668 9.31666L17.3335 6.16666L22.1335 5.75L24.0002 1.33333L25.8668 5.75L30.6668 6.16666L27.0335 9.31666L28.1168 14L24.0002 11.5167L19.8835 14Z\" fill=\"#F68D2A\"></path>\n<path d=\"M35.8835 14L36.9668 9.31666L33.3335 6.16666L38.1335 5.75L40.0002 1.33333L41.8668 5.75L46.6668 6.16666L43.0335 9.31666L44.1168 14L40.0002 11.5167L35.8835 14Z\" fill=\"#F68D2A\"></path>\n<path d=\"M51.8835 14L52.9668 9.31666L49.3335 6.16666L54.1335 5.75L56.0002 1.33333L57.8668 5.75L62.6668 6.16666L59.0335 9.31666L60.1168 14L56.0002 11.5167L51.8835 14Z\" fill=\"#F68D2A\"></path>\n<path d=\"M67.8835 14L68.9668 9.31666L65.3335 6.16666L70.1335 5.75L72.0002 1.33333L73.8668 5.75L78.6668 6.16666L75.0335 9.31666L76.1168 14L72.0002 11.5167L67.8835 14Z\" fill=\"#F68D2A\"></path>\n</svg>\n</span>\n</div>\n<p class=\"rating-text\">4.9/5 Verifizierte Bewertungen</p>\n</a>\n</div>"
+          }
+        },
+        "logo_with_heading_7UkrLQ": {
+          "type": "logo_with_heading",
+          "settings": {
+            "heading": "Versandkostenfrei ab 50€",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "logo_with_heading_Tjteet",
+        "custom_liquid_wCdx8f",
+        "custom_liquid_Tg4gDB",
+        "logo_with_heading_7UkrLQ"
+      ],
+      "name": "Sliding Logo Marquee",
+      "settings": {
+        "section_color_scheme": "scheme-429b606f-2589-4619-a0c3-3a6c3d184706"
+      }
+    },
+    "header": {
+      "type": "header",
+      "blocks": {
+        "mega_item_qPfp9g": {
+          "type": "mega_item",
+          "disabled": true,
+          "settings": {
+            "item_name": "",
+            "mega_menu_img_heading": "",
+            "mega_menu_btn_text": "",
+            "mega_menu_btn_link": ""
+          }
+        },
+        "mega_menu_products_Mi9hnA": {
+          "type": "Mega_menu_products",
+          "disabled": true,
+          "settings": {
+            "menu_item": "Tee",
+            "collection_list": [
+              "rooibos-tea",
+              "white-tea",
+              "exquisite-tea",
+              "black-tea",
+              "green-tea",
+              "herbal-tea",
+              "fruit-tea"
+            ]
+          }
+        },
+        "mega_menu_products_hXTc9R": {
+          "type": "Mega_menu_products",
+          "disabled": true,
+          "settings": {
+            "menu_item": "Soft packs",
+            "collection_list": [
+              "rooibos-tea",
+              "white-tea",
+              "exquisite-tea",
+              "black-tea",
+              "green-tea",
+              "herbal-tea",
+              "fruit-tea"
+            ]
+          }
+        }
+      },
+      "block_order": [
+        "mega_item_qPfp9g",
+        "mega_menu_products_Mi9hnA",
+        "mega_menu_products_hXTc9R"
+      ],
+      "settings": {
+        "logo_position": "middle-center",
+        "mobile_logo_position": "center",
+        "menu": "menu-v2",
+        "menu_type_desktop": "mega",
+        "sticky_header_type": "always",
+        "show_line_separator": false,
+        "color_scheme_index": "scheme-1",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "scheme-1",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "enable_customer_avatar": false,
+        "margin_bottom": 0,
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "custom_announce_ment_bar_DwX3wX",
+    "header"
+  ]
+}

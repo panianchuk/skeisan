@@ -1,0 +1,687 @@
+{{ 'bundles-builder.css' | asset_url | stylesheet_tag }}
+
+<style>
+    #shopify-section-{{ section.id }} .product .cards{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    #shopify-section-{{ section.id }} #ajaxSection{
+        height: 110dvh;
+        overflow: auto;
+        border-block-end: unset;
+        display: grid;
+        gap: 16px;
+        padding: 0px 12px 0px;
+    }
+.unit-price caption {
+  display : none !important;
+}
+    .product-top-info *{
+        font-family: var(--font-heading-family);
+            margin: 0;
+    text-decoration: none;
+    line-height: 1;
+    color: #1D1D1B;
+    FONT-SIZE: 15PX;
+    font-weight : 600;
+    }
+    @media(max-width: 1024px){
+        #shopify-section-{{ section.id }} #ajaxSection{
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+    }
+
+    @media(max-width: 768px){
+        #shopify-section-{{ section.id }} #ajaxSection{
+            height: 100%;
+            overflow: unset;
+        }
+    }
+</style>
+<div class="bundle-builder__wrapper">
+    <div class="bundle-builder__main">
+        <div class="bundle__builder">
+            <div class="bundle-builder__banner">
+                {% if section.settings.banner_type == 'image' %}
+                    <div class="bundle-builder-banner__image {% if section.settings.imageMobile != blank %} img_mb {% endif %}">
+                        {% if section.settings.image != blank %}
+
+                            <img src="{{ section.settings.image | img_url : 'master' }}" >
+                            <img src="{{ section.settings.imageMobile | img_url : 'master' }}" style="display:none;">
+                        {% else %}
+{{ 'lifestyle-1' | placeholder_svg_tag: 'svg-placeholder' }}
+                        {% endif %}
+                        {% comment %} <picture>
+                            {%- assign imgMobile = section.settings.imageMobile -%}
+                            {%- assign imgDesktop = section.settings.image -%}
+                    
+                            {%- if imgDesktop != nil or imgMobile != nil -%}
+                            {%- if imgMobile != nil -%}<source srcset="{{ imgMobile | image_url: width: 970 }} 1x, {{ imgMobile | image_url: width: 1280 }} 2x" media="(max-width:777px)">{%- endif -%}
+                            {%- liquid
+                                assign width = 2750
+                                assign widths = '750,1000,1280,1500,1750,2000,2500,2750'
+                                render 'global-img' img: imgDesktop, alt: section.settings.title, width: width, widths: widths
+                            -%}
+                            {%- else -%}
+                            {{ 'lifestyle-1' | placeholder_svg_tag: 'svg-placeholder' }}
+                            {%- endif -%}
+                        </picture> {% endcomment %}
+                    </div>
+                {% else %}
+                    <div class="bundle-builder-banner__video">
+                        {%- liquid
+                            assign vid = section.settings.video
+                            assign vidMobile = section.settings.videoMobile | default: nil 
+                
+                            assign loop = section.settings.videoLoop
+                            assign autoplay = section.settings.videoAutoplay
+                            assign muted = section.settings.videoMute
+                            assign clickToPlay = section.settings.clickToPlay
+                            assign controls = section.settings.playPause
+                
+                            render 'global-video' vid: vid, vidMobile: vidMobile, loop: loop, autoplay: autoplay, muted: muted, clickToPlay: clickToPlay, controls: controls
+                        -%}
+                    </div>
+                {% endif %}  
+                <div class="bundle-builder-banner__content">
+                    <div class="bundle-builder-banner-content__heading">
+                        <h1>{{ section.settings.banner_heading }}</h1>
+                    </div>
+                    <div class="bundle-builder-banner-content__offers">
+                        <div class="bundle-builder-banner-content__offer">
+                            <p>Pack of 2<br><span class="percent__off">10</span><span class="percent__subtitle"> OFF</span></p>
+                        </div>
+                        <div class="bundle-builder-banner-content__offer">
+                            <p>Pack of 3<br><span class="percent__off">15</span><span class="percent__subtitle"> OFF</span></p>
+                        </div>
+                        <div class="bundle-builder-banner-content__offer">
+                            <p>Pack of 4<br><span class="percent__off">20</span><span class="percent__subtitle"> OFF</span></p>
+                        </div>
+                        
+                    </div>
+                </div>    
+            </div>
+            <div class="bundle-builder__body">
+                <div class="bundle__products">
+                    {% assign collection = section.settings.bundle_collection %}
+                    {% if collection != blank %}
+                      <section class="product">
+                        <div id="ajaxSection" class="cards">
+                          {% for product in collection.products %}
+                              {%- render 'bundle-product-card' 
+                                , product: product
+                                , product_image_loading: 'lazy'
+                                , product_image_fetchpriority: 'auto'
+                                , section: section,
+                                , index: forloop.index0
+                              -%}
+                          {% endfor %}
+                        </div>
+                      </section>
+                    {% endif %}
+                </div>
+                <div class="bundle-builder__widget bundle-collapse">
+                    <div class="bundle-builder-header__button" onclick="toggleBundleWidget()">
+                        <h1>{{ section.settings.bundle_heading }}
+                            <span class="bundle-updates">(<span class="total-active-slots">0</span>/<span class="total-added-slots">2</span>)</span>
+                        </h1>
+                        <div class="bundle-progress__bar">
+                            <div class="progress-bar__progress">
+                                <span class="total-bundles">0</span><span>/</span><span class="added-bundles">24</span>
+                            </div>
+                        </div>
+                        <button type="button"> 
+                            <!-- <svg width="12" height="9" viewBox="0 0 12 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0.314049 7.72185C0.214497 7.6225 0.135516 7.5045 0.0816272 7.37459C0.0277385 7.24467 -2.69179e-09 7.10541 -2.63015e-09 6.96477C-2.5685e-09 6.82412 0.0277385 6.68486 0.0816272 6.55495C0.135516 6.42504 0.214497 6.30703 0.314049 6.20768L5.24314 1.27859C5.34249 1.17904 5.4605 1.10005 5.59041 1.04617C5.72032 0.992277 5.85958 0.964539 6.00023 0.964539C6.14087 0.964539 6.28013 0.992277 6.41005 1.04617C6.53996 1.10005 6.65796 1.17904 6.75731 1.27859L11.6864 6.20769C11.7858 6.30711 11.8647 6.42514 11.9185 6.55504C11.9723 6.68494 12 6.82416 12 6.96477C12 7.10537 11.9723 7.2446 11.9185 7.3745C11.8647 7.5044 11.7858 7.62243 11.6864 7.72185C11.587 7.82127 11.469 7.90014 11.3391 7.95394C11.2092 8.00775 11.0699 8.03545 10.9293 8.03545C10.7887 8.03545 10.6495 8.00775 10.5196 7.95394C10.3897 7.90014 10.2717 7.82127 10.1722 7.72185L5.99486 3.55521L1.82822 7.72185C1.4094 8.14066 0.722122 8.12992 0.314049 7.72185Z" fill="black"/>
+                            </svg> -->
+                            <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.327668 0.508521C0.229655 0.609388 0.152498 0.728596 0.100613 0.859319C0.0487279 0.990043 0.023134 1.12972 0.0252965 1.27034C0.027459 1.41097 0.0573354 1.54979 0.113215 1.67886C0.169095 1.80792 0.249881 1.9247 0.350949 2.02251L5.35525 6.87523C5.45612 6.97325 5.57532 7.0504 5.70605 7.10229C5.83677 7.15417 5.97644 7.17977 6.11707 7.17761C6.2577 7.17544 6.39652 7.14557 6.52559 7.08969C6.65465 7.03381 6.77143 6.95302 6.86924 6.85195L11.722 1.84765C11.8198 1.74671 11.8969 1.62748 11.9487 1.49677C12.0005 1.36606 12.026 1.22642 12.0239 1.08584C12.0217 0.945249 11.9919 0.806465 11.9361 0.677407C11.8803 0.548349 11.7996 0.431545 11.6987 0.333664C11.5977 0.235782 11.4785 0.158741 11.3478 0.106939C11.2171 0.0551356 11.0775 0.029585 10.9369 0.0317468C10.7963 0.0339087 10.6575 0.0637407 10.5284 0.119538C10.3994 0.175336 10.2826 0.256006 10.1847 0.356945L6.07187 4.58733L1.84166 0.48524C1.41645 0.0729167 0.729418 0.0942215 0.327668 0.508521Z" fill="black"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="bundle-builder__logic">
+                        <p>{{ section.settings.bundle_description }}</p>
+                      <div class="bundle-builder__buttons">  
+                        <label class="container">
+                            <input type="radio" checked="checked" name="radio" onclick="slotUpdate()" data-pack="2" data-discount="10" autocomplete="off">
+                            <div class="checkmark">
+                                <p>Pack of 2<br><span>10% OFF</span></p>
+                            </div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="radio" onclick="slotUpdate()" data-pack="3" data-discount="15" autocomplete="off">
+                            <div class="checkmark">
+                                <p>Pack of 3<br><span>15% OFF</span></p>
+                            </div>
+                        </label>
+                        <label class="container">
+                            <input type="radio" name="radio" onclick="slotUpdate()" data-pack="4" data-discount="20" autocomplete="off">
+                            <div class="checkmark">
+                                <p>Pack of 4<br><span>20% OFF</span></p>
+                            </div>
+                        </label>
+                       
+                      </div>
+                      <div class="bundle-builder-products__added">
+                        <div class="bundle-builder-product__selected product-slot__1 active available" data-slot="1" >
+                            <div class="remove-item-button" onclick="removeBundleItem()"><svg class="icon icon-close" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.40449L1.40449 0L7.49064 6.08614L13.5955 0L15 1.40449L8.89513 7.49064L15 13.5955L13.5955 15L7.49064 8.89513L1.40449 15L0 13.5955L6.08614 7.49064L0 1.40449Z" fill="#212721"></path></svg></div>
+                            <img class="plus__icon" src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/gg_add.svg?v=1755814489">
+                        </div>
+                        <div class="bundle-builder-product__selected product-slot__2 active available" data-slot="2" >
+                            <div class="remove-item-button" onclick="removeBundleItem()"><svg class="icon icon-close" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.40449L1.40449 0L7.49064 6.08614L13.5955 0L15 1.40449L8.89513 7.49064L15 13.5955L13.5955 15L7.49064 8.89513L1.40449 15L0 13.5955L6.08614 7.49064L0 1.40449Z" fill="#212721"></path></svg></div>
+                            <img class="plus__icon" src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/gg_add.svg?v=1755814489">
+                        </div>
+                        <div class="bundle-builder-product__selected product-slot__3 available" data-slot="3" >
+                            <div class="remove-item-button" onclick="removeBundleItem()"><svg class="icon icon-close" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.40449L1.40449 0L7.49064 6.08614L13.5955 0L15 1.40449L8.89513 7.49064L15 13.5955L13.5955 15L7.49064 8.89513L1.40449 15L0 13.5955L6.08614 7.49064L0 1.40449Z" fill="#212721"></path></svg></div>
+                            <img class="plus__icon" src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/gg_add.svg?v=1755814489">
+                        </div>
+                        <div class="bundle-builder-product__selected product-slot__4 available" data-slot="4" >
+                            <div class="remove-item-button" onclick="removeBundleItem()"><svg class="icon icon-close" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.40449L1.40449 0L7.49064 6.08614L13.5955 0L15 1.40449L8.89513 7.49064L15 13.5955L13.5955 15L7.49064 8.89513L1.40449 15L0 13.5955L6.08614 7.49064L0 1.40449Z" fill="#212721"></path></svg></div>
+                            <img class="plus__icon" src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/gg_add.svg?v=1755814489">
+                        </div>
+                        <div class="bundle-builder-product__selected product-slot__5 available" data-slot="5" >
+                            <div class="remove-item-button" onclick="removeBundleItem()"><svg class="icon icon-close" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 1.40449L1.40449 0L7.49064 6.08614L13.5955 0L15 1.40449L8.89513 7.49064L15 13.5955L13.5955 15L7.49064 8.89513L1.40449 15L0 13.5955L6.08614 7.49064L0 1.40449Z" fill="#212721"></path></svg></div>
+                            <img class="plus__icon" src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/gg_add.svg?v=1755814489">
+                        </div>
+                        <div class="bundle-builder-product__message" >
+                            <img class="plus__icon" src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/gg_add.svg?v=1755814489">
+                            <p>Add 1 more to save more</p>
+                        </div>
+                      </div>
+
+                    </div>
+                    <div class="total-and-atc">
+                        <div class="total-price">
+                            <p><span>Total:</span><span class="actual-price"></span><span class="discounted-price">$0.00</span></p>
+                            <p>You are saving <span class="persent-off">10</span>% off</p>
+                        </div>
+                        <div class="bundle__atc">
+                            <button class="button btn  btn--fill  w-100 text-upper" disabled="disabled" onclick="addBundleInCart()">ADD 2 MORE</button>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+
+
+
+    // let scroll_box = document.querySelector("body");
+    // scroll_box.setAttribute("onscroll", "scrollBundles()");
+    // function scrollBundles(){
+    //     let target = document.querySelector('.bundle-builder__widget');
+    //     if(!target.classList.contains('bundle-collapse')){
+    //         target.classList.add('bundle-collapse');
+    //     }
+    // }
+
+    // document.addEventListener("DOMContentLoaded", () => {
+    //     let bundle_products = document.querySelectorAll(".product-card-collection-bundle__item a");
+    //     bundle_products.forEach((productItem) => {
+    //         productItem.addEventListener("touchstart", imageTouchAddBundle);
+    //         productItem.addEventListener("touchend", imageRemoveFocus);
+    //     });
+    // });
+    
+
+    function updateProgressBar(){
+        let total_active_slots = document.querySelectorAll(".bundle-builder-product__selected.active");
+        let total_occupied_slots =  document.querySelectorAll(".bundle-builder-product__selected.active:not(.available)");
+        let progress = (total_occupied_slots.length/total_active_slots.length)*100;
+        let progress_bar = document.querySelector('.progress-bar__progress');
+        let total_slots = document.querySelector('.total-bundles');
+        let added_slots = document.querySelector('.added-bundles');
+        let total_slots_2 = document.querySelector('.total-active-slots');
+        let added_slots_2 = document.querySelector('.total-added-slots');
+        total_slots.innerHTML = total_occupied_slots.length;
+        added_slots.innerHTML = total_active_slots.length;
+        total_slots_2.innerHTML = total_occupied_slots.length;
+        added_slots_2.innerHTML = total_active_slots.length;
+        if(progress){
+            progress_bar.style.opacity = '1';
+        }else{
+            progress_bar.style.opacity = '0';
+        }
+        progress_bar.style.width =  progress + '%';
+    }
+
+    function toggleBundleWidget(){
+        let target = this.event.target.closest('.bundle-builder__widget');
+        if(target.classList.contains('bundle-collapse')){
+            target.classList.remove('bundle-collapse');
+        }else{
+            target.classList.add('bundle-collapse');
+        }
+
+    }
+
+    
+
+    function showMessageSlot(){
+        let available_slot = document.querySelector(".bundle-builder-product__selected.active.available");
+        
+        if(!available_slot){
+            let bundle_products = document.querySelectorAll('.bundle-builder-product__selected:not(.available)');
+            
+            if(bundle_products.length < 4){
+                document.querySelector(".bundle-builder-product__message").classList.add('message-slot');
+            }else{
+                document.querySelector(".bundle-builder-product__message").classList.remove('message-slot');
+            }
+        }else{
+            document.querySelector(".bundle-builder-product__message").classList.remove('message-slot');
+        }
+    }
+   
+    function updateTotalPrice(){
+        let total_price = 0;
+        let bundle_products = document.querySelectorAll('.bundle-builder-product__selected:not(.available)');
+        
+        for(var i=0; i<bundle_products.length; ++i){
+            let price = parseFloat(bundle_products[i].querySelector('.cartPriceAdd span').innerHTML.replace("€", ""));
+            total_price += price;
+        }
+
+        let current_discount = document.querySelector(`.bundle-builder__buttons input:checked`).getAttribute('data-discount');
+        
+        let final_price = (1 - current_discount/100) * total_price;
+
+        let actual_price = document.querySelector('.actual-price');
+        let discounted_price = document.querySelector('.discounted-price');
+        actual_price.innerHTML = "$" + total_price.toLocaleString("en", { minimumFractionDigits: 2 });
+        discounted_price.innerHTML ="$" + final_price.toLocaleString("en", { minimumFractionDigits: 2 });
+
+        if(total_price == 0){
+            actual_price.innerHTML = "";
+        }
+    }
+
+    function updateAtc(){
+        let available_slots = document.querySelectorAll(".bundle-builder-product__selected.active.available");
+        let atc_btn_wrapper = document.querySelector('.bundle__atc');
+        let atc_btn = document.querySelector('.bundle__atc button');
+        if(available_slots.length == 0){
+            atc_btn.removeAttribute("disabled");
+            atc_btn_wrapper.classList.add('active');
+            atc_btn.innerHTML = `PROCEED TO CHECKOUT`;
+        }else{
+            atc_btn.setAttribute("disabled", "disabled");
+            atc_btn_wrapper.classList.remove('active');
+            atc_btn.innerHTML = `ADD ${available_slots.length} MORE`; 
+        }
+    }
+
+    function slotUpdate(){
+        let pack_no = Number(this.event.target.getAttribute('data-pack'));
+        let discount = Number(this.event.target.getAttribute('data-discount'));
+        let persent_off = document.querySelector(".persent-off");
+        persent_off.innerHTML = discount;
+        for(var i=1; i<=5;++i){
+            let slot = document.querySelector(`.product-slot__${i}`);
+            if(i <= pack_no){
+                slot.classList.add('active'); 
+            }else{
+                slot.classList.remove('active');
+                
+                if(slot.querySelector('.product-card__bundle')){
+                    let product_id = slot.querySelector('input[name="product-id"]').value;
+                    let find_product = document.querySelector(`#ajaxSection input[value='${product_id}']`).closest('.product-added');
+                    let current_qty = find_product.getAttribute('data-qty');
+                    current_qty = Number(current_qty.replace("Qty: ", ""));
+                    if(current_qty == 1){
+                        find_product.classList.remove('product-added');
+                        find_product.removeAttribute('data-qty');
+                    }else{
+                        current_qty = current_qty -1;
+                        find_product.setAttribute('data-qty', "Qty: "+current_qty);
+                    }
+                }
+                slot.querySelector('.product-card__bundle')?.remove();
+                slot.classList.add('available');
+            }
+        }
+        updateTotalPrice();
+        updateAtc();
+        showMessageSlot();
+        updateProgressBar();
+    }
+
+    function addProductInSlot(){
+        let product_card = this.event.target.closest('.product-card__bundle');
+        
+        let available_slot = document.querySelector(".bundle-builder-product__selected.active.available");
+        let clone_product_card = product_card.cloneNode( true );
+        // let img_a = clone_product_card.querySelector('.card-image a');
+        // img_a.removeAttribute('onclick');
+        clone_product_card.querySelector('select').setAttribute('onchange', 'bundleVariantUpdate()');
+        clone_product_card.querySelector('select').options[product_card.querySelector('select').options.selectedIndex].selected='selected';
+        let selected_option_name = clone_product_card.querySelector('select').options[product_card.querySelector('select').options.selectedIndex].innerHTML;
+        // clone_product_card.querySelector('button .clipper').innerHTML = selected_option_name;
+        let proceedAdding = true;
+        if(!available_slot){
+            let current_pack = document.querySelector(".bundle-builder__buttons input:checked");
+            let next_pack_no = Number(current_pack.getAttribute("data-pack")) + 1;
+            let next_pack = document.querySelector(`.bundle-builder__buttons input[data-pack='${next_pack_no}']`);
+            if(next_pack){
+                next_pack.click();
+                available_slot = document.querySelector(".bundle-builder-product__selected.active.available");
+            }else{
+                proceedAdding = false;
+            }
+        }
+        if(proceedAdding){
+            clone_product_card.classList.remove('product-added');
+            available_slot.appendChild(clone_product_card);
+            available_slot.classList.remove('available');
+            product_card.classList.add('product-added');
+            let added_qty = product_card.getAttribute('data-qty');
+            if(added_qty){
+                added_qty = added_qty.replace("Qty: ", "");
+                added_qty = Number(added_qty) + 1;
+                product_card.setAttribute('data-qty', "Qty: "+added_qty);
+            }else{
+                product_card.setAttribute('data-qty', "Qty: 1");
+            }
+        }
+
+        updateTotalPrice();
+        updateAtc();
+        showMessageSlot();
+        updateProgressBar();
+    }
+
+    function removeBundleItem(){
+        let slot = this.event.target.closest('.bundle-builder-product__selected');
+        let bundleItem = slot.querySelector('.product-card__bundle');
+        let product_id = bundleItem.querySelector('input[name="product-id"]').value;
+        let find_product = document.querySelector(`#ajaxSection input[value='${product_id}']`).closest('.product-added');
+        let current_qty = find_product.getAttribute('data-qty');
+        current_qty = Number(current_qty.replace("Qty: ", ""));
+        if(current_qty == 1){
+            find_product.classList.remove('product-added');
+            find_product.removeAttribute('data-qty');
+        }else{
+            current_qty = current_qty -1;
+            find_product.setAttribute('data-qty', "Qty: "+current_qty);
+        }
+
+        bundleItem.remove();
+        slot.classList.add('available');
+        let current_slot_num = Number(slot.getAttribute("data-slot"));
+        for(let i=current_slot_num ;i<=4 ;++i){
+            current_slot_num = Number(slot.getAttribute("data-slot"));
+            let next_slot_num = current_slot_num + 1;
+            if(next_slot_num <= 4){
+                let next_slot = document.querySelector(`.product-slot__${next_slot_num}`)
+                if(!next_slot.classList.contains('available')){
+                    let slot_product = next_slot.querySelector(".product-card__bundle");
+                    let clone_product_card = slot_product.cloneNode( true );
+                    slot_product.remove();
+                    slot.appendChild(clone_product_card);
+                    slot.classList.remove('available');
+                    next_slot.classList.add('available');
+                }else{
+                    break;
+                }
+
+                slot = next_slot;
+            }
+        }
+
+        updateTotalPrice();
+        updateAtc();
+        showMessageSlot();
+        updateProgressBar();
+    }
+
+    function bundleVariantUpdate(){
+        let select = this.event.target;
+        let selected_index = select.options.selectedIndex;
+        let selected_option = select.options[selected_index];
+        let price = selected_option.getAttribute("data-price");
+        console.log("price" , price)
+        // let price_element = select.closest("x-grid").querySelector('.cartPriceAdd span');
+        // price_element.innerHTML = price;
+        updateTotalPrice();
+        updateAtc();
+    }
+
+    // function imageRemoveFocus(event){
+    //     if(event.type == "touchend"){
+           
+    //     }
+    // }
+
+    // function imageTouchAddBundle(event){
+    //     if(event.type == "touchstart"){
+    //         let target = event.target.closest('.product-card__bundle');
+    //         target.querySelector('button[name="add"]')?.click();
+    //     }
+    // }
+
+    function imageClickAddBundle(){
+        if(this.event.type=="click"){
+            let target = this.event.target.closest('.product-card__bundle');
+            target.querySelector('button[name="add"]')?.click();
+        }
+    }
+
+   async function addBundleInCart(){
+        let all_variants = document.querySelectorAll('.bundle-builder-product__selected.active:not(.available) .productSelect');
+        let variants = {};
+        for(var i=0;i<all_variants.length;++i){
+            if(variants[all_variants[i].value]){
+                variants[all_variants[i].value] = Number(variants[all_variants[i].value]) + 1;
+            }else{
+                variants[all_variants[i].value] = 1;
+            }
+            
+        }
+        
+        let items = [];
+        
+        for(const key in variants){
+            items.push({
+                'id': key,
+                'quantity': variants[key]
+            });
+        }
+
+        let formData = {
+            'items': items
+        };
+
+         console.log(formData);
+        
+        document.querySelector(".bundle__atc.active button").innerHTML = "PROCESSING ...";
+// Build cart string like: "41114976420034:1,45094589006018:1"
+const cartParams = items.map(item => `${item.id}:${item.quantity}`).join(',');
+
+// ===== fixing issue of quanitity ======
+const digitSum = items.reduce((total, item) => {
+  const quantityDigits = item.quantity.toString().split('');
+  const sumOfDigits = quantityDigits.reduce((sum, digit) => sum + Number(digit), 0);
+  return total + sumOfDigits;
+}, 0);
+
+// Optional: set discount dynamically
+const discountCode = `Bundle-power-of-${digitSum}`;
+console.log("discountCode" ,  discountCode)
+
+// Redirect to Shopify checkout
+window.location.href = `/cart/${cartParams}?discount=${discountCode}`;
+
+return;
+     
+        // await fetch(window.Shopify.routes.root + 'cart/add.js', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //         body: JSON.stringify(formData)
+        //     })
+        //     .then(response => {
+        //         return response.json();
+        //     }).then(response => {
+        //       let addedItemss = document.querySelectorAll('.bundle-builder-products__added .active');
+        //       let URLWithDiscount = '';
+              
+        //       const count = addedItemss.length;
+        //       console.log(count);
+              
+        //       // if (count >= 2 && count <= 5) {
+        //       //   URLWithDiscount = `/checkout?discount=Bundle-power-of-${count}`;
+        //       //   window.location.href = URLWithDiscount;
+        //       // } else {
+        //       //   window.location.href = "/checkout";
+        //       // }
+        //     })
+        //     .catch((error) => {
+        //         console.error('Error:', error);
+        //     });
+
+        // document.querySelector(".bundle__atc.active button").innerHTML = "PROCEED TO CHECKOUT";
+
+    }
+
+</script>
+<script>
+  document.querySelectorAll('.productSelect').forEach(select => {
+  select.addEventListener('change', function () {
+    const selectedOption = this.options[this.selectedIndex];
+    const newPrice = selectedOption.getAttribute('data-price');
+console.log("newPrice" , newPrice)
+    // Find closest product card and update its price
+    const productCard = this.closest('product-card');
+    if (productCard) {
+      const priceSpan = productCard.querySelector('.product-price_top .price .price-item--regular');
+      if (priceSpan && newPrice) {
+        priceSpan.innerHTML = newPrice;
+      }
+    }
+  });
+});
+
+</script>
+                              
+{% schema %}
+{
+  "name": "Bundle Builder",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "header",
+        "content": "Banner Section"
+    },
+    {
+        "type": "select",
+        "id": "banner_type",
+        "label": "Banner Type",
+        "options": [
+            {
+            "value": "image",
+            "label": "Image"
+            },
+            {
+            "value": "video",
+            "label": "Video"
+            }
+        ],
+        "default": "image"
+    },
+    {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Banner Desktop Image",
+        "info": "2000 x 1110px recommended"
+    },
+    {
+        "type": "image_picker",
+        "id": "imageMobile",
+        "label": "Banner Mobile Image",
+        "info": "970 x 1110px recommended"
+    },
+    {
+        "type": "video",
+        "id": "video",
+        "label": "Banner Video Desktop",
+        "info": "Videos with a 16:9 aspect ratio are recommended."
+    },
+    {
+        "type": "video",
+        "id": "videoMobile",
+        "label": "Banner Video Mobile",
+        "info": "Videos with a 9:16 aspect ratio are recommended."
+    },
+    {
+        "type": "checkbox",
+        "id": "videoLoop",
+        "label": "Loop",
+        "default": false
+    },
+    {
+        "type": "checkbox",
+        "id": "videoMute",
+        "label": "Mute",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "videoAutoplay",
+        "label": "Autoplay",
+        "default": false,
+        "info": "Autoplay is not recommended. It is not supported on mobile devices and disabled by default in many browsers."
+    },
+    {
+        "type": "checkbox",
+        "id": "clickToPlay",
+        "label": "Enable click to play",
+        "info": "Click of the video container will toggle play/pause.",
+        "default": true
+    },
+    {
+        "type": "checkbox",
+        "id": "playPause",
+        "label": "Enable play/pause button",
+        "default": true
+    },
+    {
+        "type": "inline_richtext",
+        "id": "banner_heading",
+        "default": "Bundle Builder",
+        "label": "Banner Heading"
+    },
+    {
+        "type": "header",
+        "content": "Bundle Builder"
+    },
+    {
+        "type": "collection",
+        "id": "bundle_collection",
+        "label": "Bundle Collection"
+    },
+    {
+        "type": "inline_richtext",
+        "id": "bundle_heading",
+        "default": "YOUR BUNDLE",
+        "label": "Bundle Heading"
+    },
+    {
+        "type": "inline_richtext",
+        "id": "bundle_description",
+        "default": "Buy more, and save more",
+        "label": "Bundle Description"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Builder"
+    }
+  ]
+}
+{% endschema %}

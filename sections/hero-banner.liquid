@@ -1,0 +1,95 @@
+{{ 'hero-banner.css' | asset_url | stylesheet_tag }}
+
+<section class="hero-banner gradient color-{{ section.settings.section_color_scheme }}">
+  {% if section.settings.desk_img != blank %}
+    <div class="hero-banner__media">
+      <picture>
+        {% if section.settings.mobile_img != blank %}
+          <source media="(max-width:767px)" srcset="{{ section.settings.mobile_img | image_url }}">
+        {% endif %}
+        <img src="{{ section.settings.desk_img | image_url }}" alt="{{ section.settings.desk_img.alt }}">
+      </picture>
+    </div>
+  {% endif %}
+  <div class="hero-banner__container">
+    <div class="hero-banner__content">
+      {% if section.settings.heading != blank %}
+        <h1 class="hero-banner__heading">{{ section.settings.heading }}</h1>
+      {% endif %}
+      {% if section.settings.desc != blank %}
+        <p class="hero-banner__desc">{{ section.settings.desc }}</p>
+      {% endif %}
+      {% if section.settings.btn_label != blank %}
+        <div class="hero-banner__cta">
+          <a href="{{ section.settings.btn_url }}" class="hero-banner__btn btn btn_custom btn_custom--white">{{ section.settings.btn_label }}</a>
+        </div>
+      {% endif %}
+      {% if section.settings.bottom_text != blank %}
+        <a class="hero-banner__bottom-text" href="#pdp__slider">{{ section.settings.bottom_text }}
+        <svg width="20px" height="20px" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+        <path d="M37 18L25 30L13 18" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        </a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "image_picker",
+      "label": "Desktop Image",
+      "id": "desk_img"
+    },
+    {
+      "type": "image_picker",
+      "label": "Mobile Image",
+      "id": "mobile_img"
+    },
+    {
+      "type": "textarea",
+      "label": "Heading",
+      "id": "heading"
+    },
+    {
+      "type": "textarea",
+      "label": "Description",
+      "id": "desc"
+    },
+    {
+      "type": "text",
+      "label": "Bottom Text",
+      "id": "bottom_text"
+    },
+    {
+      "type": "text",
+      "label": "Button Label",
+      "id": "btn_label"
+    },
+    {
+      "type": "text",
+      "label": "Button URL",
+      "id": "btn_url"
+    },
+    {
+      "type": "header",
+      "content": "Color Scheme"
+    },
+    {
+      "type": "color_scheme",
+      "id": "section_color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}

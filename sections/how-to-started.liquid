@@ -1,0 +1,281 @@
+{% comment %}
+  Section: Why We Started
+  Purpose: Brand story and origin section with hero imagery
+{% endcomment %}
+
+<section class="skeisan-story-section" id="section-{{ section.id }}">
+  <div class="page-width">
+    {% if section.settings.skeisan_story_heading != blank %}
+      <h2 class="skeisan-story-main-heading">{{ section.settings.skeisan_story_heading }}</h2>
+    {% endif %}
+
+    <div class="skeisan-story-content">
+      <div class="skeisan-story-images">
+        {% if section.settings.skeisan_story_image_1 != blank %}
+          <div class="skeisan-story-image skeisan-story-image-left">
+            <img
+              src="{{ section.settings.skeisan_story_image_1 | img_url: '400x500' }}"
+              alt="{{ section.settings.skeisan_story_image_1.alt | default: 'Brand Story Image' }}"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+
+        {% if section.settings.skeisan_story_image_1 == blank and section.settings.skeisan_story_image_2 == blank %}
+          <div class="skeisan-story-placeholder">
+            <span>Story Images</span>
+          </div>
+        {% endif %}
+      </div>
+
+      <div class="skeisan-story-text">
+        {% if section.settings.skeisan_story_subheading != blank %}
+          <h3 class="skeisan-story-subheading">{{ section.settings.skeisan_story_subheading }}</h3>
+        {% endif %}
+
+        {% if section.settings.skeisan_story_description != blank %}
+          <p class="skeisan-story-description">{{ section.settings.skeisan_story_description }}</p>
+        {% endif %}
+
+        {% if section.settings.skeisan_story_button_text != blank
+          and section.settings.skeisan_story_button_url != blank
+        %}
+          <div class="skeisan-story-button-wrapper">
+            <a
+              href="{{ section.settings.skeisan_story_button_url }}"
+              class="skeisan-story-button"
+              {% if section.settings.skeisan_story_button_target %}
+                target="_blank" rel="noopener"
+              {% endif %}
+            >
+              {{ section.settings.skeisan_story_button_text }}
+              <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.5 7L9.25 0.75L8.36875 1.63125L13.1062 6.375L0.5 6.375L0.5 7.625L13.1062 7.625L8.36875 12.3687L9.25 13.25L15.5 7Z" fill="white"/>
+              </svg>
+            </a>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+    .skeisan-story-section {
+      padding: 64px 0;
+
+      position: relative;
+      overflow: hidden;
+    }
+
+
+
+    .skeisan-story-main-heading {
+      text-align: center;
+      font-size: 5.6rem;
+      font-weight: 600;
+      color: #1D1D1B;
+      margin-bottom: 60px;
+      letter-spacing: 0;
+      line-height: 1.1;
+      margin: 0;
+      max-width: 314px;
+      margin-inline: auto;
+      margin-bottom: 20px;
+    }
+
+
+
+    .skeisan-story-images {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .skeisan-story-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .skeisan-story-placeholder {
+      width: 400px;
+      height: 300px;
+      background: rgba(255, 255, 255, 0.5);
+      border: 2px dashed #ccc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 20px;
+      color: #666;
+      font-size: 1.2rem;
+      font-weight: 500;
+    }
+    .skeisan-story-image.skeisan-story-image-left {
+      width: 580px;
+  }
+
+    .skeisan-story-subheading {
+          font-size: 4rem;
+      color: #1D1D1B;
+      margin-bottom: 25px;
+      line-height: 1.2;
+      margin: 0;
+      margin-top: 24px;
+      max-width: 480px;
+      margin-inline: auto;
+      text-align: center;
+      opacity: 1;
+      letter-spacing: 0px;
+    }
+
+    .skeisan-story-description {
+          font-size: 14px;
+      line-height: 1.7;
+      color: #686869;
+      /* margin-bottom: 35px; */
+      font-weight: 400;
+      line-height: 1.5;
+      max-width: 424px;
+      text-align: center;
+      margin-inline: auto;
+      margin-block: 0;
+      margin-top: 12px;
+      letter-spacing: 0px;
+    }
+
+    .skeisan-story-button-wrapper {
+      margin-top: 40px;
+    }
+
+    .skeisan-story-button {
+      display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: #1D1D1B;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    /* box-shadow: 0 8px 25px rgba(44, 44, 44, 0.3); */
+    letter-spacing: 1px;
+    font-family: var(--font-heading-family);
+    }
+.skeisan-story-button-wrapper {
+ text-align : center;
+}
+
+    /* Mobile Responsive */
+    @media (max-width: 968px) {
+      .skeisan-story-content {
+        grid-template-columns: 1fr;
+        gap: 60px;
+        text-align: center;
+      }
+
+    }
+
+    @media (max-width: 768px) {
+      .skeisan-story-section {
+        padding: 60px 0;
+      }
+
+      .skeisan-story-main-heading {
+        font-size: 3.2rem;
+        margin-bottom: 15px;
+      }
+
+      .skeisan-story-subheading {
+        font-size: 3.2rem;
+      }
+
+      .skeisan-story-description {
+        font-size: 1.3rem;
+      
+      }
+
+    }
+
+ -
+</style>
+
+{% schema %}
+{
+  "name": "SKEISAN - Why We Started",
+  "tag": "section",
+  "class": "skeisan-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "skeisan_story_heading",
+      "label": "Main Heading",
+      "default": "WHY WE STARTED."
+    },
+    {
+      "type": "text",
+      "id": "skeisan_story_subheading",
+      "label": "Sub Heading",
+      "default": "BORN IN BERLIN. BUILT ON CLARITY. WE WANTED TEA THAT WASN'T STUCK IN TRADITION."
+    },
+    {
+      "type": "textarea",
+      "id": "skeisan_story_description",
+      "label": "Story Description",
+      "default": "Something minimal, modern, and meaningful. We created blends that reflect how we live now — with design, purity, and a refusal to compromise."
+    },
+    {
+      "type": "header",
+      "content": "Story Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "skeisan_story_image_1",
+      "label": "Story Image 1 (Left)",
+      "info": "Recommended size: 400x500px"
+    },
+    {
+      "type": "image_picker",
+      "id": "skeisan_story_image_2",
+      "label": "Story Image 2 (Right)",
+      "info": "Recommended size: 500x600px"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action Button"
+    },
+    {
+      "type": "text",
+      "id": "skeisan_story_button_text",
+      "label": "Button Text",
+      "default": "LEARN MORE ABOUT US"
+    },
+    {
+      "type": "url",
+      "id": "skeisan_story_button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "skeisan_story_button_target",
+      "label": "Open link in new tab",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    }
+  ],
+  "presets": [
+    {
+      "name": "SKEISAN - Why We Started"
+    }
+  ]
+}
+{% endschema %}

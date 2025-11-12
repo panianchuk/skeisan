@@ -1,0 +1,600 @@
+{{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
+
+{% assign product = section.settings.product %}
+
+<div
+  id="MainProduct-{{ section.id }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  data-section="{{ section.id }}"
+  data-product-id="{{ product.id }}"
+  data-update-url="true"
+  data-url="{{ product.url }}"
+  {% if section.settings.image_zoom == 'hover' %}
+    data-zoom-on-hover
+  {% endif %}
+>
+  {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
+  {{ 'component-slider.css' | asset_url | stylesheet_tag }}
+
+  {% assign variant_images = product.images %}
+
+  <div class="page-width">
+    <div class="bundle-product product product--medium product--left product--thumbnail_slider product--mobile-show grid grid--1-col grid--2-col-tablet">
+      <div class="grid__item product__media-wrapper">
+        {% render 'product-media-gallery', variant_images: variant_images, product: product %}
+      </div>
+      <div class="product__info-wrapper grid__item">
+        <div
+          class="klaviyo-star-rating-widget"
+          data-id="{{product.id}}"
+          data-product-title="{{product.title}}"
+          data-product-type="{{product.type}}"
+        ></div>
+
+        <div class="product__title" {{ block.shopify_attributes }}>
+          <h1>{{ product.title | escape }}</h1>
+        </div>
+        {% if product.metafields.custom.card_tag != blank %}
+          <p class="card-tag">{{ product.metafields.custom.card_tag }}</p>
+        {% elsif product.metafields.custom.short_description != blank %}
+          <div class="product__description rte quick-add-hidden">
+            {{ product.metafields.custom.short_description | metafield_tag }}
+          </div>
+        {% endif %}
+        {% if product.description != blank %}
+          <div class="varaint__descriptions">
+            {{ product.description }}
+          </div>
+        {% endif %}
+
+        <div
+          class="bundle-builder__cards"
+          id="btn-{{ forloop.index }}"
+          data-product-numbers="{{ block.settings.product_numbers }}"
+          data-saving="{{ block.settings.saving | default: 0 }}"
+        >
+          {% assign cardsNumber = 3 %}
+          {% for i in (1..cardsNumber) %}
+            <div class="place_holder-card">
+              <img
+                src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/bundle-upload.svg?v=1757367027"
+                alt="upload-image"
+              >
+              <p style="display: none;">
+                Select {% if i == 1 %}1st Rack{% else %}{{ i }}nd Rack{% endif %}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+        <div id="bundle-price-box" style="margin:10px 0;">
+          <p>
+            Total:
+            <span id="bundle-total-price">$0.00</span>
+            <span id="bundle-discounted-price" style="font-weight:bold; color:#c00">$0.00</span>
+          </p>
+          <p id="bundle-savings" style="color:green; font-size:14px">You are saving 0% OFF</p>
+        </div>
+        <div class="bundle-builder__actions">
+          <button id="bundle-add-all" class="btn btn--blue" style="display:none">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="bundle__products-popup">
+      <div class="page-width">
+        <div class="popup_page-header">
+          <h3 class="h1 popup_page-header-title" style="margin-top:0;margin-bottom: 20px;">
+            ADD TEES <span id="boards-count">(0 / 3)</span>
+          </h3>
+          <button class="popup__close-btn">
+            <svg
+              fill="#000000"
+              width="20px"
+              height="20px"
+              viewBox="0 0 24 24"
+              id="cross"
+              data-name="Line Color"
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon line-color"
+            >
+              <line id="primary" x1="19" y1="19" x2="5" y2="5" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="primary-2" data-name="primary" x1="19" y1="5" x2="5" y2="19" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
+            </svg>
+          </button>
+        </div>
+        {% assign collection = section.settings.collection %}
+        <div class="bundle__products-grid">
+          {% for product in collection.products %}
+            <div
+              class="bundle__product"
+              data-price="{{ product.first_available_variant.price | divided_by: 100.0 }}"
+            >
+              <div class="bundle__product-img">
+                <img src="{{ product.featured_image | image_url }}">
+              </div>
+              <div class="bundle__product-content">
+                  <div
+                  class="klaviyo-star-rating-widget"
+                  data-id="{{product.id}}"
+                  data-product-title="{{product.title}}"
+                  data-product-type="{{product.type}}"
+                ></div>
+                {% if product.metafields.custom.zahlen %}
+                  <h4 class="card__heading">
+                    <span style="margin-right:0;font-weight: bold;">{{ product.metafields.custom.buchstabe -}}</span>
+                    <span style="margin-right:5px;font-weight: bold;">{{- product.metafields.custom.zahlen }} </span>
+                    {% if product.metafields.custom.kurzname %}
+                      <span class="card__heading-small">
+                        {{ product.metafields.custom.kurzname }}
+                      </span>
+                    {% endif %}
+                  </h4>
+                {% else %}
+                  <h4 class="card__heading{% if product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
+                    {{ product.title | escape }}
+                  </h4>
+                {% endif %}
+                <p class="bundle__product-price">
+                  {{ product.price | money }}
+                </p>
+              </div>
+
+              <button
+                data-id="{{ product.first_available_variant.id }}"
+                class="btn btn--blue"
+              >
+                Add
+              </button>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    {%- if product.media.size > 0 -%}
+      <script src="{{ 'product-modal.js' | asset_url }}" defer="defer"></script>
+      <script src="{{ 'media-gallery.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
+
+    <script type="application/ld+json">
+      {{ product | structured_data }}
+    </script>
+  </div>
+</div>
+
+<script>
+    const thumbnailSwiper = new Swiper(".pdp__thumbnail", {
+    spaceBetween: 10,
+    slidesPerView: 'auto',
+    freeMode: true,
+    watchSlidesProgress: true,
+  });
+  const pdpSwiper = new Swiper(".pdp__slider", {
+    spaceBetween: 10,
+    {% comment %} pagination: {
+      el: ".pdp__slider-pagination",
+      clickable: true,
+    }, {% endcomment %}
+    navigation: {
+      nextEl: ".pdp__slider .swiper-button-next",
+      prevEl: ".pdp__slider .swiper-button-prev",
+    },
+    thumbs: {
+      swiper: thumbnailSwiper,
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+        spaceBetween: 0, // for screens < 767px
+      },
+      767: {
+        slidesPerView: 1, // for screens ≥ 767px
+      }
+    }
+  });
+</script>
+<script>
+ document.addEventListener('DOMContentLoaded', function () {
+    const placeholders = Array.from(document.querySelectorAll('.place_holder-card'));
+    const popup = document.querySelector('.bundle__products-popup');
+    const closeBtn = popup && popup.querySelector('.popup__close-btn');
+    const bundleAddBtn = document.getElementById('bundle-add-all');
+
+    // use the price box that you already rendered in Liquid
+    const priceBox = document.getElementById('bundle-price-box');
+    const totalPriceEl = document.getElementById('bundle-total-price');
+    const discountedPriceEl = document.getElementById('bundle-discounted-price');
+    const savingsEl = document.getElementById('bundle-savings');
+
+    const CARDS = placeholders.length || 3;
+    // fixed-length array so indexes are stable
+    let selectedProducts = Array(CARDS).fill(null);
+    let activeIndex = null;
+
+    // keep original placeholder HTML to restore on remove
+    const originalPlaceholderHTML = placeholders.map((ph) => ph.innerHTML);
+
+    // helper: parse price safely from data-price or visible price text (fallback)
+    function parsePriceFromProductEl(productEl) {
+      let p = 0;
+      if (productEl && productEl.dataset && productEl.dataset.price) {
+        p = parseFloat(productEl.dataset.price);
+        if (!isFinite(p)) p = 0;
+      }
+      if (p === 0) {
+        // fallback: try to read visible price text inside .bundle__product-price
+        const priceNode = productEl && productEl.querySelector('.bundle__product-price');
+        if (priceNode) {
+          const txt = priceNode.innerText.replace(/[^\d.,]/g, '').trim();
+          // replace comma with dot for safety then parse
+          const normalized = txt.replace(',', '.');
+          const v = parseFloat(normalized);
+          p = isFinite(v) ? v : 0;
+        }
+      }
+      return p;
+    }
+
+    // open popup when clicking an empty placeholder
+    placeholders.forEach((ph, index) => {
+      ph.addEventListener('click', () => {
+        if (!ph.classList.contains('filled')) {
+          activeIndex = index;
+          popup && popup.classList.add('show');
+        }
+      });
+    });
+
+    // close popup
+    if (closeBtn) closeBtn.addEventListener('click', () => popup && popup.classList.remove('show'));
+
+    // handle product selection inside popup
+   if (popup) {
+  popup.querySelectorAll('.bundle__product button').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const variantId = btn.dataset.id;
+      if (!variantId) return;
+
+      const productEl = btn.closest('.bundle__product');
+      const title = productEl?.querySelector('h4')?.innerText || 'Product';
+      const img = productEl?.querySelector('img')?.src || '';
+      const price = parsePriceFromProductEl(productEl);
+
+      // if no activeIndex (rare), put in first empty
+      if (activeIndex === null) {
+        activeIndex = selectedProducts.findIndex((v) => v === null);
+      }
+      if (activeIndex === -1) {
+        // all slots filled
+        return;
+      }
+
+      // set selected product object at that index
+      selectedProducts[activeIndex] = { id: variantId, price: price };
+
+      // render UI for that placeholder
+      const ph = placeholders[activeIndex];
+      ph.innerHTML = `
+        <img src="${img}" alt="${title}">
+        <p>${title}</p>
+        <button class="remove-selected">
+          <img src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/close-icon.png?v=1757367584" alt="close"/>
+        </button>
+      `;
+      ph.classList.add('filled');
+      ph.dataset.price = productEl.dataset.price;
+
+      activeIndex = null;
+
+      updateBundleState();
+
+      // ✅ close popup automatically when all slots filled
+      const filledCount = selectedProducts.filter(Boolean).length;
+      if (filledCount === CARDS) {
+        popup.classList.remove('show');
+      }
+    });
+  });
+}
+
+    // delegate remove: only clear the clicked slot
+const cardsContainer = document.querySelector('.bundle-builder__cards');
+if (cardsContainer) {
+  cardsContainer.addEventListener('click', (e) => {
+    const removeBtn = e.target.closest('.remove-selected');
+    if (!removeBtn) return; // not a remove click
+    e.stopPropagation();
+
+    const ph = removeBtn.closest('.place_holder-card');
+    if (!ph) return;
+
+    const index = placeholders.indexOf(ph);
+    if (index === -1) return;
+
+    // ✅ remove product from array
+    selectedProducts[index] = null;
+
+    // ✅ restore original placeholder HTML
+    ph.innerHTML = originalPlaceholderHTML[index];
+    ph.classList.remove('filled');
+    ph.removeAttribute('data-price');
+
+    updateBundleState();
+  });
+}
+
+    // Add bundle to cart (only when all slots filled)
+    if (bundleAddBtn) {
+      bundleAddBtn.addEventListener('click', () => {
+        const items = selectedProducts.filter(Boolean).map((p) => ({ id: parseInt(p.id, 10), quantity: 1 }));
+        if (items.length !== CARDS) return; // safety
+        fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ items }),
+        })
+          .then((res) => res.json())
+          .then(() => (window.location.href = '/cart'))
+          .catch((err) => console.error('Bundle add error:', err));
+      });
+    }
+
+    // Recalculate UI and prices
+ function updateBundleState() {
+  const chosen = selectedProducts.filter(p => p); // valid selections
+  const filledCount = chosen.length;
+
+  // counts
+  const boardsCountEl = document.querySelector('#boards-count');
+  if (boardsCountEl) {
+    boardsCountEl.innerText = `(${filledCount} / ${CARDS})`;
+  }
+  const racksTextEl = document.querySelector('[data-racks-text]');
+  if (racksTextEl) {
+    racksTextEl.innerText = `(${filledCount} / ${CARDS})`;
+  }
+
+  // show/hide price box and add button
+  if (priceBox) priceBox.style.display = filledCount > 0 ? 'block' : 'none';
+
+   if (bundleAddBtn) {
+    bundleAddBtn.style.display = 'block';
+    bundleAddBtn.disabled = filledCount !== CARDS;
+    bundleAddBtn.classList.toggle('disabled', filledCount !== CARDS);
+  }
+  // calculate subtotal
+  let total = 0;
+  document.querySelectorAll('.place_holder-card.filled').forEach(ph => {
+    const price = parseFloat(ph.dataset.price || 0);
+    total += price;
+  });
+
+  // apply discounts
+  let discountRate = 0;
+  if (filledCount === 2) discountRate = 0.10; // 10% off
+  if (filledCount === 3) discountRate = 0.25; // 25% off
+
+  const discounted = total * (1 - discountRate);
+  const savingAmount = total - discounted;
+
+  // update DOM
+  if (totalPriceEl) totalPriceEl.innerText = `$${total.toFixed(2)}`;
+  if (discountedPriceEl) {
+    discountedPriceEl.innerText = discountRate > 0 ? `$${discounted.toFixed(2)}` : '';
+  }
+  if (savingsEl) {
+    savingsEl.innerText = discountRate > 0
+      ? `You are saving ${discountRate * 100}% OFF ($${savingAmount.toFixed(2)})`
+      : '';
+  }
+}
+
+
+    // initial render
+    updateBundleState();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Bundle Builder",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "label": "Payment Icons",
+      "id": "payment_icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_sticky_info",
+      "default": true,
+      "label": "t:sections.main-product.settings.enable_sticky_info.label"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-product.settings.header.content"
+    },
+    {
+      "type": "select",
+      "id": "media_size",
+      "options": [
+        {
+          "value": "small",
+          "label": "t:sections.main-product.settings.media_size.options__1.label"
+        },
+        {
+          "value": "medium",
+          "label": "t:sections.main-product.settings.media_size.options__2.label"
+        },
+        {
+          "value": "large",
+          "label": "t:sections.main-product.settings.media_size.options__3.label"
+        }
+      ],
+      "default": "large",
+      "label": "t:sections.main-product.settings.media_size.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "constrain_to_viewport",
+      "default": true,
+      "label": "t:sections.main-product.settings.constrain_to_viewport.label"
+    },
+    {
+      "type": "select",
+      "id": "media_fit",
+      "options": [
+        {
+          "value": "contain",
+          "label": "t:sections.main-product.settings.media_fit.options__1.label"
+        },
+        {
+          "value": "cover",
+          "label": "t:sections.main-product.settings.media_fit.options__2.label"
+        }
+      ],
+      "default": "contain",
+      "label": "t:sections.main-product.settings.media_fit.label"
+    },
+    {
+      "type": "select",
+      "id": "gallery_layout",
+      "options": [
+        {
+          "value": "stacked",
+          "label": "t:sections.main-product.settings.gallery_layout.options__1.label"
+        },
+        {
+          "value": "columns",
+          "label": "t:sections.main-product.settings.gallery_layout.options__2.label"
+        },
+        {
+          "value": "thumbnail",
+          "label": "t:sections.main-product.settings.gallery_layout.options__3.label"
+        },
+        {
+          "value": "thumbnail_slider",
+          "label": "t:sections.main-product.settings.gallery_layout.options__4.label"
+        }
+      ],
+      "default": "stacked",
+      "label": "t:sections.main-product.settings.gallery_layout.label"
+    },
+    {
+      "type": "select",
+      "id": "mobile_thumbnails",
+      "options": [
+        {
+          "value": "columns",
+          "label": "t:sections.main-product.settings.mobile_thumbnails.options__1.label"
+        },
+        {
+          "value": "show",
+          "label": "t:sections.main-product.settings.mobile_thumbnails.options__2.label"
+        },
+        {
+          "value": "hide",
+          "label": "t:sections.main-product.settings.mobile_thumbnails.options__3.label"
+        }
+      ],
+      "default": "hide",
+      "label": "t:sections.main-product.settings.mobile_thumbnails.label"
+    },
+    {
+      "type": "select",
+      "id": "media_position",
+      "options": [
+        {
+          "value": "left",
+          "label": "t:sections.main-product.settings.media_position.options__1.label"
+        },
+        {
+          "value": "right",
+          "label": "t:sections.main-product.settings.media_position.options__2.label"
+        }
+      ],
+      "default": "left",
+      "label": "t:sections.main-product.settings.media_position.label"
+    },
+    {
+      "type": "select",
+      "id": "image_zoom",
+      "options": [
+        {
+          "value": "lightbox",
+          "label": "t:sections.main-product.settings.image_zoom.options__1.label"
+        },
+        {
+          "value": "hover",
+          "label": "t:sections.main-product.settings.image_zoom.options__2.label"
+        },
+        {
+          "value": "none",
+          "label": "t:sections.main-product.settings.image_zoom.options__3.label"
+        }
+      ],
+      "default": "lightbox",
+      "label": "t:sections.main-product.settings.image_zoom.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "hide_variants",
+      "default": false,
+      "label": "t:sections.main-product.settings.hide_variants.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_video_looping",
+      "default": false,
+      "label": "t:sections.main-product.settings.enable_video_looping.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Builder"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,76 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "faq_GngztT": {
+     "type": "faq",
+      "blocks": {
+        "question_block_CzNbjJ": {
+          "type": "question_block",
+          "settings": {
+            "question": "Ist SKEISAN-Tee Bio bzw. wie wird die Qualität geprüft?",
+            "answer": "<p>Unsere Tees durchlaufen ein 10-stufiges Qualitätssystem – von der Auswahl der Anbaugebiete über die Verarbeitung bis hin zur Abfüllung ins Aromaglas. Viele Sorten sind bio-zertifiziert. Bei manchen Mischungen können wir aufgrund der höheren Dosierung von natürlichen Bio-Ölen kein Bio-Siegel ausweisen – dennoch stammen alle Zutaten aus kontrolliert biologischem Anbau. So garantieren wir höchste Reinheit und unverfälschten Geschmack.</p>"
+          }
+        },
+        "question_block_mwMzkw": {
+          "type": "question_block",
+          "settings": {
+            "question": "Kann ich den Tee zurückgeben, wenn er mir nicht schmeckt?",
+            "answer": "<p>Ja – mit unserer 30-Tage-Geschmacksgarantie gehst du kein Risiko ein. Sollte dir eine Sorte nicht gefallen, kannst du sie problemlos zurückschicken und erhältst den vollen Kaufpreis zurück.</p>"
+          }
+        },
+        "question_block_makJzK": {
+          "type": "question_block",
+          "settings": {
+            "question": "Versendet ihr auch international und wie lange dauert der Versand?",
+            "answer": "<p>Ja, wir versenden weltweit. Die Versandkosten und Lieferzeiten hängen von deinem Standort ab und werden dir transparent im Checkout angezeigt. So kannst du SKEISAN-Genuss überall erleben.</p>"
+          }
+        },
+        "question_block_AtGzU8": {
+          "type": "question_block",
+          "settings": {
+            "question": "Wie unterscheiden sich die Buchstaben-Kategorien (X, W, B, etc.)?",
+            "answer": "<p>Die Buchstaben sind eine klare, moderne Systematik, die unsere Teesorten voneinander unterscheidet. Jeder Buchstabe steht für eine Kategorie: Zum Beispiel „W“ für White Tea, „B“ für Black Tea oder „X“ für unsere Exquisite-Linie. So findest du dich schnell zurecht und erkennst auf einen Blick, zu welcher Familie dein Tee gehört.</p>"
+          }
+        },
+        "question_block_3hGCCg": {
+          "type": "question_block",
+          "settings": {
+            "question": "Was macht SKEISAN anders als andere Teemarken?",
+            "answer": "<p>SKEISAN steht für Premium-Tee neu gedacht: Höchste Qualität, moderne Mischungen und ein klares Design. Unsere Tees sind nicht in Traditionen verhaftet, sondern passen zu deinem Lifestyle – vom aromaversiegelten UV-Glas bis hin zu außergewöhnlichen Sorten, die ohne künstliche Zusätze auskommen.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "question_block_CzNbjJ",
+        "question_block_mwMzkw",
+        "question_block_makJzK",
+        "question_block_AtGzU8",
+        "question_block_3hGCCg"
+      ],
+      "name": "FAQ",
+      "settings": {
+        "faq_heading": "FAQ"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "faq_GngztT"
+  ]
+}

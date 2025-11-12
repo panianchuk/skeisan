@@ -1,0 +1,109 @@
+{{ 'img-with-text.css' | asset_url | stylesheet_tag }}
+{{ 'dual-image-with-text.css' | asset_url | stylesheet_tag }}
+
+<section class="dual-image-text image-with-text gradient color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="image-with-text__wrapper">
+      <div class="image-with-text__content">
+        {% if section.settings.heading != blank %}
+          <h2 class="image-with-text__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="image-with-text__desc">{{ section.settings.description }}</div>
+        {% endif %}
+        <div class="second-content desktop">
+          {% if section.settings.second_image != blank %}
+            <div class="image-with-text__image">
+              <img src="{{ section.settings.second_image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}">
+            </div>
+          {% endif %}
+          {% if section.settings.second_description != blank %}
+            <div class="image-with-text__desc">{{ section.settings.second_description }}</div>
+          {% endif %}
+          {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+            <a href="{{ section.settings.button_url }}" class="image-with-text__btn btn btn--primary">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+      </div>
+  
+      {% if section.settings.image != blank %}
+        <div class="image-with-text__image left-side">
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}">
+        </div>
+      {% endif %}
+
+       <div class="second-content mobile">
+          {% if section.settings.second_image != blank %}
+            <div class="image-with-text__image">
+              <img src="{{ section.settings.second_image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}">
+            </div>
+          {% endif %}
+          {% if section.settings.second_description != blank %}
+            <div class="image-with-text__desc">{{ section.settings.second_description }}</div>
+          {% endif %}
+          {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+            <a href="{{ section.settings.button_url }}" class="image-with-text__btn btn btn--primary">
+              {{ section.settings.button_label }}
+            </a>
+          {% endif %}
+        </div>
+    </div>
+  </div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Dual Image With Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "image_picker",
+      "id": "second_image",
+      "label": "Second Image"
+    },
+    {
+      "type": "richtext",
+      "id": "second_description",
+      "label": "Second Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Dual Image With Text"
+    }
+  ]
+}
+{% endschema %}

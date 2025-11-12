@@ -1,0 +1,129 @@
+.video-section__media {
+  --ratio-percent: 56.25%;
+  position: relative;
+  padding-bottom: calc(var(--ratio-percent) - var(--media-border-width));
+}
+
+/* Needed for gradient continuity with or without animation so that transparent PNG images come up as we would expect */
+.scroll-trigger:where(.gradient.video-section__media) {
+  background: transparent;
+}
+
+.video-section__media.global-media-settings--full-width {
+  padding-bottom: var(--ratio-percent);
+}
+
+.video-section__media.deferred-media {
+  box-shadow: var(--media-shadow-horizontal-offset) var(--media-shadow-vertical-offset) var(--media-shadow-blur-radius)
+    rgba(var(--color-shadow), var(--media-shadow-opacity));
+}
+
+.video-section__media.deferred-media:after {
+  content: none;
+}
+
+.video-section__poster.deferred-media__poster:focus {
+  outline-offset: 0.3rem;
+}
+
+.video-section__media iframe {
+  background-color: rgba(var(--color-foreground), 0.03);
+  border: 0;
+}
+
+.video-section__poster,
+.video-section__media iframe,
+.video-section__media video {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.video-section__media video {
+  background: #000000;
+}
+
+.video-section__media.media-fit-cover video {
+  object-fit: cover;
+}
+
+.video-section video {
+  width: 100%;
+  height: 100%;
+  max-height: 650px;
+  object-fit: cover;
+  display: flex;
+}
+
+.video-section {
+  position: relative;
+}
+
+.video-section .content-wrapper {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 40px 16px;
+}
+
+.video-section .content_btn_wrapper {
+  width: fit-content;
+  margin-top: auto;
+}
+
+.video-section .content-heading {
+  font-family: BebasNeueBook;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+.video-section .content-heading p {
+  margin: 0;
+  max-width: 600px;
+}
+
+@media (min-width: 767px) {
+  .video-section .content-heading,
+  .video-section .content_btn_wrapper {
+    max-width: var(--page-width);
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 5rem !important;
+    width: 100%;
+  }
+
+  .video-section video {
+    max-height: 80vh;
+  }
+}
+
+@media (max-width: 767px) {
+  .video-section .content-heading {
+    max-width: 315px;
+  }
+
+  .video-section .content_btn_wrapper {
+    height: 40px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

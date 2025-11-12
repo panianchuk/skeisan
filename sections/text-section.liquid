@@ -1,0 +1,35 @@
+{{ 'text-section.css' | asset_url | stylesheet_tag }}
+
+<section class="text-section">
+  <div class="page-width">
+    <h1 class="text-section___heading h2">{{ section.settings.heading }}</h1>
+    <div class="text-section___desc">{{ section.settings.description }}</div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Text Section",
+  "tag": "section",
+  "class": "text-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Your heading here"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description",
+      "default": "<p>Add your description here.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Text Section"
+    }
+  ]
+}
+{% endschema %}

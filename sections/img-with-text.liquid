@@ -1,0 +1,71 @@
+{{ 'img-with-text.css' | asset_url | stylesheet_tag }}
+
+<section class="image-with-text gradient color-{{ section.settings.color_scheme }}">
+  <div class="page-width">
+    <div class="image-with-text__wrapper">
+      <div class="image-with-text__content">
+        {% if section.settings.heading != blank %}
+          <h2 class="image-with-text__heading">{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.description != blank %}
+          <div class="image-with-text__desc">{{ section.settings.description }}</div>
+        {% endif %}
+        {% if section.settings.button_label != blank and section.settings.button_url != blank %}
+          <a href="{{ section.settings.button_url }}" class="image-with-text__btn btn btn_custom btn_custom--white">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+      </div>
+  
+      {% if section.settings.image != blank %}
+        <div class="image-with-text__image">
+          <img src="{{ section.settings.image | image_url: width: 800 }}" alt="{{ section.settings.heading | escape }}">
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image With Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "default": "background-1"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image With Text"
+    }
+  ]
+}
+{% endschema %}

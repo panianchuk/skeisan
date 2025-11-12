@@ -1,0 +1,12 @@
+.text-section___heading {
+  margin: 0 0 16px;
+}
+
+.text-section___desc,
+.text-section___desc * {
+  color: #000;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0;
+}

@@ -1,0 +1,88 @@
+<div
+  class="page-width"
+  style="
+    --grid-desktop-horizontal-spacing:16px;--grid-mobile-vertical-spacing: 16px;
+    --grid-mobile-horizontal-spacing: 16px;
+  "
+>
+ 
+  <div class="grid grid--4-col-desktop grid--2-col-tablet-down" {{ title }}>
+    {% for collection in collection_list %}
+       {% assign title = link.title | downcase %}
+  {% assign href= collection.url %}
+  {% if title == "shop tea" %}
+      {% assign href = href | append: "?product_type=jar" %}
+  {% elsif title == "soft packs"  %}
+{% assign href = href | append: "?product_type=softpack" %}
+  {% endif %}
+      <div class="grid__item" style="position:relative;">
+        <a href="{{ href }}" class="collection_url"> </a>
+        {% if collection.metafields.custom.soft_pack_images != blank and  title == "soft packs"  %}
+           <img
+            src="{{ collection.metafields.custom.soft_pack_images | img_url : 'master' }}"
+            width="100%"
+            class="collection_header__image"
+          >
+          {% elsif collection.metafields.custom.collection_mega_menu_image != blank %}
+          <img
+            src="{{ collection.metafields.custom.collection_mega_menu_image | img_url : 'master' }}"
+            width="100%"
+            class="collection_header__image"
+          >
+        {% elsif collection.image != blank %}
+          <img src="{{ collection.image | img_url : 'master' }}" width="100%" class="collection_header__image">
+        {% endif %}
+        <h2 class="collection_header__title">
+          {{ collection.title }}
+        </h2>
+      </div>
+    {% endfor %}
+  </div>
+  {{ collection_list.size }}
+</div>
+{% comment %} <a href="/collections/all" class="large-up-hide button__collections_drawer"> Shop All </a> {% endcomment %}
+<style>
+      .collection_url {
+  position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+      .collection_header__image {
+      aspect_ratio: 1/1;
+      object-fit : cover;
+      aspect-ratio: 1 / 1;
+      display : block;
+  }
+  .collection_header__title {
+       margin: 0;
+      line-height: 1;
+      margin-top: .5rem;
+      /* font-family: BebasNeueBook; */
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 100%;
+      letter-spacing: 0;
+      font-family: 'Inter';
+      color: #1D1D1B;
+  }
+  .button__collections_drawer {
+   font-family: 'BebasNeueRegular';
+      font-weight: 400;
+      padding-block: 12px;
+      padding-inline: 24px;
+      color: #121212;
+      margin-inline: auto;
+      width: fit-content;
+      display: flex
+  ;
+      {% comment %} margin-bottom: 4rem; {% endcomment %}
+      border-radius: 6px;
+      border: 1px solid #121212;
+      line-height: 1;
+      margin-top: 24px;
+      text-decoration: none;
+      font-size: 20px;
+  }
+</style>

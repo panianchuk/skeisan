@@ -1,0 +1,63 @@
+<script>
+// Warte auf DOM Ready, bevor initCookieBanner gestartet wird
+document.addEventListener('DOMContentLoaded', function() {
+  window.Shopify.loadFeatures(
+ [
+   {
+     name: 'consent-tracking-api',
+     version: '0.1',
+   },
+ ],
+ error => {
+   if (error) {
+     console.log("Error loading consent-tracking-api", error);
+   }
+   console.log("Consent-tracking-api loaded");
+   // If error is false, the API has loaded and ready to use!
+ },
+);
+  initCookieBanner();
+});
+
+function initCookieBanner() {
+  
+  // Usercentrics Script dynamisch laden
+  const script = document.createElement('script');
+  script.id = 'usercentrics-cmp';
+  script.src = 'https://web.cmp.usercentrics.eu/ui/loader.js';
+  script.setAttribute('data-settings-id', 'UNicER3rwvj01G');
+  script.async = true;
+  
+  // Script zum Head hinzufügen
+  document.head.appendChild(script);
+  
+  // DataLayer Event Listener für consent_status Events
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push = function(...args) {
+    // Original push Funktion aufrufen
+    Array.prototype.push.apply(this, args);
+    
+    // Prüfe ob es ein consent_status Event ist
+    const eventData = args[0];
+    if (eventData && eventData.event === "consent_status" && eventData.type === "EXPLICIT") {
+      console.log("event = consent_status EXPLICIT", eventData.ucCategory);
+      
+      // Setze den Consent über Shopify Customer Privacy API
+      if (window.Shopify && window.Shopify.customerPrivacy) {
+        const consentSettings = {
+          analytics: eventData.ucCategory.functional || false,
+          marketing: eventData.ucCategory.marketing || false,
+          preferences: eventData.ucCategory.essential || false
+        };
+        
+        window.Shopify.customerPrivacy.setTrackingConsent(
+          consentSettings,
+          () => console.log("Shopify Consent captured:", consentSettings)
+        );
+      } else {
+        console.log("Shopify Customer Privacy API nicht verfügbar");
+      }
+    }
+  };
+}
+</script>

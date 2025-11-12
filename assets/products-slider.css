@@ -1,0 +1,66 @@
+.collection-slider {
+  padding: 64px 0;
+}
+
+.collection-slider-swiper {
+  margin-top: 40px;
+  padding-bottom: 76px !important;
+}
+
+.collection-slider__cta {
+  text-align: center;
+  margin-top: 24px !Important;
+}
+
+.collection-slider {
+  background: #121212;
+}
+
+.collection-slider-heading {
+  color: #F9F0EC;
+  font-family: BebasNeueBook;
+  font-weight: 400;
+  font-size: 64px;
+  line-height: 100%;
+  letter-spacing: 0px;
+}
+
+@media (max-width: 767px) {
+  .collection-slider {
+    padding: 96px 0;
+  }
+
+  .collection-slider-swiper {
+    margin-top: 24px;
+    padding-bottom: 24px !important;
+  }
+
+  .collection-slider-heading {
+    margin-bottom: 0;
+    font-size: 48px;
+  }
+
+  .collection-slider .swiper-pagination {
+    display: none !important;
+  }
+
+  .collection-slider__cta {
+    margin-top: 0 !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,186 @@
+{{ 'reviews-slider.css' | asset_url | stylesheet_tag }}
+
+<section class="reviews-slider">
+  <div class="page-width">
+    {% if section.settings.rating_text != blank %}
+      <div class="rating_text">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M11.3671 3.36242C10.8184 2.21253 9.1816 2.21253 8.6329 3.36242L6.94903 6.89124L3.07258 7.40223C1.80941 7.56874 1.30361 9.12542 2.22767 10.0026L5.06343 12.6945L4.35152 16.5392C4.11954 17.792 5.44374 18.754 6.56354 18.1463L10 16.2812L13.4365 18.1463C14.5563 18.754 15.8805 17.792 15.6485 16.5392L14.9366 12.6945L17.7723 10.0026C18.6964 9.12542 18.1906 7.56874 16.9274 7.40223L13.051 6.89124L11.3671 3.36242Z" fill="#BCB082"/>
+        </svg>
+        {{ section.settings.rating_text }}
+      </div>
+    {% endif %}
+    {% if section.settings.heading != blank %}
+      <div class="reviews-slider__heading">
+        {% comment %}
+          <svg width="120" height="24" viewBox="0 0 120 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M13.3538 4.94727C12.8104 3.80859 11.1896 3.80859 10.6462 4.94727L8.97877 8.44169L5.14011 8.9477C3.88925 9.11258 3.38839 10.6541 4.30343 11.5227L7.11155 14.1884L6.40658 17.9955C6.17686 19.2361 7.48815 20.1888 8.59703 19.587L12 17.7401L15.403 19.587C16.5118 20.1888 17.8231 19.2361 17.5934 17.9955L16.8884 14.1884L19.6965 11.5227C20.6116 10.6541 20.1107 9.11258 18.8599 8.9477L15.0212 8.44169L13.3538 4.94727Z" fill="#A18DD1" stroke="#291B3B" stroke-width="1.5"/>
+            <path d="M37.3538 4.94727C36.8104 3.80859 35.1896 3.80859 34.6462 4.94727L32.9788 8.44169L29.1401 8.9477C27.8893 9.11258 27.3884 10.6541 28.3034 11.5227L31.1115 14.1884L30.4066 17.9955C30.1769 19.2361 31.4881 20.1888 32.597 19.587L36 17.7401L39.403 19.587C40.5118 20.1888 41.8231 19.2361 41.5934 17.9955L40.8884 14.1884L43.6965 11.5227C44.6116 10.6541 44.1107 9.11258 42.8599 8.9477L39.0212 8.44169L37.3538 4.94727Z" fill="#A18DD1" stroke="#291B3B" stroke-width="1.5"/>
+            <path d="M61.3538 4.94727C60.8104 3.80859 59.1896 3.80859 58.6462 4.94727L56.9788 8.44169L53.1401 8.9477C51.8893 9.11258 51.3884 10.6541 52.3034 11.5227L55.1115 14.1884L54.4066 17.9955C54.1769 19.2361 55.4881 20.1888 56.597 19.587L60 17.7401L63.403 19.587C64.5118 20.1888 65.8231 19.2361 65.5934 17.9955L64.8884 14.1884L67.6965 11.5227C68.6116 10.6541 68.1107 9.11258 66.8599 8.9477L63.0212 8.44169L61.3538 4.94727Z" fill="#A18DD1" stroke="#291B3B" stroke-width="1.5"/>
+            <path d="M85.3538 4.94727C84.8104 3.80859 83.1896 3.80859 82.6462 4.94727L80.9788 8.44169L77.1401 8.9477C75.8893 9.11258 75.3884 10.6541 76.3034 11.5227L79.1115 14.1884L78.4066 17.9955C78.1769 19.2361 79.4881 20.1888 80.597 19.587L84 17.7401L87.403 19.587C88.5118 20.1888 89.8231 19.2361 89.5934 17.9955L88.8884 14.1884L91.6965 11.5227C92.6116 10.6541 92.1107 9.11258 90.8599 8.9477L87.0212 8.44169L85.3538 4.94727Z" fill="#A18DD1" stroke="#291B3B" stroke-width="1.5"/>
+            <path d="M109.354 4.94727C108.81 3.80859 107.19 3.80859 106.646 4.94727L104.979 8.44169L101.14 8.9477C99.8893 9.11258 99.3884 10.6541 100.303 11.5227L103.112 14.1884L102.407 17.9955C102.177 19.2361 103.488 20.1888 104.597 19.587L108 17.7401L111.403 19.587C112.512 20.1888 113.823 19.2361 113.593 17.9955L112.888 14.1884L115.697 11.5227C116.612 10.6541 116.111 9.11258 114.86 8.9477L111.021 8.44169L109.354 4.94727Z" fill="#A18DD1" stroke="#291B3B" stroke-width="1.5"/>
+          </svg>
+        {% endcomment %}
+        <h2>{{ section.settings.heading }}</h2>
+      </div>
+    {% endif %}
+    <div class="swiper reviews-swiper">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide">
+            <div class="swiper-slide__wrapper">
+              {% if block.settings.image != blank %}
+                <img src="{{ block.settings.image | image_url }}" alt="Reviewer">
+              {% endif %}
+              <div class="swiper-slide__content">
+                <span class="block_stars">
+                    <svg width="100" height="20" viewBox="0 0 100 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M4.85413 17.5001L6.20829 11.6459L1.66663 7.70842L7.66663 7.18758L9.99996 1.66675L12.3333 7.18758L18.3333 7.70842L13.7916 11.6459L15.1458 17.5001L9.99996 14.3959L4.85413 17.5001Z" fill="#1D1D1B"/>
+                      <path d="M24.8541 17.5001L26.2083 11.6459L21.6666 7.70842L27.6666 7.18758L30 1.66675L32.3333 7.18758L38.3333 7.70842L33.7916 11.6459L35.1458 17.5001L30 14.3959L24.8541 17.5001Z" fill="#1D1D1B"/>
+                      <path d="M44.8541 17.5001L46.2083 11.6459L41.6666 7.70842L47.6666 7.18758L50 1.66675L52.3333 7.18758L58.3333 7.70842L53.7916 11.6459L55.1458 17.5001L50 14.3959L44.8541 17.5001Z" fill="#1D1D1B"/>
+                      <path d="M64.8541 17.5001L66.2083 11.6459L61.6666 7.70842L67.6666 7.18758L70 1.66675L72.3333 7.18758L78.3333 7.70842L73.7916 11.6459L75.1458 17.5001L70 14.3959L64.8541 17.5001Z" fill="#1D1D1B"/>
+                      <path d="M84.8541 17.5001L86.2083 11.6459L81.6666 7.70842L87.6666 7.18758L90 1.66675L92.3333 7.18758L98.3333 7.70842L93.7916 11.6459L95.1458 17.5001L90 14.3959L84.8541 17.5001Z" fill="#1D1D1B"/>
+                    </svg>
+                  </span>
+                <h3 class="swiper-slide__title">{{ block.settings.review_title }}</h3>
+                <p class="swiper-slide__desc">{{ block.settings.review_description }}</p>
+                <p class="swiper-slide__name">
+                  <span>
+                    {{ block.settings.reviewer_name }}
+                  </span>
+                  <span class="designation">
+                      {{  block.settings.designation }}
+                  </span>
+                  
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      <!-- Custom Navigation Buttons -->
+      <div class="swiper-pagination reviews-swiper-pagination"></div>
+    </div>
+    <div class="swiper-sliders__arrows">
+    <div class="swiper-button-prev custom-prev btn btn_custom btn_custom--blue">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M2.5 10L8.75 3.75L9.63125 4.63125L4.89375 9.375L17.5 9.375L17.5 10.625L4.89375 10.625L9.63125 15.3687L8.75 16.25L2.5 10Z" fill="#1D1D1B"/>
+</svg>
+
+    </div>
+    <div class="swiper-button-next custom-next btn btn_custom btn_custom--blue">
+     <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.5 10L11.25 3.75L10.3688 4.63125L15.1062 9.375L2.5 9.375L2.5 10.625L15.1062 10.625L10.3687 15.3687L11.25 16.25L17.5 10Z" fill="#1D1D1B"/>
+</svg>
+
+    </div>
+    </div>
+    {% if section.settings.button_label != blank and section.settings.button_link != blank %}
+      <div class="reviews-slider__cta">
+        <a href="{{ section.settings.button_link }}" class="reviews-slider__btn btn btn--primary ">
+          {{- section.settings.button_label -}}
+        </a>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% javascript %}
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.reviews-swiper', {
+      loop: true,
+      pagination: {
+        el: '.reviews-swiper-pagination',
+        clickable: true,
+      },
+      spaceBetween: 10,
+      navigation: {
+        nextEl: '.custom-next',
+        prevEl: '.custom-prev',
+      },
+      breakpoints: {
+        0: {
+          slidesPerView: 1.3,
+        },
+        767: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+        },
+        1200: {
+          slidesPerView: 4,
+        },
+      },
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "Reviews Slider",
+  "settings": [
+    {
+      "type": "textarea",
+      "label": "Rating text",
+      "id": "rating_text"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review",
+      "name": "Swiper Slide",
+      "settings": [
+        {
+          "type": "text",
+          "id": "review_title",
+          "label": "Review Title"
+        },
+        {
+          "type": "textarea",
+          "id": "review_description",
+          "label": "Review Description"
+        },
+        {
+          "type": "text",
+          "id": "reviewer_name",
+          "label": "Reviewer Name / Title"
+        },
+        {
+          "type": "text",
+          "label": "Designation",
+          "id": "designation"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Reviewer Image"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 12,
+  "presets": [
+    {
+      "name": "Reviews Slider",
+      "category": "Testimonials"
+    }
+  ]
+}
+{% endschema %}

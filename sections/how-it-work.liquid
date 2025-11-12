@@ -1,0 +1,319 @@
+{% comment %}
+  Section: Why SKEISAN Works
+  Purpose: Display product benefits with icons and descriptions
+{% endcomment %}
+
+<section class="skeisan-why-works-section" id="section-{{ section.id }}">
+  <div class="page-width">
+    <div class="skeisan-content-wrapper">
+     
+
+      <div class="skeisan-benefits-right">
+        {% if section.settings.skeisan_heading != blank %}
+          <h2 class="skeisan-main-heading">{{ section.settings.skeisan_heading }}</h2>
+        {% endif %}
+         <div class="skeisan-product-image {% if section.settings.skeisan_product_image_mb != blank %} skeisan-product-image__mb {% endif %}">
+        {% if section.settings.skeisan_product_image != blank %}
+          <img
+            src="{{ section.settings.skeisan_product_image | img_url: 'master' }}"
+            alt="{{ section.settings.skeisan_product_image.alt | default: 'SKEISAN F2.0 Product' }}"
+            class="skeisan-main-product"
+          >
+            {% if section.settings.skeisan_product_image_mb != blank %}
+            <img
+            src="{{ section.settings.skeisan_product_image_mb | img_url: 'master' }}"
+            alt="{{ section.settings.skeisan_product_image_mb.alt | default: 'SKEISAN F2.0 Product' }}"
+            class="skeisan-main-product"
+            style="display:none"
+          >
+            {%  endif %}
+        {% else %}
+          <div class="skeisan-placeholder-image">
+            <span>Product Image</span>
+          </div>
+        {% endif %}
+      </div>
+        <div class="skeisan-benefits-grid">
+          {% for block in section.blocks %}
+            {% case block.type %}
+              {% when 'skeisan_benefit' %}
+                <div class="skeisan-benefit-item" {{ block.shopify_attributes }}>
+                  {% if block.settings.skeisan_benefit_icon != blank %}
+                    <div class="skeisan-benefit-icon">
+                      <img
+                        src="{{ block.settings.skeisan_benefit_icon | img_url: 'master' }}"
+                        alt="{{ block.settings.skeisan_benefit_title }}"
+                        loading="lazy"
+                      >
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.skeisan_benefit_title != blank %}
+                    <h3 class="skeisan-benefit-title">{{ block.settings.skeisan_benefit_title }}</h3>
+                  {% endif %}
+
+                  {% if block.settings.skeisan_benefit_description != blank %}
+                    <p class="skeisan-benefit-description">{{ block.settings.skeisan_benefit_description }}</p>
+                  {% endif %}
+                </div>
+            {% endcase %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+      .skeisan-why-works-section {
+        padding: 60px 0;
+        {% comment %} background-color: #f8f8f8; {% endcomment %}
+      }
+  .skeisan-content-wrapper {
+      display: flex
+  ;
+      gap: 15px;
+  }
+      .skeisan-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+      }
+
+      .skeisan-main-heading {
+    margin-bottom: 40px;
+    letter-spacing: 1px;
+    margin: 0;
+    margin-bottom: 50px;
+      }
+
+    .skeisan-main-product {
+        max-width: 100%;
+        height: auto;
+        border-radius: 15px;
+        /* box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); */
+        /* transition: transform 0.3s ease; */
+        width: 100%;
+        max-width: 688px;
+        display: block;
+    }
+
+      .skeisan-product-image {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40%;
+        display: none;
+      }
+
+
+
+
+      .skeisan-placeholder-image {
+        width: 300px;
+        height: 400px;
+        background: #ddd;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        color: #666;
+        font-size: 1.1rem;
+      }
+
+      .skeisan-benefits-grid {
+display: flex
+;
+    gap: 32px;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    justify-content: center;
+      }
+.skeisan-benefits-right{
+  width: 100%;
+}
+      .skeisan-benefit-item {
+        border-radius: 15px;
+        transition: all 0.3s ease;
+        width: 18%;
+      }
+
+
+
+      .skeisan-benefit-icon {
+           width: 64px;
+      height: 64px;
+      margin-bottom: 15px;
+      border-radius: 50%;
+      }
+
+      .skeisan-benefit-icon img {
+        width: 100%;
+        height: 100%;
+
+      }
+
+      .skeisan-benefit-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 10px;
+        line-height: 1.4;
+        margin: 0;
+        font-family: 'Montserrat';
+        font-family: var(--font-heading-family);
+        letter-spacing: 0;
+        line-height: 1.4;
+      }
+  .skeisan-benefits-grid {
+   margin-top:32px;
+  }
+@media(max-width: 992px){
+.skeisan-content-wrapper {
+    flex-direction: column;
+}
+.skeisan-product-image,.skeisan-benefits-right {
+    width: 100%;
+            text-align: center;
+}
+.skeisan-benefit-icon {
+        margin: 15px auto;
+    }
+    .skeisan-benefit-title {
+    text-align: center;
+}
+}
+      /* Mobile Responsive */
+      @media (max-width: 768px) {
+
+        .skeisan-benefit-item {
+
+        width : 46%;
+        max-width:100%;
+      }
+  .skeisan-benefits-grid {
+       margin-top: 24px;
+       gap: 24px;
+  }
+
+.skeisan-product-image__mb img:nth-child(2) {
+  display:block;
+}
+.skeisan-product-image__mb img:nth-child(1) {
+  display:none;
+}
+
+        .skeisan-benefit-icon {
+          width: 48px;
+          height: 48px;
+          margin-bottom: 15px;
+        }
+
+      }
+</style>
+
+{% schema %}
+{
+  "name": "SKEISAN - Why It Works",
+  "tag": "section",
+  "class": "skeisan-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "skeisan_heading",
+      "label": "Section Heading",
+      "default": "WARUM SKEISAN?"
+    },
+    {
+      "type": "image_picker",
+      "id": "skeisan_product_image",
+      "label": "Product Image",
+      "info": "Upload the main product image"
+    },
+    {
+       "type": "image_picker",
+      "id": "skeisan_product_image_mb",
+      "label": "Product Image Mobile",
+      "info": "Upload the main product image"
+    },
+    {
+      "type": "header",
+      "content": "Section Styling"
+    },
+    {
+      "type": "color",
+      "id": "skeisan_background_color",
+      "label": "Background Color",
+      "default": "#f8f8f8"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "skeisan_benefit",
+      "name": "SKEISAN Benefit",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "skeisan_benefit_icon",
+          "label": "Benefit Icon",
+          "info": "Upload an icon for this benefit"
+        },
+        {
+          "type": "text",
+          "id": "skeisan_benefit_title",
+          "label": "Benefit Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "textarea",
+          "id": "skeisan_benefit_description",
+          "label": "Benefit Description",
+          "default": "Description of the benefit"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "SKEISAN - Why It Works",
+      "blocks": [
+        {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_title": "Non-GMO Ingredients",
+            "skeisan_benefit_description": "Made with carefully selected non-GMO ingredients for your health"
+          }
+        },
+        {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_title": "Vegan & Cruelty-Free",
+            "skeisan_benefit_description": "100% vegan formula with no animal testing"
+          }
+        },
+        {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_title": "Designed for Clean Experience",
+            "skeisan_benefit_description": "Clean and pure formulation for optimal results"
+          }
+        },
+        {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_title": "No Artificial Additives",
+            "skeisan_benefit_description": "Free from artificial colors, flavors, and preservatives"
+          }
+        },
+        {
+          "type": "skeisan_benefit",
+          "settings": {
+            "skeisan_benefit_title": "Third-Party Tested",
+            "skeisan_benefit_description": "Independently tested for quality and purity assurance"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

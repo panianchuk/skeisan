@@ -1,0 +1,40 @@
+.img-banner-container {
+  position: relative;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+} 
+
+.img-banner-image-wrapper .img-banner-image,
+.img-banner-image-wrapper video {
+  max-width: 100%;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.img-banner__content {
+  padding: 70px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+html body section .img-banner__content h2 {
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 767px) {
+  .img-banner-container {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  .img-banner__content {
+    padding: 30px 20px 30px 40px;
+  }
+
+  .img-banner-image-wrapper video {
+    min-height: 60vh;
+  }
+}
