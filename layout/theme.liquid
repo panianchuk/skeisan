@@ -7,7 +7,7 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <!--install usercentrics from snippets/tracking.liquid -->
-    {% render 'tracking' %} 
+    {% render 'tracking' %}
 
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -262,6 +262,14 @@
         font-weight: var(--font-body-weight);
       }
 
+      aside#usercentrics-cmp-ui {
+        /* * **WICHTIG:** Zielt auf das äußere Element (Shadow Host), 
+        * damit die Variable in das Shadow DOM vererbt wird.
+        * * Setzt die Schriftgröße auf 1.4rem. Bei 1rem = 10px ergibt das 14px.
+        */
+        --typography-size: 2rem !important; 
+      }
+
       @media screen and (min-width: 750px) {
         body {
           font-size: 1.6rem;
@@ -396,10 +404,5 @@
     {%- endif -%}
     
     {% render 'back-to-top' %}
-    <style>
-      #uc-main-dialog{
-        font-size:16px !important;
-        }
-    </style> 
   </body>
 </html>

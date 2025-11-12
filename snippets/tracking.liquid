@@ -13,7 +13,6 @@ document.addEventListener('DOMContentLoaded', function() {
      console.log("Error loading consent-tracking-api", error);
    }
    console.log("Consent-tracking-api loaded");
-   // If error is false, the API has loaded and ready to use!
  },
 );
   initCookieBanner();
@@ -31,18 +30,52 @@ function initCookieBanner() {
   // Script zum Head hinzufügen
   document.head.appendChild(script);
   
-  // DataLayer Event Listener für consent_status Events
+  // ===============================================================
+  // NEUE LOGIK: MutationObserver zur CSS-Injektion
+  // ===============================================================
+
+  const observer = new MutationObserver((mutationsList, observer) => {
+    const shadowHost = document.getElementById('usercentrics-cmp-ui');
+    
+    // Prüfe, ob der Shadow Host existiert UND ob er den Shadow Root geladen hat
+    if (shadowHost && shadowHost.shadowRoot) {
+      
+      // 1. Beobachtung stoppen, sobald das Element gefunden wurde
+      observer.disconnect(); 
+
+      // 2. Erstellen Sie ein neues <style>-Element
+      const style = document.createElement('style');
+      
+      // 3. Fügen Sie Ihr überschreibendes CSS hinzu
+      // Wir verwenden den Original-Selektor + !important, um maximalen Vorrang zu gewährleisten.
+      style.textContent = `
+        /* Der spezifischste Selektor direkt aus dem Shadow DOM + allgemeine Container */
+        .cmp-wrapper .cmp #uc-main-dialog, 
+        .cmp-wrapper .cmp, 
+        #uc-main-dialog {
+          font-size: 20px !important; /* Gewünschte Größe */
+        }
+      `;
+      
+      // 4. Hängen Sie das Style-Element an den Shadow Root an
+      shadowHost.shadowRoot.appendChild(style);
+      console.log('✅ Custom CSS erfolgreich in Usercentrics Shadow DOM injiziert (Größe: 14px).');
+    }
+  });
+
+  // Starten Sie die Beobachtung des gesamten Body für hinzugefügte Kindelemente
+  observer.observe(document.body, { childList: true, subtree: true });
+  
+  // ===============================================================
+  // DataLayer Event Listener (unverändert)
+  // ===============================================================
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push = function(...args) {
-    // Original push Funktion aufrufen
     Array.prototype.push.apply(this, args);
-    
-    // Prüfe ob es ein consent_status Event ist
     const eventData = args[0];
     if (eventData && eventData.event === "consent_status" && eventData.type === "EXPLICIT") {
       console.log("event = consent_status EXPLICIT", eventData.ucCategory);
       
-      // Setze den Consent über Shopify Customer Privacy API
       if (window.Shopify && window.Shopify.customerPrivacy) {
         const consentSettings = {
           analytics: eventData.ucCategory.functional || false,
