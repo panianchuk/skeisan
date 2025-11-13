@@ -20,9 +20,6 @@ async function updateFreeGift(e) {
     return sum;
   }, 0);
 
-  // console.log('priceWithoutGift', priceWithoutGift);
-  // console.log('isGiftManuallyRemoved (current state):', isGiftManuallyRemoved);
-
   const shouldHaveGift = hasLandingPageItem && priceWithoutGift >= MIN_PRICE_FOR_GIFT && hasOtherItems;
 
   if (shouldHaveGift && !giftInCart && !isGiftManuallyRemoved) {
@@ -84,7 +81,6 @@ window.addEventListener('kaching-cart:item-added', (e) => {
 
 window.addEventListener('kaching-cart:item-removed', (e) => {
   if (e.detail.item.id === GIFT_PRODUCT_ID && e.detail.item.properties?._gift_product === 'true') {
-    // console.log(`Gift product (${GIFT_PRODUCT_ID}) was removed by user manually`);
     isGiftManuallyRemoved = true;
     return;
   }

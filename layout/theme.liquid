@@ -246,7 +246,7 @@
         box-sizing: border-box;
         font-size: calc(var(--font-body-scale) * 62.5%);
         height: 100%;
-      }
+      }   
 
       body {
         display: grid;
@@ -262,12 +262,9 @@
         font-weight: var(--font-body-weight);
       }
 
+      /* Usercentrics-Font-Fix */
       aside#usercentrics-cmp-ui {
-        /* * **WICHTIG:** Zielt auf das äußere Element (Shadow Host), 
-        * damit die Variable in das Shadow DOM vererbt wird.
-        * * Setzt die Schriftgröße auf 1.4rem. Bei 1rem = 10px ergibt das 14px.
-        */
-        --typography-size: 2rem !important; 
+      font-size: 1.6rem; /* 1.6rem * 10px = 16px */
       }
 
       @media screen and (min-width: 750px) {
@@ -409,6 +406,7 @@
     {%- endif -%}
     
     {% render 'back-to-top' %}
-     <script src="{{ 'gift-product.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'kaching-cart-drawer.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'uc-button-fix.js' | asset_url }}" defer></script>
   </body>
 </html>
