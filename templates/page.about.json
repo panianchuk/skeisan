@@ -351,6 +351,81 @@
       "settings": {
         "faq_heading": "FAQ"
       }
+    },
+    "slideshow_nJJjnN": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_PpyJNP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/header_04a.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "DRINK DIFFERENT.",
+            "heading_size": "h1",
+            "subheading": "Tee ist Freiheit, Experiment, Abenteuer. Tee geht immer. Heiß. Oder auf Eis. ",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "slide_6deqBc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Header_SKEISAN_MIKEMEYER_4N8A1737_1.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "VERGISS DIE REGELN.",
+            "heading_size": "h1",
+            "subheading": "Morgens, mittags, abends. Oder dazwischen. Statt Kaffee. Statt Alkohol. Oder mit Alkohol. Und Zigarette. Als Wake-Upper, als Sundowner, als Salatgewürz.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "slide_JpYEdj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/450471375_1018911782761421_5057010148506976105_n.jpg",
+            "image_overlay_opacity": 0,
+            "heading": "DEIN LEBEN. DEIN TEE.",
+            "heading_size": "h1",
+            "subheading": "Mach, was dir schmeckt. Trink aus einem Tumbler.Tee ist, was du draus machst.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": true,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
+          }
+        }
+      },
+      "block_order": [
+        "slide_PpyJNP",
+        "slide_6deqBc",
+        "slide_JpYEdj"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow zu deiner Marke"
+      }
     }
   },
   "order": [
@@ -363,6 +438,7 @@
     "image_with_text_cAed84",
     "video_slider_zz68QR",
     "image_with_text_zL9wF3",
-    "faq_8pNy8d"
+    "faq_8pNy8d",
+    "slideshow_nJJjnN"
   ]
 }

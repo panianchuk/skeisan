@@ -195,11 +195,26 @@
         "skeisan_benefit_zKPJ33",
         "skeisan_benefit_hp6me6"
       ],
+      "disabled": true,
       "name": "SKEISAN - Why It Works",
       "settings": {
         "skeisan_heading": "WARUM SKEISAN?",
-        "skeisan_product_image": "shopify://shop_images/why-skeisan.png",
+        "skeisan_product_image": "shopify://shop_images/Skeisan_benefits_1.png",
         "skeisan_background_color": "rgba(0,0,0,0)"
+      }
+    },
+    "hero_banner_MYEkW8": {
+      "type": "hero-banner",
+      "name": "Hero Banner",
+      "settings": {
+        "desk_img": "shopify://shop_images/Skeisan_benefits_1.png",
+        "mobile_img": "shopify://shop_images/Skeisan_benefits_mobil_1.png",
+        "heading": "",
+        "desc": "",
+        "bottom_text": "",
+        "btn_label": "",
+        "btn_url": "",
+        "section_color_scheme": ""
       }
     },
     "collectiohn_card_e9WmVH": {
@@ -308,16 +323,6 @@
     "reviews_slider_XP6LAa": {
       "type": "reviews-slider",
       "blocks": {
-        "review_BqNdDt": {
-          "type": "review",
-          "settings": {
-            "review_title": "",
-            "review_description": "",
-            "reviewer_name": "",
-            "designation": "",
-            "image": "shopify://shop_images/Giff2.gif"
-          }
-        },
         "review_xQYwxN": {
           "type": "review",
           "settings": {
@@ -325,7 +330,7 @@
             "review_description": "",
             "reviewer_name": "",
             "designation": "",
-            "image": "shopify://shop_images/Giff3.gif"
+            "image": "shopify://shop_images/3_d5621946-c3f8-4ec3-8c8c-789f5cdd3d5d.gif"
           }
         },
         "review_hwTLfA": {
@@ -335,7 +340,17 @@
             "review_description": "",
             "reviewer_name": "",
             "designation": "",
-            "image": "shopify://shop_images/Giff1.gif"
+            "image": "shopify://shop_images/6_6d7bc7c6-24e0-49ad-a97a-21200f041dc3.gif"
+          }
+        },
+        "review_LVzMzg": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/2_56d97037-0182-43ff-89a8-d3ddf183f2d7.gif"
           }
         },
         "review_9CU7pg": {
@@ -345,7 +360,7 @@
             "review_description": "",
             "reviewer_name": "",
             "designation": "",
-            "image": "shopify://shop_images/Giff2.gif"
+            "image": "shopify://shop_images/7_d494c5e1-2405-4092-8e93-30f85efc1372.gif"
           }
         },
         "review_4Brc7e": {
@@ -355,16 +370,27 @@
             "review_description": "",
             "reviewer_name": "",
             "designation": "",
-            "image": "shopify://shop_images/Giff3.gif"
+            "image": "shopify://shop_images/4_3e48ad23-6bdc-4c66-80c9-b86919e299f1.gif"
+          }
+        },
+        "review_BqNdDt": {
+          "type": "review",
+          "settings": {
+            "review_title": "",
+            "review_description": "",
+            "reviewer_name": "",
+            "designation": "",
+            "image": "shopify://shop_images/5_4e6c1d5d-e006-4242-8c7c-efacbe444f30.gif"
           }
         }
       },
       "block_order": [
-        "review_BqNdDt",
         "review_xQYwxN",
         "review_hwTLfA",
+        "review_LVzMzg",
         "review_9CU7pg",
-        "review_4Brc7e"
+        "review_4Brc7e",
+        "review_BqNdDt"
       ],
       "custom_css": [
         ".swiper-slide__content {display: none;}",
@@ -590,7 +616,7 @@
         "heading_YYcThj": {
           "type": "heading",
           "settings": {
-            "heading": "LET'S CHANGE THE WAY WE TEA!",
+            "heading": "Wir wollen das Bild von Tee verändern.",
             "heading_size": "h1"
           }
         },
@@ -598,7 +624,7 @@
           "type": "text",
           "settings": {
             "show_above_text_image": false,
-            "text": "<h3>Wir wollen das Bild von Tee verändern.</h3>",
+            "text": "",
             "text_style": "body"
           }
         },
@@ -631,7 +657,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "lander_v3": false,
-        "image": "shopify://shop_images/Footer_SKEISAN_MIKEMEYER_4N8A0752_1.jpg",
+        "image": "shopify://shop_images/Frame_1000001388_1_44ae82c1-a655-4592-b1a5-8480b0498e92.png",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -720,6 +746,7 @@
     "logo_auto_scroll_Rfrm9c",
     "featured_collection_jKeent",
     "how_it_work_CmKik8",
+    "hero_banner_MYEkW8",
     "collectiohn_card_e9WmVH",
     "reviews_slider_XP6LAa",
     "featured_collection_tHMBij",
