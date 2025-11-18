@@ -260,13 +260,88 @@
         "padding_bottom_mobile": 64
       }
     },
+    "slideshow_nJJjnN": {
+      "type": "slideshow",
+      "blocks": {
+        "slide_PpyJNP": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/header_04a.jpg",
+            "image_overlay_opacity": 50,
+            "heading": "DRINK DIFFERENT.",
+            "heading_size": "h1",
+            "subheading": "Tee ist Freiheit, Experiment, Abenteuer. Tee geht immer. Heiß. Oder auf Eis. ",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "slide_6deqBc": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Header_SKEISAN_MIKEMEYER_4N8A1737_1.jpg",
+            "image_overlay_opacity": 50,
+            "heading": "VERGISS DIE REGELN.",
+            "heading_size": "h1",
+            "subheading": "Morgens, mittags, abends. Oder dazwischen. Statt Kaffee. Statt Alkohol. Oder mit Alkohol. Und Zigarette. Als Wake-Upper, als Sundowner, als Salatgewürz.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
+          }
+        },
+        "slide_JpYEdj": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/450471375_1018911782761421_5057010148506976105_n.jpg",
+            "image_overlay_opacity": 50,
+            "heading": "DEIN LEBEN. DEIN TEE.",
+            "heading_size": "h1",
+            "subheading": "Mach, was dir schmeckt. Trink aus einem Tumbler.Tee ist, was du draus machst.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "show_text_box": false,
+            "box_align": "middle-center",
+            "text_alignment": "center",
+            "text_alignment_mobile": "center",
+            "color_scheme": "scheme-4"
+          }
+        }
+      },
+      "block_order": [
+        "slide_PpyJNP",
+        "slide_6deqBc",
+        "slide_JpYEdj"
+      ],
+      "name": "t:sections.slideshow.presets.name",
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "medium",
+        "slider_visual": "dots",
+        "auto_rotate": true,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": false,
+        "accessibility_info": "Slideshow zur Marke skeisan"
+      }
+    },
     "image_with_text_zL9wF3": {
       "type": "image-with-text",
       "blocks": {
         "heading_QhYwKT": {
           "type": "heading",
           "settings": {
-            "heading": "DRINK DIFFERENT. THINK SKEISAN.",
+            "heading": "Hinter SKEISAN – kein Mythos. Nur Menschen.",
             "heading_size": "h2"
           }
         },
@@ -274,7 +349,7 @@
           "type": "text",
           "settings": {
             "show_above_text_image": false,
-            "text": "<p>Tee ist Freiheit, Experiment, Abenteuer. Tee geht immer. Heiß. Oder auf Eis. </p><p>Morgens, mittags, abends. Oder dazwischen. Statt Kaffee. Statt Alkohol. Oder mit Alkohol. Und Zigarette. Als Wake-Upper, als Sundowner, als Salatgewürz. Vergiss die Regeln. </p><p>Mach, was dir schmeckt. Trink aus einem Tumbler.</p><p>Tee ist, was du draus machst.</p>",
+            "text": "<p>Hey, ich bin Tom und ich habe SKEISAN gegründet, um einen Tee zu schaffen, der in mein Leben passt: Urban, ästhetisch und dynamisch. Frei von Funktion, Rollen und Klischees. Dafür mit aufregenden Blends und den hochwertigsten Zutaten. Ehrlich und auf den Punkt.</p>",
             "text_style": "body"
           }
         }
@@ -286,7 +361,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "lander_v3": false,
-        "image": "shopify://shop_images/image_32_1_1_2.png",
+        "image": "shopify://shop_images/HANNAHKONDA_11_Kopie.jpg",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -351,81 +426,6 @@
       "settings": {
         "faq_heading": "FAQ"
       }
-    },
-    "slideshow_nJJjnN": {
-      "type": "slideshow",
-      "blocks": {
-        "slide_PpyJNP": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/header_04a.jpg",
-            "image_overlay_opacity": 0,
-            "heading": "DRINK DIFFERENT.",
-            "heading_size": "h1",
-            "subheading": "Tee ist Freiheit, Experiment, Abenteuer. Tee geht immer. Heiß. Oder auf Eis. ",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-4"
-          }
-        },
-        "slide_6deqBc": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/Header_SKEISAN_MIKEMEYER_4N8A1737_1.jpg",
-            "image_overlay_opacity": 0,
-            "heading": "VERGISS DIE REGELN.",
-            "heading_size": "h1",
-            "subheading": "Morgens, mittags, abends. Oder dazwischen. Statt Kaffee. Statt Alkohol. Oder mit Alkohol. Und Zigarette. Als Wake-Upper, als Sundowner, als Salatgewürz.",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-4"
-          }
-        },
-        "slide_JpYEdj": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/450471375_1018911782761421_5057010148506976105_n.jpg",
-            "image_overlay_opacity": 0,
-            "heading": "DEIN LEBEN. DEIN TEE.",
-            "heading_size": "h1",
-            "subheading": "Mach, was dir schmeckt. Trink aus einem Tumbler.Tee ist, was du draus machst.",
-            "button_label": "",
-            "link": "",
-            "button_style_secondary": false,
-            "show_text_box": true,
-            "box_align": "middle-center",
-            "text_alignment": "center",
-            "text_alignment_mobile": "center",
-            "color_scheme": "scheme-4"
-          }
-        }
-      },
-      "block_order": [
-        "slide_PpyJNP",
-        "slide_6deqBc",
-        "slide_JpYEdj"
-      ],
-      "name": "t:sections.slideshow.presets.name",
-      "settings": {
-        "layout": "full_bleed",
-        "slide_height": "medium",
-        "slider_visual": "counter",
-        "auto_rotate": false,
-        "change_slides_speed": 5,
-        "image_behavior": "none",
-        "show_text_below": true,
-        "accessibility_info": "Slideshow zu deiner Marke"
-      }
     }
   },
   "order": [
@@ -437,8 +437,8 @@
     "custom_img_txt_PMTKma",
     "image_with_text_cAed84",
     "video_slider_zz68QR",
+    "slideshow_nJJjnN",
     "image_with_text_zL9wF3",
-    "faq_8pNy8d",
-    "slideshow_nJJjnN"
+    "faq_8pNy8d"
   ]
 }
