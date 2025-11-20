@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "bf_banner_ykYQTB": {
+      "type": "bf-banner",
+      "name": "BF Banner",
+      "settings": {
+        "mob_image": "shopify://shop_images/HeroSection_mobil_BlackWeek_Final.jpg",
+        "desk_image": "shopify://shop_images/HeroSection_BlackWeek_Final_1.jpg",
+        "heading_1": "Kaufe 4",
+        "heading_2": "ZAHLE 3*",
+        "note": "* Auf das gesamte Sortiment.",
+        "button_text": "JETZT KAUFEN",
+        "button_link": "shopify://collections/tee-1"
+      }
+    },
     "offer_hero_FetCRU": {
       "type": "offer-hero",
       "name": "Offer Hero",
@@ -740,6 +753,7 @@
     }
   },
   "order": [
+    "bf_banner_ykYQTB",
     "offer_hero_FetCRU",
     "image_banner_bCnybK",
     "tea_hero_banner_iWNNtt",
