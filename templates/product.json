@@ -29,6 +29,10 @@
             "custom_liquid": "{% if product.metafields.custom.card_tag != blank %}\n  <p class=\"card-tag\">{{ product.metafields.custom.card_tag }}</p>\n{% elsif product.metafields.custom.short_description != blank %}\n  <div class=\"product__description rte quick-add-hidden\">\n    {{ product.metafields.custom.short_description | metafield_tag }}\n  </div>\n{% endif %}"
           }
         },
+        "badge_Jizn3T": {
+          "type": "badge",
+          "settings": {}
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -159,6 +163,7 @@
         "rating_DDBiWG",
         "klaviyo_reviews_average_rating_CRXd9K",
         "custom_liquid_HUjjc4",
+        "badge_Jizn3T",
         "title",
         "text_7ntViM",
         "price",

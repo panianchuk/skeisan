@@ -1083,7 +1083,50 @@ body .card-information .caption {
 }
 
 
+.badge-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  padding: 0;
+  margin: 0;
+}
 
+.badge-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  text-align: center;
+  color: #000;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 14px;
+  line-height: 1;
+  font-weight: 500;
+}
+
+.product__info-wrapper .badge-item {
+  background-color: #000;
+  color: #fff;
+}
+
+.card-wrapper.product-card-wrapper {
+  position: relative;
+}
+
+.card-wrapper.product-card-wrapper .badge-list {
+  position: absolute;
+  z-index: 10;
+  top: 10px;
+  left: 10px;
+  width: 100%;
+}
+
+.card-wrapper.product-card-wrapper .badge-item {
+  border-radius: 20px;
+}
 
 
 
