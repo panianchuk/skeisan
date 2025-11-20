@@ -1,0 +1,152 @@
+.bf-banner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.bf-banner__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.bf-banner__image--mobile {
+  display: block;
+}
+
+.bf-banner__image--desktop {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .bf-banner__image--mobile {
+    display: none;
+  }
+
+  .bf-banner__image--desktop {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .bf-banner__button {
+    font-size: 18px;
+  }
+}
+
+.bf-banner__content {
+  position: absolute;
+  top: 31%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.bf-banner__heading {
+  color: white;
+  text-transform: uppercase;
+}
+
+.bf-banner__heading--1 {
+  position: relative;
+  margin: 0 0 clamp(5px, 2.5vw, 20px) 0;
+  font-size: clamp(18px, 6.6vw, 50px);
+  letter-spacing: 0.01em;
+}
+
+.bf-banner__heading--1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 130%;
+  height: 2px;
+  background: currentColor;
+}
+
+.bf-banner__heading--2 {
+  position: relative;
+  margin: 0 0 clamp(2px, 2vw, 14px) clamp(12px, 3vw, 24px);
+  font-size: clamp(24px, 9.1vw, 70px);
+  color: #e92e74;
+}
+
+.bf-banner__heading--2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 115%;
+  height: 3px;
+  background: currentColor;
+}
+
+.bf-banner__note {
+  font-size: clamp(8px, 2.5vw, 20px);
+  margin-left: clamp(4px, 1vw, 8px);
+  letter-spacing: 0.05em;
+  color: white;
+}
+
+.bf-banner__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: clamp(10px, 5vw, 40px);
+  padding: 1px 8px;
+  text-decoration: none;
+  color: white;
+  background: #e92e74;
+  font-size: clamp(10px, 3vw, 24px);
+  border-radius: 80px;
+  overflow: hidden;
+  text-align: center;
+  transition: opacity 0.2s ease;
+}
+
+.bf-banner__button:hover {
+  opacity: 0.9;
+}
+
+@media screen and (min-width: 768px) {
+  .bf-banner__content {
+    top: 25.1%;
+  }
+
+  .bf-banner__heading--1 {
+    margin: 0 0 clamp(12px, 1.5vw, 24px) 0;
+    font-size: clamp(24px, 4vw, 60px);
+  }
+
+  .bf-banner__heading--2 {
+    margin: 0 0 clamp(10px, 1.2vw, 20px) clamp(12px, 1.5vw, 24px);
+    font-size: clamp(34px, 5vw, 80px);
+  }
+
+  .bf-banner__heading--1::after {
+    height: 3px;
+  }
+
+  .bf-banner__heading--2::after {
+    height:4px;
+  }
+
+  .bf-banner__note {
+    font-size: clamp(12px, 1.5vw, 22px);
+    margin-left: clamp(4px, 0.5vw, 8px);
+  }
+
+  .bf-banner__button {
+    margin-top: clamp(10px, 2vw, 80px);
+    padding: 1px 18px;
+    font-size: clamp(14px, 2vw, 28px);
+    border-radius: 100px;
+  }
+}
