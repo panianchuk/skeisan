@@ -1,0 +1,8 @@
+<ul class="badge-list">
+  {% for tag in product.tags %}
+    {% if tag contains '_badge_' %}
+      {% assign tag_label = tag | replace: '_badge_', '' %}
+      <div class="badge-item">{{ tag_label }}</div>
+    {% endif %}
+  {% endfor %}
+</ul>
