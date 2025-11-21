@@ -69,6 +69,8 @@
   width: 130%;
   height: 2px;
   background: currentColor;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 1%);
+  mask-image: linear-gradient(to right, transparent 0%, black 1%);
 }
 
 .bf-banner__heading--2 {
@@ -86,6 +88,8 @@
   width: 115%;
   height: 3px;
   background: currentColor;
+  -webkit-mask-image: linear-gradient(to left, transparent 0%, black 2%);
+  mask-image: linear-gradient(to left, transparent 0%, black 2%);
 }
 
 .bf-banner__note {
@@ -135,7 +139,7 @@
   }
 
   .bf-banner__heading--2::after {
-    height:4px;
+    height: 6px;
   }
 
   .bf-banner__note {
