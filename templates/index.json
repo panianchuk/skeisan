@@ -9,8 +9,22 @@
  */
 {
   "sections": {
+    "bf_banner_niPTRt": {
+      "type": "bf-banner",
+      "name": "BF Banner",
+      "settings": {
+        "mob_image": "shopify://shop_images/HeroSection_mobil_BlackWeek_Final.jpg",
+        "desk_image": "shopify://shop_images/HeroSection_BlackWeek_Final_1.jpg",
+        "heading_1": "Kaufe 4",
+        "heading_2": "ZAHLE 3*",
+        "note": "* Auf das gesamte Sortiment",
+        "button_text": "CODE: Black25",
+        "button_link": "https://skeisan.com/collections/all-products"
+      }
+    },
     "offer_hero_FetCRU": {
       "type": "offer-hero",
+      "disabled": true,
       "name": "Offer Hero",
       "settings": {
         "enable_video_looping": true,
@@ -18,20 +32,6 @@
         "offer_image": "shopify://shop_images/SKEISAN_TEE_1.png",
         "offer_image_mobile": "shopify://shop_images/Mobil_skeisan_tee.png",
         "offer_link": "shopify://collections/tee-1"
-      }
-    },
-    "bf_banner_niPTRt": {
-      "type": "bf-banner",
-      "disabled": true,
-      "name": "BF Banner",
-      "settings": {
-        "mob_image": "shopify://shop_images/HeroSection_mobil_BlackWeek_Final.jpg",
-        "desk_image": "shopify://shop_images/HeroSection_BlackWeek_Final_1.jpg",
-        "heading_1": "Kaufe 4",
-        "heading_2": "ZAHLE 3*",
-        "note": "* Auf das gesamte Sortiment.",
-        "button_text": "JETZT KAUFEN",
-        "button_link": "shopify://collections/tee-1"
       }
     },
     "image_banner_bCnybK": {
@@ -754,8 +754,8 @@
     }
   },
   "order": [
-    "offer_hero_FetCRU",
     "bf_banner_niPTRt",
+    "offer_hero_FetCRU",
     "image_banner_bCnybK",
     "tea_hero_banner_iWNNtt",
     "logo_auto_scroll_Rfrm9c",
