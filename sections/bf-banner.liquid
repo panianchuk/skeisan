@@ -1,0 +1,104 @@
+{{ 'bf-banner.css' | asset_url | stylesheet_tag }}
+
+{% liquid
+  assign mob_image = section.settings.mob_image
+  assign desk_image = section.settings.desk_image
+  assign heading_1 = section.settings.heading_1
+  assign heading_2 = section.settings.heading_2
+  assign note = section.settings.note
+  assign button_text = section.settings.button_text
+  assign button_link = section.settings.button_link
+%}
+
+<div data-section-id="{{ section.id }}" class="bf-banner">
+  {% if mob_image != blank %}
+    {{-
+      mob_image
+      | image_url: width: mob_image.width
+      | image_tag:
+        loading: 'lazy',
+        sizes: 'min(100vw, 800px)',
+        widths: '100,200,300,400,500,600,700,800',
+        alt: mob_image.alt,
+        class: 'bf-banner__image bf-banner__image--mobile'
+    -}}
+  {% endif %}
+
+  {% if desk_image != blank %}
+    {{-
+      desk_image
+      | image_url: width: desk_image.width
+      | image_tag:
+        loading: 'lazy',
+        sizes: 'min(100vw, 2000px)',
+        widths: '800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000',
+        alt: desk_image.alt,
+        class: 'bf-banner__image bf-banner__image--desktop'
+    -}}
+  {% endif %}
+
+  <div class="bf-banner__content">
+    <h2 class="bf-banner__heading bf-banner__heading--1">{{ heading_1 }}</h2>
+    <h2 class="bf-banner__heading bf-banner__heading--2">{{ heading_2 }}</h2>
+    <div class="bf-banner__note">{{ note }}</div>
+    {% if button_link != blank %}
+      <a href="{{ button_link }}" class="bf-banner__button">{{ button_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "BF Banner",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "mob_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desk_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "text",
+      "id": "heading_1",
+      "label": "Heading #1",
+      "default": "Kaufe 4"
+    },
+    {
+      "type": "text",
+      "id": "heading_2",
+      "label": "Heading #2",
+      "default": "ZAHLE 3*"
+    },
+    {
+      "type": "text",
+      "id": "note",
+      "label": "Note",
+      "default": "* Auf das gesamte Sortiment."
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button text",
+      "default": "JETZT KAUFEN"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "BF Banner"
+    }
+  ]
+}
+{% endschema %}
