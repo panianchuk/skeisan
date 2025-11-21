@@ -29,14 +29,14 @@
       "blocks": {
         "logo_with_heading_Tjteet": {
           "type": "logo_with_heading",
-          "disabled": true,
           "settings": {
-            "heading": "Bio Qualität",
+            "heading": "Black Friday Code: Black25",
             "link": ""
           }
         },
         "custom_liquid_wCdx8f": {
           "type": "custom_liquid",
+          "disabled": true,
           "settings": {
             "liquid": "<div class=\"announcement-item\">\n<img src=\"https://cdn.shopify.com/s/files/1/0788/0595/8976/files/EU-organic_Logo-2000.png?v=1758047312\" alt=\"Bio Qualität\"/>\n<a href=\"#\">\nBio Qualität</a>\n</div>"
           }
