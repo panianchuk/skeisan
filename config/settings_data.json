@@ -177,6 +177,20 @@
         "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
         "disabled": false,
         "settings": {}
+      },
+      "9377937747802625048": {
+        "type": "shopify://apps/biscuits-bundles/blocks/biscuits-app-embed/9e9ff1bd-2cba-468f-b59f-a1ff63f6efe9",
+        "disabled": false,
+        "settings": {
+          "quickadd_action": "replace",
+          "quick_add_button_classes": "",
+          "quickview_action": "hide",
+          "quick_add_selector": "",
+          "quick_view_selector": "",
+          "grid_item_selector": "",
+          "product_form_selector": "",
+          "custom_css": ""
+        }
       }
     },
     "color_schemes": {

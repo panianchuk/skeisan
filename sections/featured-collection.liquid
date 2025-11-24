@@ -52,7 +52,7 @@ margin-top: 24px;
   }
   {%  if section.settings.border %}
   @media (max-width:749px) {
-    .section-{{ section.id }}-padding .grid__item:not(:last-child){
+    .section-{{ section.id }}-padding .grid:not(.grid--2-col-tablet-down) .grid__item:not(:last-child){
       padding-bottom:40px;
       border-bottom:1px solid;
 
