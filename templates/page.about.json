@@ -79,49 +79,6 @@
         "padding_bottom": 36
       }
     },
-    "tea_redefined_KhBPHr": {
-      "type": "tea-redefined",
-      "blocks": {
-        "feature_Wya3RL": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Mehr als Bio.",
-            "feature_description": "Alle Zutaten stammen aus biologischem Anbau. Manche Mischungen dürfen wir jedoch nicht als Bio ausweisen – z. B. weil wir Bio-Öle in höherer Dosierung verwenden, als es das Siegel erlaubt. Für mehr Geschmack, ohne Kompromisse bei der Reinheit."
-          }
-        },
-        "feature_jhpYwL": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Wenige Zutaten. Viel Charakter.",
-            "feature_description": "Reduktion auf das Wesentliche: ausgewählte Blätter, natürliche Bio-Öle und nichts Überflüssiges. So entsteht Tee mit Persönlichkeit und unverfälschtem Ausdruck."
-          }
-        },
-        "feature_7MBPhR": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Radikal kuratiert.",
-            "feature_description": "Kompromisslose Selektion: feinste Blätter, seltene Nuancen, außergewöhnliche Kombinationen. Nichts Zufälliges, alles bewusst gewählt."
-          }
-        },
-        "feature_kUNtPH": {
-          "type": "feature",
-          "settings": {
-            "feature_title": "Ästhetisch verpackt.",
-            "feature_description": "Premium-Tees, versiegelt im edlen UV-Aromaglas. Es schützt optimal vor Licht und Luft und garantiert, dass jedes Aroma unverfälscht bei dir ankommt."
-          }
-        }
-      },
-      "block_order": [
-        "feature_Wya3RL",
-        "feature_jhpYwL",
-        "feature_7MBPhR",
-        "feature_kUNtPH"
-      ],
-      "name": "Tea Redefined",
-      "settings": {
-        "main_title": "PREMIUM-TEE NEU ERLEBEN."
-      }
-    },
     "how_to_started_XXE9mT": {
       "type": "how-to-started",
       "disabled": true,
@@ -137,127 +94,47 @@
         "skeisan_story_button_target": false
       }
     },
-    "custom_img_txt_PMTKma": {
-      "type": "custom-img-txt",
-      "disabled": true,
-      "name": "img text",
-      "settings": {
-        "main_title": "PURE & SIMPLE TEA.",
-        "description": "You might think tea is terribly complicated. But tea is simple. Tea doesn't need a tea service or special moments. It doesn't need rituals or rules. It doesn't need myths or mantras.",
-        "hero_image_alt": "Tea essentials setup",
-        "bottom_description": "Tea doesn't need 1,000 varieties or expert knowledge. We make tea. Reduced to the essentials. And we do this essentials as best we can. High-quality and uncompromising. Stylish and urban. Suitable for everyday use and unisex."
-      }
-    },
-    "image_with_text_cAed84": {
-      "type": "image-with-text",
+    "rich_text_U8ywdq": {
+      "type": "rich-text",
       "blocks": {
-        "heading_mRCJPW": {
+        "heading_Hjzj6A": {
           "type": "heading",
           "settings": {
-            "heading": "Einfach richtig guter Tee.",
-            "heading_size": "h2"
+            "heading": "PREMIUM-TEE NEU ERLEBEN.",
+            "heading_size": "h1"
           }
         },
-        "text_GawcyD": {
+        "text_xNfWPr": {
           "type": "text",
           "settings": {
-            "show_above_text_image": false,
-            "text": "<p>Man könnte das Gefühl haben, Tee sei furchtbar kompliziert. Aber Tee ist einfach. Tee braucht kein Tee-Service oder besondere Momente. Braucht weder Ritual, noch Regeln. Braucht keine Mythen und keine Mantras.</p>",
-            "text_style": "body"
+            "text": "<p>Wir machen Tee, der durch Ästhetik überzeugt und durch Qualität bleibt. Was ihn besonders macht, ist nicht nur der Geschmack. Es ist, wie wir ihn denken: klarer, bolder, moderner.<br/><br/><strong>Wir sind nicht besser als andere - sondern ein ganz neues Erlebnis.</strong></p>"
           }
         },
-        "text_cpnL3m": {
-          "type": "text",
+        "button_Jebw7D": {
+          "type": "button",
           "settings": {
-            "show_above_text_image": true,
-            "text": "<p>Tee braucht auch keine 1.000 Sorten und kein Expertenwissen. Wir machen Tee. Aufs Wesentliche reduziert. Und dieses Wesentliche, machen wir so gut wir können. Hochwertig und kompromisslos. Stilvoll und urban. Alltagstauglich und unisex.</p>",
-            "text_style": "body"
+            "button_label": "",
+            "button_link": "",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
       "block_order": [
-        "heading_mRCJPW",
-        "text_GawcyD",
-        "text_cpnL3m"
+        "heading_Hjzj6A",
+        "text_xNfWPr",
+        "button_Jebw7D"
       ],
-      "name": "t:sections.image-with-text.presets.name",
+      "name": "t:sections.rich-text.presets.name",
       "settings": {
-        "lander_v3": false,
-        "image": "shopify://shop_images/header_01_mobile.jpg",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
+        "desktop_content_position": "center",
+        "content_alignment": "center",
         "color_scheme": "",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
-    "video_slider_zz68QR": {
-      "type": "video-slider",
-      "blocks": {
-        "video_slide_4BN4GE": {
-          "type": "video_slide",
-          "settings": {
-            "video": "shopify://files/videos/Fancy_Drrink.mp4",
-            "product": ""
-          }
-        },
-        "video_slide_jeniQb": {
-          "type": "video_slide",
-          "settings": {
-            "video": "shopify://files/videos/SKS_Reel Website.mp4",
-            "product": ""
-          }
-        },
-        "video_slide_PWhMRc": {
-          "type": "video_slide",
-          "settings": {
-            "video": "shopify://files/videos/Red_flat_white_.mp4",
-            "product": ""
-          }
-        },
-        "video_slide_CxjPR6": {
-          "type": "video_slide",
-          "settings": {
-            "video": "shopify://files/videos/0911-copy.mp4",
-            "product": ""
-          }
-        },
-        "video_slide_gn8HeA": {
-          "type": "video_slide",
-          "settings": {
-            "video": "shopify://files/videos/18016344572142177.mp4",
-            "product": ""
-          }
-        }
-      },
-      "block_order": [
-        "video_slide_4BN4GE",
-        "video_slide_jeniQb",
-        "video_slide_PWhMRc",
-        "video_slide_CxjPR6",
-        "video_slide_gn8HeA"
-      ],
-      "name": "Video Slider",
-      "settings": {
-        "section_title": "NO RULES. JUST TEA.",
-        "section_subtitle": "",
-        "background_color_start": "#667eea",
-        "background_color_end": "#764ba2",
-        "enable_autoplay": true,
-        "autoplay_delay": 4,
-        "show_navigation": true,
-        "show_pagination": true,
-        "padding_top_desktop": 60,
-        "padding_bottom_desktop": 60,
-        "padding_top_mobile": 64,
-        "padding_bottom_mobile": 64
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
       }
     },
     "slideshow_nJJjnN": {
@@ -335,13 +212,179 @@
         "accessibility_info": "Slideshow zur Marke skeisan"
       }
     },
+    "tea_redefined_KhBPHr": {
+      "type": "tea-redefined",
+      "blocks": {
+        "feature_Wya3RL": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Mehr als Bio.",
+            "feature_description": "Alle Zutaten stammen aus biologischem Anbau. Manche Blends dürfen wir nicht Bio nennen, weil wir Bio-Öle in höherer Dosierung verwenden, als es das Siegel erlaubt. Für mehr Geschmack, ohne Kompromisse bei der Reinheit."
+          }
+        },
+        "feature_jhpYwL": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Nachhaltigkeit ohne Zeigefinger.",
+            "feature_description": "Zertifizierte Herkunft, fairer Handel, ökologischer Anbau. Nicht als Statement, sondern weil’s selbstverständlich ist."
+          }
+        },
+        "feature_7MBPhR": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "Loser Blatttee.",
+            "feature_description": "Teebeutel? Nicht unser Ding. SKEISAN nutzt nur Grobschnitt und hochwertigen Blatttee – für mehr Aroma und bessere Qualität."
+          }
+        },
+        "feature_kUNtPH": {
+          "type": "feature",
+          "settings": {
+            "feature_title": "140 Jahre Erfahrung",
+            "feature_description": "Wir sind zwar noch jung, aber unsere Mischungspartner beherrschen ihr Handwerk seit Generationen. Und wir geben dem Ganzen einen neuen Look."
+          }
+        }
+      },
+      "block_order": [
+        "feature_Wya3RL",
+        "feature_jhpYwL",
+        "feature_7MBPhR",
+        "feature_kUNtPH"
+      ],
+      "name": "Tea Redefined",
+      "settings": {
+        "main_title": "Wir machen Tee, der zu deinem Leben passt."
+      }
+    },
+    "custom_img_txt_PMTKma": {
+      "type": "custom-img-txt",
+      "disabled": true,
+      "name": "img text",
+      "settings": {
+        "main_title": "PURE & SIMPLE TEA.",
+        "description": "You might think tea is terribly complicated. But tea is simple. Tea doesn't need a tea service or special moments. It doesn't need rituals or rules. It doesn't need myths or mantras.",
+        "hero_image_alt": "Tea essentials setup",
+        "bottom_description": "Tea doesn't need 1,000 varieties or expert knowledge. We make tea. Reduced to the essentials. And we do this essentials as best we can. High-quality and uncompromising. Stylish and urban. Suitable for everyday use and unisex."
+      }
+    },
+    "video_slider_zz68QR": {
+      "type": "video-slider",
+      "blocks": {
+        "video_slide_4BN4GE": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/Fancy_Drrink.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_jeniQb": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/SKS_Reel Website.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_PWhMRc": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/Red_flat_white_.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_CxjPR6": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/0911-copy.mp4",
+            "product": ""
+          }
+        },
+        "video_slide_gn8HeA": {
+          "type": "video_slide",
+          "settings": {
+            "video": "shopify://files/videos/18016344572142177.mp4",
+            "product": ""
+          }
+        }
+      },
+      "block_order": [
+        "video_slide_4BN4GE",
+        "video_slide_jeniQb",
+        "video_slide_PWhMRc",
+        "video_slide_CxjPR6",
+        "video_slide_gn8HeA"
+      ],
+      "name": "Video Slider",
+      "settings": {
+        "section_title": "NO RULES. JUST TEA.",
+        "section_subtitle": "",
+        "background_color_start": "#667eea",
+        "background_color_end": "#764ba2",
+        "enable_autoplay": true,
+        "autoplay_delay": 4,
+        "show_navigation": true,
+        "show_pagination": true,
+        "padding_top_desktop": 60,
+        "padding_bottom_desktop": 60,
+        "padding_top_mobile": 64,
+        "padding_bottom_mobile": 64
+      }
+    },
+    "image_with_text_cAed84": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_mRCJPW": {
+          "type": "heading",
+          "settings": {
+            "heading": "Einfach richtig guter Tee.",
+            "heading_size": "h2"
+          }
+        },
+        "text_GawcyD": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": false,
+            "text": "<p>Man könnte das Gefühl haben, Tee sei furchtbar kompliziert. Aber Tee ist einfach. Tee braucht kein Tee-Service oder besondere Momente. Braucht weder Ritual, noch Regeln. Braucht keine Mythen und keine Mantras.</p>",
+            "text_style": "body"
+          }
+        },
+        "text_cpnL3m": {
+          "type": "text",
+          "settings": {
+            "show_above_text_image": true,
+            "text": "<p>Tee braucht auch keine 1.000 Sorten und kein Expertenwissen. Wir machen Tee. Aufs Wesentliche reduziert. Und dieses Wesentliche, machen wir so gut wir können. Hochwertig und kompromisslos. Stilvoll und urban. Alltagstauglich und unisex.</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_mRCJPW",
+        "text_GawcyD",
+        "text_cpnL3m"
+      ],
+      "name": "t:sections.image-with-text.presets.name",
+      "settings": {
+        "lander_v3": false,
+        "image": "shopify://shop_images/SKEISAN_MIKEMEYER_4N8A0752.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "image_behavior": "none",
+        "content_layout": "no-overlap",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "mobile_content_alignment": "left",
+        "section_color_scheme": "",
+        "color_scheme": "",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
     "image_with_text_zL9wF3": {
       "type": "image-with-text",
       "blocks": {
         "heading_QhYwKT": {
           "type": "heading",
           "settings": {
-            "heading": "Hinter SKEISAN – kein Mythos. Nur Menschen.",
+            "heading": "Wir wollen das Bild von Tee verändern.",
             "heading_size": "h2"
           }
         },
@@ -432,12 +475,13 @@
     "main",
     "image_with_text_BMGeTe",
     "video_GUgLKD",
-    "tea_redefined_KhBPHr",
     "how_to_started_XXE9mT",
-    "custom_img_txt_PMTKma",
-    "image_with_text_cAed84",
-    "video_slider_zz68QR",
+    "rich_text_U8ywdq",
     "slideshow_nJJjnN",
+    "tea_redefined_KhBPHr",
+    "custom_img_txt_PMTKma",
+    "video_slider_zz68QR",
+    "image_with_text_cAed84",
     "image_with_text_zL9wF3",
     "faq_8pNy8d"
   ]
