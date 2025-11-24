@@ -1,0 +1,26 @@
+{{ 'bundle-builder.css' | asset_url | stylesheet_tag }}
+
+<div>Biscuits Bundles</div>
+
+{% schema %}
+{
+  "name": "Biscuits Bundles",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Optional. Select a product. If used not on a product page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Biscuits Bundles"
+    }
+  ]
+}
+{% endschema %}

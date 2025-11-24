@@ -42,7 +42,7 @@
       "name": "Bundle Builder",
       "settings": {
         "collection": "aromaglas",
-        "product": "geschenkbox-i",
+        "product": "tea-bundle-box",
         "enable_sticky_info": true,
         "color_scheme": "",
         "media_size": "medium",
@@ -57,11 +57,53 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "176398743147ddc139": {
+      "type": "apps",
+      "blocks": {
+        "biscuits_bundles_biscuits_bundle_form_YEfPMb": {
+          "type": "shopify://apps/biscuits-bundles/blocks/biscuits-bundle-form/9e9ff1bd-2cba-468f-b59f-a1ff63f6efe9",
+          "settings": {
+            "product": "tea-bundle-box",
+            "show_add_to_cart_button": "yes-open-drawer",
+            "text_color": "#121212",
+            "card_color": "#fff",
+            "input_type": "ball",
+            "input_text_color": "#121212",
+            "input_color": "#fff",
+            "display_shadow": false,
+            "display_selection_count": false,
+            "display_running_totals": true,
+            "enable_product_links": false,
+            "card_padding": 8,
+            "grid_gap": 10,
+            "border_color": "#E1E1E1",
+            "border_radius": 0,
+            "highlight_type": "fill",
+            "selected_text_color": "#ffffff",
+            "selected_color": "#e92e74",
+            "border_thickness": 4,
+            "divider_color": "#E1E1E1",
+            "important_color": "#DD1D1D",
+            "padding_top": 0,
+            "padding_bottom": 0,
+            "custom_css": "",
+            "custom_js": ""
+          }
+        }
+      },
+      "block_order": [
+        "biscuits_bundles_biscuits_bundle_form_YEfPMb"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
     "main",
     "bundles_builder_6NRFhE",
-    "bundle_builder_pHxFBj"
+    "bundle_builder_pHxFBj",
+    "176398743147ddc139"
   ]
 }
