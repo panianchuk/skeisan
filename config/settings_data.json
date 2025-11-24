@@ -18,7 +18,7 @@
     "body_scale": 100,
     "page_width": 1450,
     "spacing_sections": 0,
-    "spacing_grid_horizontal": 8,
+    "spacing_grid_horizontal": 32,
     "spacing_grid_vertical": 8,
     "animations_reveal_on_scroll": false,
     "animations_hover_elements": "none",
@@ -175,21 +175,6 @@
       },
       "13223602749629917723": {
         "type": "shopify://apps/kaching-cart/blocks/embed/7705621e-3c0f-4e97-9d29-5c8528b19fb7",
-        "disabled": false,
-        "settings": {}
-      },
-      "9696655121035291526": {
-        "type": "shopify://apps/rapi/blocks/app-embed/99617c17-a32b-4e70-a883-7a155610d032",
-        "disabled": true,
-        "settings": {}
-      },
-      "14041968213898805026": {
-        "type": "shopify://apps/aov-ai-free-gift-bxgy/blocks/app-embed-free-gift/de98edfe-90fa-4145-8a57-1055e0058723",
-        "disabled": true,
-        "settings": {}
-      },
-      "8605505498557855500": {
-        "type": "shopify://apps/bogos-io-free-gift/blocks/app-embed/0432bba6-720a-4e95-be5a-b868386f7aa6",
         "disabled": false,
         "settings": {}
       }
