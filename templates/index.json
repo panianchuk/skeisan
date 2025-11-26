@@ -151,7 +151,7 @@
         "quick_add": "none",
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "button_text": "Bestseller entdecken",
+        "button_text": "Jetzt bestellen",
         "url": "/collections/all-products",
         "button_position": false,
         "padding_top": 36,
@@ -510,7 +510,7 @@
           "type": "text",
           "settings": {
             "show_above_text_image": false,
-            "text": "<p>Wir wissen, dass Tee eine sehr persönliche Geschmacksentscheidung ist. Deshalb gehst du bei uns kein Risiko ein: Sollte dir eine Sorte nicht gefallen, kannst du sie innerhalb von 30 Tagen problemlos zurückschicken. Ganz ohne Diskussionen, ganz ohne versteckte Bedingungen – du erhältst den vollen Kaufpreis zurück. So kannst du unsere Tees entspannt entdecken und dich selbst von der Qualität überzeugen.</p>",
+            "text": "<p>Wir wissen, dass Tee eine sehr persönliche Geschmacksentscheidung ist. Deshalb gehst du bei uns kein Risiko ein: Sollte dir eine Sorte nicht gefallen, kannst du sie innerhalb von 30 Tagen problemlos zurückschicken. So kannst du unsere Tees entspannt entdecken und dich selbst von der Qualität überzeugen.</p>",
             "text_style": "body"
           }
         }
@@ -671,7 +671,7 @@
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
         "lander_v3": false,
-        "image": "shopify://shop_images/Frame_1000001388_1_44ae82c1-a655-4592-b1a5-8480b0498e92.png",
+        "image": "shopify://shop_images/4_3e48ad23-6bdc-4c66-80c9-b86919e299f1.gif",
         "height": "adapt",
         "desktop_image_width": "medium",
         "layout": "image_first",
@@ -680,8 +680,8 @@
         "desktop_content_position": "middle",
         "desktop_content_alignment": "left",
         "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
+        "section_color_scheme": "scheme-4",
+        "color_scheme": "scheme-4",
         "padding_top": 36,
         "padding_bottom": 36
       }
