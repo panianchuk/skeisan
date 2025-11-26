@@ -6,7 +6,7 @@
 
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} biscuits-bundle"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="false"
@@ -171,13 +171,18 @@
               {%- when 'price' -%}
                 <div id="bundle-price" class="bundle-builder-price-wrapper">
                   <div class="bundle-builder-price">
-                    {{ block.settings.total_label | default: 'Total:' }}
-                    <span id="bundle-total-price" class="bundle-builder-total-price">$0.00</span>
+                    {{ block.settings.total_label }}
+                    {% comment %} <span id="bundle-total-price" class="bundle-builder-total-price">$0.00</span> {% endcomment %}
                     <span id="bundle-discounted-price" class="bundle-builder-discounted-price">$0.00</span>
                   </div>
-                  <div class="bundle-builder-savings">
-                    {{ block.settings.savings_text | replace: '[[amount]]', '<span id="bundle-savings">$0.00</span>' }}
-                  </div>
+                  {% if block.settings.savings_text != blank %}
+                    <div class="bundle-builder-savings">
+                      {{
+                        block.settings.savings_text
+                        | replace: '[[amount]]', '<span id="bundle-savings">$0.00</span>'
+                      }}
+                    </div>
+                  {% endif %}
                 </div>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
@@ -486,16 +491,17 @@
                     {% endfor %}
                   </div>
                 </div>
-              {% when 'add_to_cart' %}
-                <button type="button" class="bundle-add-to-cart disabled">
-                  {{ block.settings.button_text }}
-                </button>
-
-                <div class="payment-methods">
-                  {%- for type in shop.enabled_payment_types -%}
-                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                  {%- endfor -%}
-                </div>
+              {%- when 'buy_buttons' -%}
+                {% assign pyment_icons = section.settings.payment_icons %}
+                {%- render 'buy-buttons',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true,
+                  pyment_icons: pyment_icons,
+                  hide_quantity: true
+                -%}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -827,7 +833,7 @@
           "type": "text",
           "id": "savings_text",
           "label": "Savings Text",
-          "default": "You are saving 25% OFF [[amount]]",
+          "default": "You are saving [[amount]]",
           "info": "Use amount variable to display the savings money"
         }
       ]
@@ -846,15 +852,23 @@
       ]
     },
     {
-      "type": "add_to_cart",
-      "name": "Add To Cart",
+      "type": "buy_buttons",
+      "name": "t:sections.main-product.blocks.buy_buttons.name",
       "limit": 1,
       "settings": [
         {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "Add To Cart"
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
         }
       ]
     },

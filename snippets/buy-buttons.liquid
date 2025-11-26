@@ -69,23 +69,25 @@
               <p>Verfügbar – in 2–3 Tagen bei dir</p>
             </div>
           {% endif %}
-          <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
-            <select id="Quantity-{{ section.id }}" name="quantity" class="quantity-select">
-              {% for i in (1..10) %}
-                <option
-                  value="{{ i }}"
-                  {% if forloop.first %}
-                    selected
-                  {% endif %}
-                >
-                  {{ i }}
-                </option>
-              {% endfor %}
-            </select>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M14.7142 6.46422L15.8925 7.64256L10.0009 13.5359L4.10754 7.64256L5.28588 6.46422L10 11.1784L14.7142 6.46422Z" fill="black"/>
-            </svg>
-          </quantity-input>
+          {% unless hide_quantity %}
+            <quantity-input class="quantity" data-url="{{ product.url }}" data-section="{{ section.id }}">
+              <select id="Quantity-{{ section.id }}" name="quantity" class="quantity-select">
+                {% for i in (1..10) %}
+                  <option
+                    value="{{ i }}"
+                    {% if forloop.first %}
+                      selected
+                    {% endif %}
+                  >
+                    {{ i }}
+                  </option>
+                {% endfor %}
+              </select>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14.7142 6.46422L15.8925 7.64256L10.0009 13.5359L4.10754 7.64256L5.28588 6.46422L10 11.1784L14.7142 6.46422Z" fill="black"/>
+              </svg>
+            </quantity-input>
+          {% endunless %}
           {%- liquid
             assign check_against_inventory = true
             if product.selected_or_first_available_variant.inventory_management != 'shopify' or product.selected_or_first_available_variant.inventory_policy == 'continue'

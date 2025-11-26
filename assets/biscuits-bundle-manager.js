@@ -13,8 +13,8 @@ class BundleManager {
       totalPrice: document.querySelector('#bundle-total-price'),
       discountedPrice: document.querySelector('#bundle-discounted-price'),
       savingsMoney: document.querySelector('#bundle-savings'),
-      addToCartButton: document.querySelector('.bundle-add-to-cart'),
-      biscuitsBundleAddToCartButton: document.querySelector('.biscuits-bundle-add-to-cart__button'),
+      addToCartButton: document.querySelector('.product-form__submit'),
+      productForm: document.querySelector('product-form.product-form'),
     };
 
     document.addEventListener('BiscuitsBundleForm:ready', (e) => {
@@ -42,8 +42,6 @@ class BundleManager {
         this.render();
       });
     });
-
-    this.dom.addToCartButton.addEventListener('click', () => this.handleAddToCart());
   }
 
   handleProductSelection(event) {
@@ -133,6 +131,7 @@ class BundleManager {
     if (this.dom.addToCartButton) {
       const hasItems = this.selectedItems.filter((i) => i).length === this.config.maxItems;
       this.dom.addToCartButton.classList.toggle('disabled', !hasItems);
+      this.dom.productForm.classList.toggle('disabled', !hasItems);
     }
 
     if (this.dom.priceWrapper) {
@@ -179,17 +178,6 @@ class BundleManager {
     }
 
     return formatString.replace(placeholderRegex, value);
-  }
-
-  handleAddToCart() {
-    if (this.dom.biscuitsBundleAddToCartButton) {
-      this.dom.addToCartButton.classList.add('loading');
-      this.dom.biscuitsBundleAddToCartButton.click();
-
-      setTimeout(() => {
-        this.dom.addToCartButton.classList.remove('loading');
-      }, 2000);
-    }
   }
 }
 
