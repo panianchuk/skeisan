@@ -82,71 +82,11 @@
 
     <div class="bundle__products-popup">
       <div class="page-width">
-        <div class="popup_page-header">
-          <h3 class="h1 popup_page-header-title" style="margin-top:0;margin-bottom: 20px;">
-            ADD TEES <span id="boards-count">(0 / 3)</span>
-          </h3>
-          <button class="popup__close-btn">
-            <svg
-              fill="#000000"
-              width="20px"
-              height="20px"
-              viewBox="0 0 24 24"
-              id="cross"
-              data-name="Line Color"
-              xmlns="http://www.w3.org/2000/svg"
-              class="icon line-color"
-            >
-              <line id="primary" x1="19" y1="19" x2="5" y2="5" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line><line id="primary-2" data-name="primary" x1="19" y1="5" x2="5" y2="19" style="fill: none; stroke: rgb(0, 0, 0); stroke-linecap: round; stroke-linejoin: round; stroke-width: 2;"></line>
-            </svg>
-          </button>
-        </div>
-        {% assign collection = section.settings.collection %}
-        <div class="bundle__products-grid">
-          {% for product in collection.products %}
-            <div
-              class="bundle__product"
-              data-price="{{ product.first_available_variant.price | divided_by: 100.0 }}"
-            >
-              <div class="bundle__product-img">
-                <img src="{{ product.featured_image | image_url }}">
-              </div>
-              <div class="bundle__product-content">
-                  <div
-                  class="klaviyo-star-rating-widget"
-                  data-id="{{product.id}}"
-                  data-product-title="{{product.title}}"
-                  data-product-type="{{product.type}}"
-                ></div>
-                {% if product.metafields.custom.zahlen %}
-                  <h4 class="card__heading">
-                    <span style="margin-right:0;font-weight: bold;">{{ product.metafields.custom.buchstabe -}}</span>
-                    <span style="margin-right:5px;font-weight: bold;">{{- product.metafields.custom.zahlen }} </span>
-                    {% if product.metafields.custom.kurzname %}
-                      <span class="card__heading-small">
-                        {{ product.metafields.custom.kurzname }}
-                      </span>
-                    {% endif %}
-                  </h4>
-                {% else %}
-                  <h4 class="card__heading{% if product.featured_media or settings.card_style == 'standard' %} h5{% endif %}">
-                    {{ product.title | escape }}
-                  </h4>
-                {% endif %}
-                <p class="bundle__product-price">
-                  {{ product.price | money }}
-                </p>
-              </div>
-
-              <button
-                data-id="{{ product.first_available_variant.id }}"
-                class="btn btn--blue"
-              >
-                Add
-              </button>
-            </div>
-          {% endfor %}
-        </div>
+        {% for block in section.blocks %}
+          {% if block.type == '@app' %}
+            {% render block %}
+          {% endif %}
+        {% endfor %}
       </div>
     </div>
 
@@ -160,6 +100,17 @@
     </script>
   </div>
 </div>
+
+<script>
+  document.addEventListener('BiscuitsBundleForm:ready', (event) => {
+    console.log('BiscuitsBundleForm:ready', event);
+    document.querySelectorAll('.biscuits-bundle-item').forEach((item) => {
+      item.addEventListener('biscuits--product-selection', (event) => {
+        console.log('biscuits--product-selection', event);
+      });
+    });
+  });
+</script>
 
 <script>
     const thumbnailSwiper = new Swiper(".pdp__thumbnail", {
@@ -192,8 +143,9 @@
     }
   });
 </script>
+
 <script>
- document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener('DOMContentLoaded', function () {
     const placeholders = Array.from(document.querySelectorAll('.place_holder-card'));
     const popup = document.querySelector('.bundle__products-popup');
     const closeBtn = popup && popup.querySelector('.popup__close-btn');
@@ -248,80 +200,80 @@
     if (closeBtn) closeBtn.addEventListener('click', () => popup && popup.classList.remove('show'));
 
     // handle product selection inside popup
-   if (popup) {
-  popup.querySelectorAll('.bundle__product button').forEach((btn) => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const variantId = btn.dataset.id;
-      if (!variantId) return;
+    if (popup) {
+      popup.querySelectorAll('.bundle__product button').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const variantId = btn.dataset.id;
+          if (!variantId) return;
 
-      const productEl = btn.closest('.bundle__product');
-      const title = productEl?.querySelector('h4')?.innerText || 'Product';
-      const img = productEl?.querySelector('img')?.src || '';
-      const price = parsePriceFromProductEl(productEl);
+          const productEl = btn.closest('.bundle__product');
+          const title = productEl?.querySelector('h4')?.innerText || 'Product';
+          const img = productEl?.querySelector('img')?.src || '';
+          const price = parsePriceFromProductEl(productEl);
 
-      // if no activeIndex (rare), put in first empty
-      if (activeIndex === null) {
-        activeIndex = selectedProducts.findIndex((v) => v === null);
-      }
-      if (activeIndex === -1) {
-        // all slots filled
-        return;
-      }
+          // if no activeIndex (rare), put in first empty
+          if (activeIndex === null) {
+            activeIndex = selectedProducts.findIndex((v) => v === null);
+          }
+          if (activeIndex === -1) {
+            // all slots filled
+            return;
+          }
 
-      // set selected product object at that index
-      selectedProducts[activeIndex] = { id: variantId, price: price };
+          // set selected product object at that index
+          selectedProducts[activeIndex] = { id: variantId, price: price };
 
-      // render UI for that placeholder
-      const ph = placeholders[activeIndex];
-      ph.innerHTML = `
+          // render UI for that placeholder
+          const ph = placeholders[activeIndex];
+          ph.innerHTML = `
         <img src="${img}" alt="${title}">
         <p>${title}</p>
         <button class="remove-selected">
           <img src="https://cdn.shopify.com/s/files/1/0788/0595/8976/files/close-icon.png?v=1757367584" alt="close"/>
         </button>
       `;
-      ph.classList.add('filled');
-      ph.dataset.price = productEl.dataset.price;
+          ph.classList.add('filled');
+          ph.dataset.price = productEl.dataset.price;
 
-      activeIndex = null;
+          activeIndex = null;
 
-      updateBundleState();
+          updateBundleState();
 
-      // ✅ close popup automatically when all slots filled
-      const filledCount = selectedProducts.filter(Boolean).length;
-      if (filledCount === CARDS) {
-        popup.classList.remove('show');
-      }
-    });
-  });
-}
+          // ✅ close popup automatically when all slots filled
+          const filledCount = selectedProducts.filter(Boolean).length;
+          if (filledCount === CARDS) {
+            popup.classList.remove('show');
+          }
+        });
+      });
+    }
 
     // delegate remove: only clear the clicked slot
-const cardsContainer = document.querySelector('.bundle-builder__cards');
-if (cardsContainer) {
-  cardsContainer.addEventListener('click', (e) => {
-    const removeBtn = e.target.closest('.remove-selected');
-    if (!removeBtn) return; // not a remove click
-    e.stopPropagation();
+    const cardsContainer = document.querySelector('.bundle-builder__cards');
+    if (cardsContainer) {
+      cardsContainer.addEventListener('click', (e) => {
+        const removeBtn = e.target.closest('.remove-selected');
+        if (!removeBtn) return; // not a remove click
+        e.stopPropagation();
 
-    const ph = removeBtn.closest('.place_holder-card');
-    if (!ph) return;
+        const ph = removeBtn.closest('.place_holder-card');
+        if (!ph) return;
 
-    const index = placeholders.indexOf(ph);
-    if (index === -1) return;
+        const index = placeholders.indexOf(ph);
+        if (index === -1) return;
 
-    // ✅ remove product from array
-    selectedProducts[index] = null;
+        // ✅ remove product from array
+        selectedProducts[index] = null;
 
-    // ✅ restore original placeholder HTML
-    ph.innerHTML = originalPlaceholderHTML[index];
-    ph.classList.remove('filled');
-    ph.removeAttribute('data-price');
+        // ✅ restore original placeholder HTML
+        ph.innerHTML = originalPlaceholderHTML[index];
+        ph.classList.remove('filled');
+        ph.removeAttribute('data-price');
 
-    updateBundleState();
-  });
-}
+        updateBundleState();
+      });
+    }
 
     // Add bundle to cart (only when all slots filled)
     if (bundleAddBtn) {
@@ -340,55 +292,53 @@ if (cardsContainer) {
     }
 
     // Recalculate UI and prices
- function updateBundleState() {
-  const chosen = selectedProducts.filter(p => p); // valid selections
-  const filledCount = chosen.length;
+    function updateBundleState() {
+      const chosen = selectedProducts.filter((p) => p); // valid selections
+      const filledCount = chosen.length;
 
-  // counts
-  const boardsCountEl = document.querySelector('#boards-count');
-  if (boardsCountEl) {
-    boardsCountEl.innerText = `(${filledCount} / ${CARDS})`;
-  }
-  const racksTextEl = document.querySelector('[data-racks-text]');
-  if (racksTextEl) {
-    racksTextEl.innerText = `(${filledCount} / ${CARDS})`;
-  }
+      // counts
+      const boardsCountEl = document.querySelector('#boards-count');
+      if (boardsCountEl) {
+        boardsCountEl.innerText = `(${filledCount} / ${CARDS})`;
+      }
+      const racksTextEl = document.querySelector('[data-racks-text]');
+      if (racksTextEl) {
+        racksTextEl.innerText = `(${filledCount} / ${CARDS})`;
+      }
 
-  // show/hide price box and add button
-  if (priceBox) priceBox.style.display = filledCount > 0 ? 'block' : 'none';
+      // show/hide price box and add button
+      if (priceBox) priceBox.style.display = filledCount > 0 ? 'block' : 'none';
 
-   if (bundleAddBtn) {
-    bundleAddBtn.style.display = 'block';
-    bundleAddBtn.disabled = filledCount !== CARDS;
-    bundleAddBtn.classList.toggle('disabled', filledCount !== CARDS);
-  }
-  // calculate subtotal
-  let total = 0;
-  document.querySelectorAll('.place_holder-card.filled').forEach(ph => {
-    const price = parseFloat(ph.dataset.price || 0);
-    total += price;
-  });
+      if (bundleAddBtn) {
+        bundleAddBtn.style.display = 'block';
+        bundleAddBtn.disabled = filledCount !== CARDS;
+        bundleAddBtn.classList.toggle('disabled', filledCount !== CARDS);
+      }
+      // calculate subtotal
+      let total = 0;
+      document.querySelectorAll('.place_holder-card.filled').forEach((ph) => {
+        const price = parseFloat(ph.dataset.price || 0);
+        total += price;
+      });
 
-  // apply discounts
-  let discountRate = 0;
-  if (filledCount === 2) discountRate = 0.10; // 10% off
-  if (filledCount === 3) discountRate = 0.25; // 25% off
+      // apply discounts
+      let discountRate = 0;
+      if (filledCount === 2) discountRate = 0.1; // 10% off
+      if (filledCount === 3) discountRate = 0.25; // 25% off
 
-  const discounted = total * (1 - discountRate);
-  const savingAmount = total - discounted;
+      const discounted = total * (1 - discountRate);
+      const savingAmount = total - discounted;
 
-  // update DOM
-  if (totalPriceEl) totalPriceEl.innerText = `$${total.toFixed(2)}`;
-  if (discountedPriceEl) {
-    discountedPriceEl.innerText = discountRate > 0 ? `$${discounted.toFixed(2)}` : '';
-  }
-  if (savingsEl) {
-    savingsEl.innerText = discountRate > 0
-      ? `You are saving ${discountRate * 100}% OFF ($${savingAmount.toFixed(2)})`
-      : '';
-  }
-}
-
+      // update DOM
+      if (totalPriceEl) totalPriceEl.innerText = `$${total.toFixed(2)}`;
+      if (discountedPriceEl) {
+        discountedPriceEl.innerText = discountRate > 0 ? `$${discounted.toFixed(2)}` : '';
+      }
+      if (savingsEl) {
+        savingsEl.innerText =
+          discountRate > 0 ? `You are saving ${discountRate * 100}% OFF ($${savingAmount.toFixed(2)})` : '';
+      }
+    }
 
     // initial render
     updateBundleState();
@@ -589,6 +539,11 @@ if (cardsContainer) {
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
     }
   ],
   "presets": [
