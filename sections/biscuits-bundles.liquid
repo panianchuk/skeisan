@@ -572,7 +572,9 @@
                 </div>
               </div>
 
-              <button id="biscuits-bundle-close" class="biscuits-modal-close">Auswählen</button>
+              <button id="biscuits-bundle-close" class="biscuits-modal-close">
+                {{ section.settings.bundle_button_text }}
+              </button>
             </div>
           {% endif %}
       {%- endcase -%}
@@ -597,6 +599,12 @@
       "id": "total_products_in_bundle",
       "label": "Total products in the bundle",
       "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "bundle_button_text",
+      "label": "Bundle button text",
+      "default": "Auswählen"
     },
     {
       "type": "checkbox",
