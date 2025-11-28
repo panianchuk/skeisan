@@ -22,7 +22,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  padding-top: 8px;
+  padding-top: 20px;
   background: #fff;
   z-index: 1000000;
   transform: translateY(100%);
@@ -37,7 +37,6 @@
 
 .biscuits-modal-scroll-area {
   overflow-y: auto;
-  padding-top: 50px;
   height: 100%;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -53,22 +52,41 @@
 
 .biscuits-modal-close {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: rgba(255, 255, 255, 1);
-  border-radius: 50%;
+  bottom: 20px;
+  left: 50%;
+  z-index: 1000001;
+  transform: translateX(-50%);
+  background: #121212;
+  border-radius: 20px;
   border: none;
   cursor: pointer;
-  padding: 5px;
-  z-index: 1001;
+  padding: 8px 40px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1;
+  transition: opacity 0.3s ease;
+  height: 48px;
+  width: calc(100% - 20px);
+  border-radius: 100px;
+  opacity: 0;
+  pointer-events: none;
 }
 
-.biscuits-modal-close svg {
-  width: 24px;
-  height: 24px;
-  fill: #000;
+.biscuits-modal-close.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .biscuits-modal-close {
+    font-size: 16px;
+    width: fit-content;
+  }
 }

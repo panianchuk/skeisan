@@ -28,9 +28,6 @@
 }
 
 .biscuits-bundle-actions {
-  position: sticky;
-  bottom: 0;
-  z-index: 2;
   padding-inline: 10px;
   padding-bottom: 10px;
   background-color: #fff;
@@ -107,6 +104,10 @@
   background: #fff;
   cursor: pointer;
   min-height: 150px;
+}
+
+.bundle-trigger-card.locked {
+  pointer-events: none;
 }
 
 .bundle-trigger-card.filled {
@@ -228,4 +229,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.biscuits-bundle-item-card.biscuits-bundle-item-card--required,
+.biscuits-bundle [data-biscuits-preselected] {
+  pointer-events: none !important;
 }
