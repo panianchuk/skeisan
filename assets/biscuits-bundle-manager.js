@@ -107,23 +107,28 @@ class BundleManager {
     this.isProcessing = true;
     if (existingSlotIndex !== -1) {
       this.selectedItems[existingSlotIndex] = null;
+      this.activeSlotIndex = existingSlotIndex;
     } else {
-      if (this.selectedItems[this.activeSlotIndex] === null) {
-        const productElement = event.target;
-        const imgTag = productElement.querySelector('.biscuits-bundle-item__container .biscuits-bundle-item__image img');
-
-        const newItem = {
-          title: `${title} ${variantTitle}`.replace('Default Title', ''),
-          variantId,
-          image: imgTag ? imgTag.src : '',
-          price: event.detail.price || 0,
-          quantity: quantity || 1,
-          isLocked: false,
-        };
-
-        this.selectedItems[this.activeSlotIndex] = newItem;
-        this.advanceToNextEmptySlot();
+      const currentItem = this.selectedItems[this.activeSlotIndex];
+      if (currentItem && currentItem.isLocked) {
+        this.isProcessing = false;
+        return;
       }
+
+      const productElement = event.target;
+      const imgTag = productElement.querySelector('.biscuits-bundle-item__container .biscuits-bundle-item__image img');
+
+      const newItem = {
+        title: `${title} ${variantTitle}`.replace('Default Title', ''),
+        variantId,
+        image: imgTag ? imgTag.src : '',
+        price: event.detail.price || 0,
+        quantity: quantity || 1,
+        isLocked: false,
+      };
+
+      this.selectedItems[this.activeSlotIndex] = newItem;
+      this.advanceToNextEmptySlot();
     }
 
     this.render();

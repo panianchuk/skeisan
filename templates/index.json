@@ -624,68 +624,6 @@
         "padding_bottom": 36
       }
     },
-    "image_with_text_pqUAWk": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_YYcThj": {
-          "type": "heading",
-          "settings": {
-            "heading": "Wir wollen das Bild von Tee verändern.",
-            "heading_size": "h1"
-          }
-        },
-        "text_UaXpkY": {
-          "type": "text",
-          "settings": {
-            "show_above_text_image": false,
-            "text": "",
-            "text_style": "body"
-          }
-        },
-        "text_YqEK3k": {
-          "type": "text",
-          "settings": {
-            "show_above_text_image": false,
-            "text": "<p>Tee braucht auch keine 1.000 Sorten und kein Expertenwissen. Wir machen Tee. Aufs Wesentliche reduziert. Und dieses Wesentliche, machen wir so gut wir können. Hochwertig und kompromisslos. Stilvoll und urban. Alltagstauglich und unisex.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_VXkGht": {
-          "type": "button",
-          "settings": {
-            "button_label": "ERFAHRE MEHR",
-            "button_link": "shopify://pages/about",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_YYcThj",
-        "text_UaXpkY",
-        "text_YqEK3k",
-        "button_VXkGht"
-      ],
-      "custom_css": [
-        "@media (min-width: 768px) {.image-with-text__text-item.grid__item {padding-left: 50px; }}"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "lander_v3": false,
-        "image": "shopify://shop_images/4_3e48ad23-6bdc-4c66-80c9-b86919e299f1.gif",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "scheme-4",
-        "color_scheme": "scheme-4",
-        "padding_top": 36,
-        "padding_bottom": 36
-      }
-    },
     "how_to_started_fkmB3r": {
       "type": "how-to-started",
       "disabled": true,
@@ -769,7 +707,6 @@
     "image_with_text_MV87tM",
     "image_with_text_nWatte",
     "featured_collection_YAnEtf",
-    "image_with_text_pqUAWk",
     "how_to_started_fkmB3r",
     "faq_kFgr6B"
   ]
