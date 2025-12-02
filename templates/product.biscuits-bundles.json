@@ -71,8 +71,7 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
-            "show_gift_card_recipient": false
+            "show_dynamic_checkout": true
           }
         },
         "text_gE7qbw": {
@@ -235,13 +234,14 @@
           "type": "price",
           "settings": {
             "total_label": "Total:",
-            "savings_text": "You are saving 25% OFF [[amount]]"
+            "savings_text": ""
           }
         },
-        "add_to_cart_RTQdPM": {
-          "type": "add_to_cart",
+        "buy_buttons_z6cGgg": {
+          "type": "buy_buttons",
           "settings": {
-            "button_text": "Add To Cart"
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
           }
         },
         "custom_liquid_h6FJPA": {
@@ -295,7 +295,7 @@
           "type": "shopify://apps/biscuits-bundles/blocks/biscuits-bundle-form/9e9ff1bd-2cba-468f-b59f-a1ff63f6efe9",
           "settings": {
             "product": "{{ product }}",
-            "show_add_to_cart_button": "yes-open-drawer",
+            "show_add_to_cart_button": "no",
             "text_color": "#121212",
             "card_color": "#ffffff",
             "input_type": "rectangle",
@@ -330,7 +330,7 @@
         "description_9F4Lef",
         "bundle_trigger_UPXQQj",
         "price",
-        "add_to_cart_RTQdPM",
+        "buy_buttons_z6cGgg",
         "custom_liquid_h6FJPA",
         "collapsible_tab_7gT3cN",
         "collapsible_tab_t8yk7H",

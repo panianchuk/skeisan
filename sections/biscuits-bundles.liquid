@@ -6,7 +6,7 @@
 
 <product-info
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} biscuits-bundle"
   data-section="{{ section.id }}"
   data-product-id="{{ product.id }}"
   data-update-url="false"
@@ -171,17 +171,22 @@
               {%- when 'price' -%}
                 <div id="bundle-price" class="bundle-builder-price-wrapper">
                   <div class="bundle-builder-price">
-                    {{ block.settings.total_label | default: 'Total:' }}
-                    <span id="bundle-total-price" class="bundle-builder-total-price">$0.00</span>
+                    {{ block.settings.total_label }}
+                    {% comment %} <span id="bundle-total-price" class="bundle-builder-total-price">$0.00</span> {% endcomment %}
                     <span id="bundle-discounted-price" class="bundle-builder-discounted-price">$0.00</span>
                   </div>
-                  <div class="bundle-builder-savings">
-                    {{ block.settings.savings_text | replace: '[[amount]]', '<span id="bundle-savings">$0.00</span>' }}
-                  </div>
+                  {% if block.settings.savings_text != blank %}
+                    <div class="bundle-builder-savings">
+                      {{
+                        block.settings.savings_text
+                        | replace: '[[amount]]', '<span id="bundle-savings">$0.00</span>'
+                      }}
+                    </div>
+                  {% endif %}
                 </div>
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
-                  <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
+                  <div class="product__text rte quick-add-hidden" {{ block.shopify_attributes }}>
                     {{ product.description }}
                   </div>
                 {%- endif -%}
@@ -486,16 +491,17 @@
                     {% endfor %}
                   </div>
                 </div>
-              {% when 'add_to_cart' %}
-                <button type="button" class="bundle-add-to-cart disabled">
-                  {{ block.settings.button_text }}
-                </button>
-
-                <div class="payment-methods">
-                  {%- for type in shop.enabled_payment_types -%}
-                    {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-                  {%- endfor -%}
-                </div>
+              {%- when 'buy_buttons' -%}
+                {% assign pyment_icons = section.settings.payment_icons %}
+                {%- render 'buy-buttons',
+                  block: block,
+                  product: product,
+                  product_form_id: product_form_id,
+                  section_id: section.id,
+                  show_pickup_availability: true,
+                  pyment_icons: pyment_icons,
+                  hide_quantity: true
+                -%}
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -560,17 +566,15 @@
           {% if block.id contains 'biscuits_bundles_biscuits_bundle_form' %}
             <div id="biscuits-bundle-modal-overlay" class="biscuits-modal-overlay"></div>
             <div id="biscuits-bundle-modal" class="biscuits-modal-content">
-              <button id="biscuits-bundle-close" class="biscuits-modal-close">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                  <path d="M6 6L18 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
               <div class="biscuits-modal-scroll-area">
                 <div class="biscuits-bundles">
                   {% render block %}
                 </div>
               </div>
+
+              <button id="biscuits-bundle-close" class="biscuits-modal-close">
+                {{ section.settings.bundle_button_text }}
+              </button>
             </div>
           {% endif %}
       {%- endcase -%}
@@ -595,6 +599,12 @@
       "id": "total_products_in_bundle",
       "label": "Total products in the bundle",
       "default": "3"
+    },
+    {
+      "type": "text",
+      "id": "bundle_button_text",
+      "label": "Bundle button text",
+      "default": "Auswählen"
     },
     {
       "type": "checkbox",
@@ -827,7 +837,7 @@
           "type": "text",
           "id": "savings_text",
           "label": "Savings Text",
-          "default": "You are saving 25% OFF [[amount]]",
+          "default": "You are saving [[amount]]",
           "info": "Use amount variable to display the savings money"
         }
       ]
@@ -846,15 +856,23 @@
       ]
     },
     {
-      "type": "add_to_cart",
-      "name": "Add To Cart",
+      "type": "buy_buttons",
+      "name": "t:sections.main-product.blocks.buy_buttons.name",
       "limit": 1,
       "settings": [
         {
-          "type": "text",
-          "id": "button_text",
-          "label": "Button Text",
-          "default": "Add To Cart"
+          "type": "checkbox",
+          "id": "show_dynamic_checkout",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_gift_card_recipient",
+          "default": true,
+          "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
+          "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
         }
       ]
     },

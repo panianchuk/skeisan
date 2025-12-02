@@ -4,6 +4,8 @@ class BundleManager {
 
     this.selectedItems = new Array(config.maxItems).fill(null);
 
+    this.preselectedVariantIds = config.preselectedVariantIds || [];
+
     this.activeSlotIndex = 0;
     this.isProcessing = false;
 
@@ -13,18 +15,51 @@ class BundleManager {
       totalPrice: document.querySelector('#bundle-total-price'),
       discountedPrice: document.querySelector('#bundle-discounted-price'),
       savingsMoney: document.querySelector('#bundle-savings'),
-      addToCartButton: document.querySelector('.bundle-add-to-cart'),
-      biscuitsBundleAddToCartButton: document.querySelector('.biscuits-bundle-add-to-cart__button'),
+      addToCartButton: document.querySelector('.product-form__submit'),
+      productForm: document.querySelector('product-form.product-form'),
+      closeBtn: document.querySelector('#biscuits-bundle-close'),
     };
 
     document.addEventListener('BiscuitsBundleForm:ready', (e) => {
+      console.log(e);
+      this.preselectedVariantIds = e?.srcElement?.bundleRules?.steps[0]?.preselected_variants || [];
       this.init();
     });
   }
 
   init() {
+    this.fillPreselectedItems();
     this.initListeners();
     this.render();
+  }
+
+  fillPreselectedItems() {
+    if (!this.preselectedVariantIds.length) {
+      return;
+    }
+
+    console.log('No preselected variants found', document.querySelector('#biscuits-step--1'));
+    document.querySelector('#biscuits-step--1').style.display = 'none';
+
+    this.preselectedVariantIds.forEach((id, index) => {
+      const productElement = event.target;
+      const imgTag = productElement.querySelector('.biscuits-bundle-item__container .biscuits-bundle-item__image img');
+      const jsonEl = productElement.querySelector(`[data-biscuits-selected-variant-id="${id}"] .biscuits-bundle-item__json`);
+      const data = JSON.parse(jsonEl.textContent.trim());
+
+      if (index < this.config.maxItems) {
+        this.selectedItems[index] = {
+          title: data.product_title,
+          variantId: id,
+          image: imgTag ? imgTag.src : '',
+          price: data.price,
+          quantity: data.min,
+          isLocked: true,
+        };
+      }
+    });
+
+    this.advanceToNextEmptySlot();
   }
 
   initListeners() {
@@ -38,42 +73,62 @@ class BundleManager {
 
     this.dom.cards.forEach((card, index) => {
       card.addEventListener('click', () => {
+        const item = this.selectedItems[index];
+        if (item && item.isLocked) {
+          console.log('This slot is mandatory and cannot be changed.');
+          return;
+        }
+
         this.activeSlotIndex = index;
         this.render();
       });
     });
-
-    this.dom.addToCartButton.addEventListener('click', () => this.handleAddToCart());
   }
 
   handleProductSelection(event) {
     if (this.isProcessing) {
       return;
     }
-    this.isProcessing = true;
+
     const { product_title: title, variant_id: variantId, variant_title: variantTitle, quantity } = event.detail;
+
+    if (this.preselectedVariantIds.includes(`${variantId}`)) {
+      return;
+    }
+
     const existingSlotIndex = this.selectedItems.findIndex((item) => item && item.variantId === variantId);
 
-    console.log('event.detail', event.detail);
+    if (existingSlotIndex !== -1) {
+      if (this.selectedItems[existingSlotIndex].isLocked) {
+        return;
+      }
+    }
 
+    this.isProcessing = true;
     if (existingSlotIndex !== -1) {
       this.selectedItems[existingSlotIndex] = null;
+      this.activeSlotIndex = existingSlotIndex;
     } else {
-      if (this.selectedItems[this.activeSlotIndex] === null) {
-        const productElement = event.target;
-        const imgTag = productElement.querySelector('.biscuits-bundle-item__container .biscuits-bundle-item__image img');
-
-        const newItem = {
-          title: `${title} ${variantTitle}`.replace('Default Title', ''),
-          variantId,
-          image: imgTag ? imgTag.src : '',
-          price: event.detail.price || 0,
-          quantity: quantity || 1,
-        };
-
-        this.selectedItems[this.activeSlotIndex] = newItem;
-        this.advanceToNextEmptySlot();
+      const currentItem = this.selectedItems[this.activeSlotIndex];
+      if (currentItem && currentItem.isLocked) {
+        this.isProcessing = false;
+        return;
       }
+
+      const productElement = event.target;
+      const imgTag = productElement.querySelector('.biscuits-bundle-item__container .biscuits-bundle-item__image img');
+
+      const newItem = {
+        title: `${title} ${variantTitle}`.replace('Default Title', ''),
+        variantId,
+        image: imgTag ? imgTag.src : '',
+        price: event.detail.price || 0,
+        quantity: quantity || 1,
+        isLocked: false,
+      };
+
+      this.selectedItems[this.activeSlotIndex] = newItem;
+      this.advanceToNextEmptySlot();
     }
 
     this.render();
@@ -113,11 +168,22 @@ class BundleManager {
     this.dom.cards.forEach((card, index) => {
       const item = this.selectedItems[index];
 
+      card.classList.remove('active', 'locked');
+
+      if (index === this.activeSlotIndex) {
+        card.classList.add('active');
+      }
+
       if (item) {
+        if (item.isLocked) {
+          card.classList.add('locked');
+        }
+
         card.innerHTML = `
           <div class="bundle-trigger-card__image-wrapper">
             <img src="${item.image}" alt="${item.title}">
             ${item.quantity > 1 ? `<div class="bundle-trigger-card-quantity">${item.quantity}</div>` : ''}
+            ${item.isLocked ? `<div class="bundle-lock-icon">🔒</div>` : ''} 
           </div>
           <div class="bundle-trigger-card-title">${item.title}</div>
         `;
@@ -130,14 +196,19 @@ class BundleManager {
       }
     });
 
+    const addedItemsCount = this.selectedItems.filter((i) => i).length === this.config.maxItems;
+
     if (this.dom.addToCartButton) {
-      const hasItems = this.selectedItems.filter((i) => i).length === this.config.maxItems;
-      this.dom.addToCartButton.classList.toggle('disabled', !hasItems);
+      this.dom.addToCartButton.classList.toggle('disabled', !addedItemsCount);
+      this.dom.productForm.classList.toggle('disabled', !addedItemsCount);
     }
 
     if (this.dom.priceWrapper) {
-      const hasItems = this.selectedItems.filter((i) => i).length > 0;
-      this.dom.priceWrapper.classList.toggle('is-visible', hasItems);
+      this.dom.priceWrapper.classList.toggle('is-visible', addedItemsCount);
+    }
+
+    if (this.dom.closeBtn) {
+      this.dom.closeBtn.classList.toggle('is-visible', addedItemsCount);
     }
   }
 
@@ -180,17 +251,6 @@ class BundleManager {
 
     return formatString.replace(placeholderRegex, value);
   }
-
-  handleAddToCart() {
-    if (this.dom.biscuitsBundleAddToCartButton) {
-      this.dom.addToCartButton.classList.add('loading');
-      this.dom.biscuitsBundleAddToCartButton.click();
-
-      setTimeout(() => {
-        this.dom.addToCartButton.classList.remove('loading');
-      }, 2000);
-    }
-  }
 }
 
 function initializeBundleManager() {
@@ -198,7 +258,21 @@ function initializeBundleManager() {
   if (productInfo) {
     const maxProductsInBundleAttr = productInfo.getAttribute('data-max-products-in-bundle');
     const maxProductsInBundle = parseInt(maxProductsInBundleAttr, 10) || 3;
-    new BundleManager({ maxItems: maxProductsInBundle });
+
+    const preselectedAttr = productInfo.getAttribute('data-preselected-variants');
+    let preselectedVariantIds = [];
+    if (preselectedAttr) {
+      try {
+        preselectedVariantIds = JSON.parse(preselectedAttr);
+      } catch (e) {
+        console.error('Error parsing preselected variants:', e);
+      }
+    }
+
+    new BundleManager({
+      maxItems: maxProductsInBundle,
+      preselectedVariantIds: preselectedVariantIds,
+    });
   }
 }
 

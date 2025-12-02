@@ -79,6 +79,37 @@
         "padding_bottom": 36
       }
     },
+    "rich_text_a8Mj4b": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JCDy7j": {
+          "type": "heading",
+          "settings": {
+            "heading": "MADE FOR DISRUPTION!",
+            "heading_size": "hxl"
+          }
+        },
+        "text_dyc8dQ": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Wir machen Tee, der durch Ästhetik überzeugt und durch Qualität bleibt. Was ihn besonders macht, ist nicht nur der Geschmack. Es ist, wie wir ihn denken: klarer, bolder, moderner.<br/><br/><strong>Wir sind nicht besser als andere - sondern ein ganz neues Erlebnis.</strong></p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JCDy7j",
+        "text_dyc8dQ"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "how_to_started_XXE9mT": {
       "type": "how-to-started",
       "disabled": true,
@@ -92,49 +123,6 @@
         "skeisan_story_button_text": "",
         "skeisan_story_button_url": "shopify://collections",
         "skeisan_story_button_target": false
-      }
-    },
-    "rich_text_U8ywdq": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_Hjzj6A": {
-          "type": "heading",
-          "settings": {
-            "heading": "PREMIUM-TEE NEU ERLEBEN.",
-            "heading_size": "h1"
-          }
-        },
-        "text_xNfWPr": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Wir machen Tee, der durch Ästhetik überzeugt und durch Qualität bleibt. Was ihn besonders macht, ist nicht nur der Geschmack. Es ist, wie wir ihn denken: klarer, bolder, moderner.<br/><br/><strong>Wir sind nicht besser als andere - sondern ein ganz neues Erlebnis.</strong></p>"
-          }
-        },
-        "button_Jebw7D": {
-          "type": "button",
-          "settings": {
-            "button_label": "",
-            "button_link": "",
-            "button_style_secondary": false,
-            "button_label_2": "",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_Hjzj6A",
-        "text_xNfWPr",
-        "button_Jebw7D"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
       }
     },
     "slideshow_nJJjnN": {
@@ -218,14 +206,14 @@
         "feature_Wya3RL": {
           "type": "feature",
           "settings": {
-            "feature_title": "Mehr als Bio.",
-            "feature_description": "Alle Zutaten stammen aus biologischem Anbau. Manche Blends dürfen wir nicht Bio nennen, weil wir Bio-Öle in höherer Dosierung verwenden, als es das Siegel erlaubt. Für mehr Geschmack, ohne Kompromisse bei der Reinheit."
+            "feature_title": "Beyond Bio.",
+            "feature_description": "Alle Zutaten sind bio. Manche Blends tragen kein Siegel, weil wir Bio-Öle höher dosieren – für maximalen Geschmack ohne Kompromisse."
           }
         },
         "feature_jhpYwL": {
           "type": "feature",
           "settings": {
-            "feature_title": "Nachhaltigkeit ohne Zeigefinger.",
+            "feature_title": "Fairness.",
             "feature_description": "Zertifizierte Herkunft, fairer Handel, ökologischer Anbau. Nicht als Statement, sondern weil’s selbstverständlich ist."
           }
         },
@@ -252,7 +240,7 @@
       ],
       "name": "Tea Redefined",
       "settings": {
-        "main_title": "Wir machen Tee, der zu deinem Leben passt."
+        "main_title": "PREMIUM-TEE ERLEBEN."
       }
     },
     "custom_img_txt_PMTKma": {
@@ -328,63 +316,13 @@
         "padding_bottom_mobile": 64
       }
     },
-    "image_with_text_cAed84": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_mRCJPW": {
-          "type": "heading",
-          "settings": {
-            "heading": "Einfach richtig guter Tee.",
-            "heading_size": "h2"
-          }
-        },
-        "text_GawcyD": {
-          "type": "text",
-          "settings": {
-            "show_above_text_image": false,
-            "text": "<p>Man könnte das Gefühl haben, Tee sei furchtbar kompliziert. Aber Tee ist einfach. Tee braucht kein Tee-Service oder besondere Momente. Braucht weder Ritual, noch Regeln. Braucht keine Mythen und keine Mantras.</p>",
-            "text_style": "body"
-          }
-        },
-        "text_cpnL3m": {
-          "type": "text",
-          "settings": {
-            "show_above_text_image": true,
-            "text": "<p>Tee braucht auch keine 1.000 Sorten und kein Expertenwissen. Wir machen Tee. Aufs Wesentliche reduziert. Und dieses Wesentliche, machen wir so gut wir können. Hochwertig und kompromisslos. Stilvoll und urban. Alltagstauglich und unisex.</p>",
-            "text_style": "body"
-          }
-        }
-      },
-      "block_order": [
-        "heading_mRCJPW",
-        "text_GawcyD",
-        "text_cpnL3m"
-      ],
-      "name": "t:sections.image-with-text.presets.name",
-      "settings": {
-        "lander_v3": false,
-        "image": "shopify://shop_images/SKEISAN_MIKEMEYER_4N8A0752.png",
-        "height": "adapt",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "image_behavior": "none",
-        "content_layout": "no-overlap",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "mobile_content_alignment": "left",
-        "section_color_scheme": "",
-        "color_scheme": "",
-        "padding_top": 64,
-        "padding_bottom": 64
-      }
-    },
     "image_with_text_zL9wF3": {
       "type": "image-with-text",
       "blocks": {
         "heading_QhYwKT": {
           "type": "heading",
           "settings": {
-            "heading": "Wir wollen das Bild von Tee verändern.",
+            "heading": "Vom Heißgetränk zum Statement.",
             "heading_size": "h2"
           }
         },
@@ -392,7 +330,7 @@
           "type": "text",
           "settings": {
             "show_above_text_image": false,
-            "text": "<p>Hey, ich bin Tom und ich habe SKEISAN gegründet, um einen Tee zu schaffen, der in mein Leben passt: Urban, ästhetisch und dynamisch. Frei von Funktion, Rollen und Klischees. Dafür mit aufregenden Blends und den hochwertigsten Zutaten. Ehrlich und auf den Punkt.</p>",
+            "text": "<p>SKEISAN entstand, weil Tee mehr kann als Tea-Time, Wellness oder „Detox“.</p><p>Wir haben Tee neu codiert. SKEISAN ist Unisex, urban, direkt. Wir setzen auf klare Kante: hochwertige Blends, klare Sprache, kompromissloses Design.</p><p>SKEISAN steht heute für eine neue Generation von Teetrinker:innen. Nicht aus Ritual, sondern aus Überzeugung. Nicht gegen Erkältung, sondern für Freiheit.</p><p><strong>\"No rules. No rituals. Just tea.\"</strong></p><p><em>- Tom Etz, Gründer</em></p>",
             "text_style": "body"
           }
         }
@@ -419,6 +357,24 @@
         "padding_bottom": 64
       }
     },
+    "video_yrGFkh": {
+      "type": "video",
+      "name": "t:sections.video.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "enable_video_looping": false,
+        "video": "shopify://files/videos/Milan_Shoot_Animation.mp4",
+        "video_content_heading": "",
+        "video_btn_text": "",
+        "video_btn_link": "",
+        "description": "",
+        "full_width": false,
+        "color_scheme": "scheme-1",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
     "faq_8pNy8d": {
       "type": "faq",
       "blocks": {
@@ -427,6 +383,13 @@
           "settings": {
             "question": "Ist SKEISAN-Tee Bio bzw. wie wird die Qualität geprüft?",
             "answer": "<p>Unsere Tees durchlaufen ein 10-stufiges Qualitätssystem – von der Auswahl der Anbaugebiete über die Verarbeitung bis hin zur Abfüllung ins Aromaglas. Viele Sorten sind bio-zertifiziert. Bei manchen Mischungen können wir aufgrund der höheren Dosierung von natürlichen Bio-Ölen kein Bio-Siegel ausweisen – dennoch stammen alle Zutaten aus kontrolliert biologischem Anbau. So garantieren wir höchste Reinheit und unverfälschten Geschmack.</p>"
+          }
+        },
+        "question_block_4arNbN": {
+          "type": "question_block",
+          "settings": {
+            "question": "",
+            "answer": ""
           }
         },
         "question_block_mwMzkw": {
@@ -460,6 +423,7 @@
       },
       "block_order": [
         "question_block_CzNbjJ",
+        "question_block_4arNbN",
         "question_block_mwMzkw",
         "question_block_makJzK",
         "question_block_AtGzU8",
@@ -475,14 +439,14 @@
     "main",
     "image_with_text_BMGeTe",
     "video_GUgLKD",
+    "rich_text_a8Mj4b",
     "how_to_started_XXE9mT",
-    "rich_text_U8ywdq",
     "slideshow_nJJjnN",
     "tea_redefined_KhBPHr",
     "custom_img_txt_PMTKma",
     "video_slider_zz68QR",
-    "image_with_text_cAed84",
     "image_with_text_zL9wF3",
+    "video_yrGFkh",
     "faq_8pNy8d"
   ]
 }

@@ -44,7 +44,7 @@
       "name": "Main Footer",
       "settings": {
         "newsletter_heading": "Melde dich zum Newsletter an",
-        "newsletter_subheading": "Keine Serienmails. Kein Spam. Dafür neuer Tee oder ein spezielles Angebot. Lass dich überraschen! \n<br>\nInformationen dazu, wie SKEISAN mit deinen Daten umgeht, findest du in unserer Datenschutzerklärung.",
+        "newsletter_subheading": "Keine Serienmails. Kein Spam. Dafür neuer Tee oder ein spezielles Angebot. \n<br>\nWie wir mit deinen Daten umgehen, findest du in unserer Datenschutzerklärung.",
         "footer_logo": "shopify://shop_images/SKS_2025_Logo_Claim_Black.png",
         "copyright_text": "© 2025 SKEISAN. All rights reserved."
       }
