@@ -9,6 +9,27 @@
  */
 {
   "sections": {
+    "media_banner_czxLzK": {
+      "type": "media-banner",
+      "name": "Media Banner",
+      "settings": {
+        "media_type": "video",
+        "video_mobile": "shopify://files/videos/251201_HeroSection-mobil_Winterdeal_Skeisan (1).mp4",
+        "video_desktop": "shopify://files/videos/251201_HeroSection_Winterdeal_Skeisan (1).mp4",
+        "height_type": "content",
+        "button_text": "Shop Now",
+        "button_link": "shopify://collections",
+        "button_position": "custom",
+        "button_top_mob": 45,
+        "button_left_mob": 50,
+        "trans_x_mob": -50,
+        "trans_y_mob": -50,
+        "button_top_desk": 70,
+        "button_right_desk": 5,
+        "trans_x_desk": 0,
+        "trans_y_desk": 0
+      }
+    },
     "bf_banner_niPTRt": {
       "type": "bf-banner",
       "name": "BF Banner",
@@ -692,6 +713,7 @@
     }
   },
   "order": [
+    "media_banner_czxLzK",
     "bf_banner_niPTRt",
     "offer_hero_FetCRU",
     "image_banner_bCnybK",

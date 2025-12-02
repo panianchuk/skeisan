@@ -1,0 +1,366 @@
+{{ 'media-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="media-banner" data-section-id="{{ section.id }}">
+  <style>
+    [data-section-id="{{ section.id }}"] .media-banner__content {
+      {%- if section.settings.button_position == 'custom' -%}
+        top: {% if section.settings.button_top_mob != blank %}{{ section.settings.button_top_mob }}%{% else %}auto{% endif %};
+        right: {% if section.settings.button_right_mob != blank %}{{ section.settings.button_right_mob }}%{% else %}auto{% endif %};
+        bottom: {% if section.settings.button_bottom_mob != blank %}{{ section.settings.button_bottom_mob }}%{% else %}auto{% endif %};
+        left: {% if section.settings.button_left_mob != blank %}{{ section.settings.button_left_mob }}%{% else %}auto{% endif %};
+
+        transform: translate({{ section.settings.trans_x_mob | default: 0 }}%, {{ section.settings.trans_y_mob | default: 0 }}%);
+      {%- endif -%}
+    }
+
+    @media screen and (min-width: 769px) {
+      [data-section-id="{{ section.id }}"] .media-banner__content {
+        {%- if section.settings.button_position == 'custom' -%}
+          top: {% if section.settings.button_top_desk != blank %}{{ section.settings.button_top_desk }}%{% else %}auto{% endif %};
+          right: {% if section.settings.button_right_desk != blank %}{{ section.settings.button_right_desk }}%{% else %}auto{% endif %};
+          bottom: {% if section.settings.button_bottom_desk != blank %}{{ section.settings.button_bottom_desk }}%{% else %}auto{% endif %};
+          left: {% if section.settings.button_left_desk != blank %}{{ section.settings.button_left_desk }}%{% else %}auto{% endif %};
+
+          transform: translate({{ section.settings.trans_x_desk | default: 0 }}%, {{ section.settings.trans_y_desk | default: 0 }}%);
+        {%- endif -%}
+      }
+    }
+  </style>
+
+  <div class="media-banner__wrapper media-banner__wrapper--{{ section.settings.height_type }}">
+    {%- if section.settings.media_type == 'video' -%}
+      {%- if section.settings.video_desktop != blank or section.settings.video_mobile != blank -%}
+        {%- if section.settings.video_desktop != blank -%}
+          <video
+            class="media-banner__video media-banner__video--desktop"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="{{ section.settings.video_desktop.preview_image | image_url: width: 1920 }}"
+          >
+            {%- for source in section.settings.video_desktop.sources -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endfor -%}
+          </video>
+        {%- endif -%}
+        {%- if section.settings.video_mobile != blank -%}
+          <video
+            class="media-banner__video media-banner__video--mobile"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="{{ section.settings.video_mobile.preview_image | image_url: width: 768 }}"
+          >
+            {%- for source in section.settings.video_mobile.sources -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endfor -%}
+          </video>
+        {%- elsif section.settings.video_desktop != blank -%}
+          <video
+            class="media-banner__video media-banner__video--mobile"
+            autoplay
+            muted
+            loop
+            playsinline
+            poster="{{ section.settings.video_desktop.preview_image | image_url: width: 768 }}"
+          >
+            {%- for source in section.settings.video_desktop.sources -%}
+              <source src="{{ source.url }}" type="{{ source.mime_type }}">
+            {%- endfor -%}
+          </video>
+        {%- endif -%}
+      {%- endif -%}
+    {%- else -%}
+      {%- if section.settings.image_desktop != blank -%}
+        <img
+          class="media-banner__image media-banner__image--desktop"
+          src="{{ section.settings.image_desktop | image_url: width: 1920 }}"
+          srcset="
+            {{ section.settings.image_desktop | image_url: width: 768 }} 768w,
+            {{ section.settings.image_desktop | image_url: width: 1024 }} 1024w,
+            {{ section.settings.image_desktop | image_url: width: 1440 }} 1440w,
+            {{ section.settings.image_desktop | image_url: width: 1920 }} 1920w
+          "
+          sizes="100vw"
+          width="{{ section.settings.image_desktop.width }}"
+          height="{{ section.settings.image_desktop.height }}"
+          alt="{{ section.settings.image_desktop.alt | escape }}"
+          loading="lazy"
+        >
+      {%- endif -%}
+      {%- if section.settings.image_mobile != blank -%}
+        <img
+          class="media-banner__image media-banner__image--mobile"
+          src="{{ section.settings.image_mobile | image_url: width: 768 }}"
+          srcset="
+            {{ section.settings.image_mobile | image_url: width: 375 }} 375w,
+            {{ section.settings.image_mobile | image_url: width: 768 }} 768w
+          "
+          sizes="100vw"
+          width="{{ section.settings.image_mobile.width }}"
+          height="{{ section.settings.image_mobile.height }}"
+          alt="{{ section.settings.image_mobile.alt | escape }}"
+          loading="lazy"
+        >
+      {%- elsif section.settings.image_desktop != blank -%}
+        <img
+          class="media-banner__image media-banner__image--mobile"
+          src="{{ section.settings.image_desktop | image_url: width: 768 }}"
+          srcset="
+            {{ section.settings.image_desktop | image_url: width: 375 }} 375w,
+            {{ section.settings.image_desktop | image_url: width: 768 }} 768w
+          "
+          sizes="100vw"
+          width="{{ section.settings.image_desktop.width }}"
+          height="{{ section.settings.image_desktop.height }}"
+          alt="{{ section.settings.image_desktop.alt | escape }}"
+          loading="lazy"
+        >
+      {%- endif -%}
+    {%- endif -%}
+
+    {%- if section.settings.button_text != blank -%}
+      <div class="media-banner__content">
+        <a href="{{ section.settings.button_link }}" class="media-banner__button">
+          {{ section.settings.button_text }}
+        </a>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Media Banner",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Media Settings"
+    },
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Media Type",
+      "options": [
+        {
+          "value": "image",
+          "label": "Image"
+        },
+        {
+          "value": "video",
+          "label": "Video"
+        }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image",
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Image",
+      "visible_if": "{{ section.settings.media_type == 'image' }}"
+    },
+    {
+      "type": "video",
+      "id": "video_mobile",
+      "label": "Mobile Video",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "video",
+      "id": "video_desktop",
+      "label": "Desktop Video",
+      "visible_if": "{{ section.settings.media_type == 'video' }}"
+    },
+    {
+      "type": "header",
+      "content": "Banner Settings"
+    },
+    {
+      "type": "select",
+      "id": "height_type",
+      "label": "Banner Height",
+      "options": [
+        {
+          "value": "fullscreen",
+          "label": "100dvh (Full Screen)"
+        },
+        {
+          "value": "content",
+          "label": "Auto (Content Height)"
+        }
+      ],
+      "default": "fullscreen"
+    },
+    {
+      "type": "header",
+      "content": "Button Settings"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Now"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "select",
+      "id": "button_position",
+      "label": "Button Position",
+      "options": [
+        {
+          "value": "top-left",
+          "label": "Top Left"
+        },
+        {
+          "value": "top-center",
+          "label": "Top Center"
+        },
+        {
+          "value": "top-right",
+          "label": "Top Right"
+        },
+        {
+          "value": "center-left",
+          "label": "Center Left"
+        },
+        {
+          "value": "center-center",
+          "label": "Center Center"
+        },
+        {
+          "value": "center-right",
+          "label": "Center Right"
+        },
+        {
+          "value": "bottom-left",
+          "label": "Bottom Left"
+        },
+        {
+          "value": "bottom-center",
+          "label": "Bottom Center"
+        },
+        {
+          "value": "bottom-right",
+          "label": "Bottom Right"
+        },
+        {
+          "value": "custom",
+          "label": "Custom (by %)"
+        }
+      ],
+      "default": "center-center"
+    },
+    {
+      "type": "header",
+      "content": "Custom Position Mobile",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_top_mob",
+      "label": "Top (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_right_mob",
+      "label": "Right (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_bottom_mob",
+      "label": "Bottom (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_left_mob",
+      "label": "Left (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "trans_x_mob",
+      "label": "Translate X (%)",
+      "info": "Use -50 to center horizontally relative to position",
+      "default": 0,
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "trans_y_mob",
+      "label": "Translate Y (%)",
+      "info": "Use -50 to center vertically relative to position",
+      "default": 0,
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Custom Position Desktop",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_top_desk",
+      "label": "Top (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_right_desk",
+      "label": "Right (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_bottom_desk",
+      "label": "Bottom (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "button_left_desk",
+      "label": "Left (%)",
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "trans_x_desk",
+      "label": "Translate X (%)",
+      "info": "Use -50 to center horizontally relative to position",
+      "default": 0,
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    },
+    {
+      "type": "number",
+      "id": "trans_y_desk",
+      "label": "Translate Y (%)",
+      "info": "Use -50 to center vertically relative to position",
+      "default": 0,
+      "visible_if": "{{ section.settings.button_position == 'custom' }}"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Media Banner"
+    }
+  ]
+}
+{% endschema %}
